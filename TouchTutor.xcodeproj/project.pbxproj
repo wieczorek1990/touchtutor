@@ -32,8 +32,6 @@
 		BADD200FE97D203DF515488B /* Sources/TouchTutor/ImportedScoreLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CFFD86CCD5AD61ABA8F23 /* Sources/TouchTutor/ImportedScoreLibrary.swift */; };
 		C0F208B12ACF8CEDA2C5D448 /* Sources/TouchTutor/PreGameMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB17DCAFB293C1C36001AF /* Sources/TouchTutor/PreGameMenuView.swift */; };
 		C56EDE9094A531666789557E /* Tests/TouchTutorTests/ScoreLoadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9507F84DAE68E626200D7669 /* Tests/TouchTutorTests/ScoreLoadingTests.swift */; };
-		CB4342AA3097630900F12665 /* MS Basic.sf3 in Resources */ = {isa = PBXBuildFile; fileRef = CB4342A93097630900F12665 /* MS Basic.sf3 */; };
-		CB4342AC3097639F00F12665 /* FluidR3Mono_GM.sf3 in Resources */ = {isa = PBXBuildFile; fileRef = CB4342AB3097639F00F12665 /* FluidR3Mono_GM.sf3 */; };
 		CB6DB7FB3095C72C0084C852 /* Nobuo Uematsu - To Zanarkand.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F53095C72C0084C852 /* Nobuo Uematsu - To Zanarkand.xml */; };
 		CB6DB7FC3095C72C0084C852 /* Nobuo Uematsu - Dancing Mad.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F33095C72C0084C852 /* Nobuo Uematsu - Dancing Mad.xml */; };
 		CB6DB7FD3095C72C0084C852 /* Practice - C Major Scale.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F73095C72C0084C852 /* Practice - C Major Scale.xml */; };
@@ -103,8 +101,6 @@
 		AAAABB333333333333333333AB /* Sources/TouchTutor/TempoSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/TempoSelectorView.swift; sourceTree = "<group>"; };
 		ABCD0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/SVGRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/SVGRenderer.swift; sourceTree = "<group>"; };
 		AD4D2A41CEE91C8CD15BE50C /* Sources/TouchTutor/App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/App.swift; sourceTree = "<group>"; };
-		CB4342A93097630900F12665 /* MS Basic.sf3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MS Basic.sf3"; sourceTree = "<group>"; };
-		CB4342AB3097639F00F12665 /* FluidR3Mono_GM.sf3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = FluidR3Mono_GM.sf3; sourceTree = "<group>"; };
 		CB6DB7F03095C72C0084C852 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CB6DB7F23095C72C0084C852 /* soiree_logo.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = soiree_logo.svg; sourceTree = "<group>"; };
 		CB6DB7F33095C72C0084C852 /* Nobuo Uematsu - Dancing Mad.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Nobuo Uematsu - Dancing Mad.xml"; sourceTree = "<group>"; };
@@ -245,8 +241,6 @@
 				TTLOGO023095C72C0084C852 /* touchtutor_logo.png */,
 				TTLOGOW23095C72C0084C852 /* touchtutor_logo_white.png */,
 				6E69DD8FF1024E608BA67D6D /* Scores */,
-				CB4342A93097630900F12665 /* MS Basic.sf3 */,
-				CB4342AB3097639F00F12665 /* FluidR3Mono_GM.sf3 */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -348,7 +342,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB6DB8033095C72C0084C852 /* AppIcon.icns in Resources */,
-				CB4342AC3097639F00F12665 /* FluidR3Mono_GM.sf3 in Resources */,
 				CB6DB80B3095C72C0084C852 /* AppIcon.xcassets in Resources */,
 				CB6DB8083095C80B0084C852 /* Tifas theme.xml in Resources */,
 				CB6DB8093095C80B0084C852 /* Aeriths theme.xml in Resources */,
@@ -365,7 +358,6 @@
 				CB6DB7FF3095C72C0084C852 /* Nobuo Uematsu - Eyes on Me.xml in Resources */,
 				CB6DB8013095C72C0084C852 /* Practice - C Major Chords.xml in Resources */,
 				CB6DB8023095C72C0084C852 /* Test.xml in Resources */,
-				CB4342AA3097630900F12665 /* MS Basic.sf3 in Resources */,
 				CB6DB8043095C72C0084C852 /* Localizable.strings in Resources */,
 				STOREKIT000000000000000001 /* ScorePacks.storekit in Resources */,
 			);
