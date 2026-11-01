@@ -16,6 +16,7 @@ struct TouchTutorSplashView: View {
           .font(.system(size: 28, weight: .semibold))
           .foregroundColor(.primary)
       }
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     .edgesIgnoringSafeArea(.all)
   }
