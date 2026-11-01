@@ -6,27 +6,13 @@ import AudioToolbox
 final class SoundFontSynth {
   private let engine = AVAudioEngine()
   private let sampler = AVAudioUnitSampler()
-  private let reverb = AVAudioUnitReverb()
-  private var loadedPrograms: Set<UInt8> = []
   private var instrumentGeneration = 0
   private var currentProgram: UInt8 = 0
-
-  @Published private(set) var isLoading = false
+  private var loadedPrograms: Set<UInt8> = []
 
   init() {
     engine.attach(sampler)
-    engine.attach(reverb)
-
-    reverb.loadFactoryPreset(.mediumHall)
-    reverb.wetDryMix = 22
-
-    if #available(macOS 27.0, *) {
-      try? engine.connectNode(sampler, to: reverb, fromBus: 0, toBus: 0, format: nil)
-      try? engine.connectNode(reverb, to: engine.mainMixerNode, fromBus: 0, toBus: 0, format: nil)
-    } else {
-      engine.connect(sampler, to: reverb, format: nil)
-      engine.connect(reverb, to: engine.mainMixerNode, format: nil)
-    }
+    engine.connect(sampler, to: engine.mainMixerNode, format: nil)
     try? engine.start()
   }
 
@@ -34,50 +20,47 @@ final class SoundFontSynth {
   func setProgram(_ program: UInt8) {
     guard program != currentProgram else { return }
     currentProgram = program
+    ensureInstrumentLoaded(program)
     sampler.sendProgramChange(program, onChannel: 0)
   }
 
-  private static func resolveSoundFontURL() -> URL? {
-    Bundle.main.url(forResource: "MS Basic", withExtension: "sf2")
+  private static func resolveBankURL() -> URL? {
+    let systemBankPath =
+      "/System/Library/Components/CoreAudio.component/Contents/Resources/gs_instruments.dls"
+    let systemBankURL = URL(fileURLWithPath: systemBankPath)
+    if FileManager.default.fileExists(atPath: systemBankURL.path) {
+      return systemBankURL
+    }
+    return nil
   }
 
-  /// Loads the MS Basic soundfont.
-  private func loadSoundFont() async {
-    guard let sfURL = Self.resolveSoundFontURL() else { return }
-    do {
-      try sampler.loadSoundBankInstrument(
-        at: sfURL,
-        program: 0,
-        bankMSB: UInt8(kAUSampler_DefaultMelodicBankMSB),
-        bankLSB: UInt8(kAUSampler_DefaultBankLSB)
-      )
-      self.loaded = true
-    } catch {
-      print("Unable to load MS Basic.sf2: \(error.localizedDescription)")
+  private func loadProgram(_ program: UInt8) {
+    let neededPrograms: [UInt8] = [0, 25, 27]  // Piano, Jazz Guitar, Electric Guitar
+    guard let bankURL = Self.resolveBankURL() else { return }
+
+    for p in neededPrograms where !loadedPrograms.contains(p) {
+      do {
+        try self.sampler.loadSoundBankInstrument(
+          at: bankURL,
+          program: p,
+          bankMSB: UInt8(kAUSampler_DefaultMelodicBankMSB),
+          bankLSB: UInt8(kAUSampler_DefaultBankLSB)
+        )
+        self.loadedPrograms.insert(p)
+      } catch {
+        print("Unable to load instrument (program \(p)): \(error.localizedDescription)")
+      }
     }
+    sampler.sendProgramChange(program, onChannel: 0)
   }
 
-  private var loaded = false
-
-  /// Synchronous fallback for play() — ensures the soundfont is loaded.
-  private func ensureSoundFontLoaded() {
-    guard !loaded else { return }
-    guard let sfURL = Self.resolveSoundFontURL() else { return }
-    do {
-      try sampler.loadSoundBankInstrument(
-        at: sfURL,
-        program: 0,
-        bankMSB: UInt8(kAUSampler_DefaultMelodicBankMSB),
-        bankLSB: UInt8(kAUSampler_DefaultBankLSB)
-      )
-      loaded = true
-    } catch {
-      print("Unable to load MS Basic.sf2: \(error.localizedDescription)")
-    }
+  private func ensureInstrumentLoaded(_ program: UInt8) {
+    guard !loadedPrograms.contains(program) else { return }
+    loadProgram(program)
   }
 
   func play(midiNotes: [UInt8], sustainDurationNanoseconds: UInt64 = 3_000_000_000) {
-    ensureSoundFontLoaded()
+    ensureInstrumentLoaded(currentProgram)
     sampler.sendController(123, withValue: 0, onChannel: 0)
     let generation = instrumentGeneration
     for note in midiNotes {

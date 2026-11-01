@@ -56,6 +56,10 @@ struct PianoContentView: View {
 
   private var mainContent: some View {
     VStack(spacing: 12) {
+      #if os(iOS)
+        Spacer(minLength: 44)
+      #endif
+
       HStack(spacing: 8) {
         if viewModel.currentScreen != .menu {
           Button(action: {

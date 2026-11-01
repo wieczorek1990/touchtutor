@@ -22,7 +22,6 @@ struct ContentView: View {
 
         PianoContentView(viewModel: viewModel)
           .frame(maxWidth: .infinity)
-          .padding(18)
 
         // Play button overlay — only visible on menu screen
         if viewModel.currentScreen == .menu {
