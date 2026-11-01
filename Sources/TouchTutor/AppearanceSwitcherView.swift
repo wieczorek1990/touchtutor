@@ -2,16 +2,15 @@ import SwiftUI
 
 struct AppearanceSwitcherView: View {
   @AppStorage("appearance") private var appearance = "system"
+  @Environment(\.colorScheme) private var colorScheme
 
   var body: some View {
     HStack(spacing: 2) {
       appearanceButton("■", dark: true)
-        .preferredColorScheme(.light)
       Text("|")
         .foregroundColor(getDividerColor())
         .accessibilityHidden(true)
-      appearanceButton("□", dark: false)
-        .preferredColorScheme(.dark)
+      appearanceButton("■", dark: false)
       Text("|")
         .foregroundColor(getDividerColor())
         .accessibilityHidden(true)
@@ -46,38 +45,107 @@ struct AppearanceSwitcherView: View {
 
   private func getBackgroundColor() -> AnyShapeStyle {
     if appearance == "dark" {
-      return AnyShapeStyle(.white)
+      return AnyShapeStyle(.black)
     } else if appearance == "light" {
       return AnyShapeStyle(.white.opacity(0.9))
     } else {
-      return AnyShapeStyle(PlatformColors.controlBackground.opacity(0.7))
+      // "system" — adapt to current color scheme
+      if colorScheme == .dark {
+        return AnyShapeStyle(.black)
+      } else {
+        return AnyShapeStyle(PlatformColors.controlBackground.opacity(0.7))
+      }
     }
   }
 
   private func getDividerColor() -> Color {
     if appearance == "dark" {
-      return Color(red: 0, green: 0, blue: 0)
-    } else {
+      return Color.white
+    } else if appearance == "light" {
       return Color.secondary
+    } else {
+      // "system" — adapt to current color scheme
+      if colorScheme == .dark {
+        return Color.white
+      } else {
+        return Color.secondary
+      }
     }
   }
 
   private func getBorderColor() -> Color {
     if appearance == "dark" {
-      return Color(red: 0, green: 0, blue: 0)
+      return Color.white
     } else if appearance == "light" {
       return Color.secondary.opacity(0.5)
     } else {
-      return Color.secondary.opacity(0.3)
+      // "system" — adapt to current color scheme
+      if colorScheme == .dark {
+        return Color.white.opacity(0.5)
+      } else {
+        return Color.secondary.opacity(0.3)
+      }
     }
   }
 
-  private func getLightColor() -> Color {
-    return Color(red: 0, green: 0, blue: 0)
+  private func getDarkSymbolColor() -> Color {
+    if appearance == "dark" {
+      return Color.white
+    } else if appearance == "light" {
+      return Color(red: 0, green: 0, blue: 0)
+    } else {
+      // "system" — adapt to current color scheme
+      if colorScheme == .dark {
+        return Color.white
+      } else {
+        return Color(red: 0, green: 0, blue: 0)
+      }
+    }
+  }
+
+  private func getLightSymbolColor() -> Color {
+    if appearance == "dark" {
+      return Color(red: 0, green: 0, blue: 0)
+    } else if appearance == "light" {
+      return Color.white
+    } else {
+      // "system" — adapt to current color scheme
+      if colorScheme == .dark {
+        return Color(red: 0, green: 0, blue: 0)
+      } else {
+        return Color.white
+      }
+    }
+  }
+
+  private func getLightBorderColor() -> Color {
+    if appearance == "dark" {
+      return Color.white
+    } else if appearance == "light" {
+      return Color(red: 0, green: 0, blue: 0)
+    } else {
+      // "system" — adapt to current color scheme
+      if colorScheme == .dark {
+        return Color.white
+      } else {
+        return Color(red: 0, green: 0, blue: 0)
+      }
+    }
   }
 
   private func getAutoColor() -> Color {
-    return Color(red: 0, green: 0, blue: 0)
+    if appearance == "dark" {
+      return Color.white
+    } else if appearance == "light" {
+      return Color(red: 0, green: 0, blue: 0)
+    } else {
+      // "system" — adapt to current color scheme
+      if colorScheme == .dark {
+        return Color.white
+      } else {
+        return Color(red: 0, green: 0, blue: 0)
+      }
+    }
   }
 
   private func appearanceButton(_ symbol: String, dark: Bool) -> some View {
@@ -86,7 +154,7 @@ struct AppearanceSwitcherView: View {
       appearance = dark ? "dark" : "light"
     } label: {
       Text(symbol)
-        .foregroundColor(dark ? Color(red: 0, green: 0, blue: 0) : getLightColor())
+        .foregroundColor(dark ? getDarkSymbolColor() : getLightSymbolColor())
         .frame(width: 24, height: 26)
         .background(
           isSelected
