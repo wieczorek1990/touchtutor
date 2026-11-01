@@ -7,9 +7,11 @@ final class SoundFontSynth {
   private let engine = AVAudioEngine()
   private let sampler = AVAudioUnitSampler()
   private let reverb = AVAudioUnitReverb()
-  private var instrumentLoaded = false
+  private var loadedPrograms: Set<UInt8> = []
   private var instrumentGeneration = 0
   private var currentProgram: UInt8 = 0
+
+  @Published private(set) var isLoading = false
 
   init() {
     engine.attach(sampler)
@@ -26,18 +28,20 @@ final class SoundFontSynth {
       engine.connect(reverb, to: engine.mainMixerNode, format: nil)
     }
     try? engine.start()
-
-    Task { @MainActor in
-      await self.loadInstrument(program: 0)
-    }
   }
 
   /// Switch to a different instrument program.
   func setProgram(_ program: UInt8) {
     guard program != currentProgram else { return }
     currentProgram = program
-    Task { @MainActor in
-      await self.loadInstrument(program: program)
+    if loadedPrograms.contains(program) {
+      // Instrument already loaded; just switch via program change (fast path).
+      sampler.sendProgramChange(program, onChannel: 0)
+    } else {
+      // Load this instrument on-demand.
+      Task { @MainActor in
+        await self.loadProgram(program)
+      }
     }
   }
 
@@ -52,49 +56,48 @@ final class SoundFontSynth {
     return nil
   }
 
-  /// Loads a single instrument program.
-  private func loadInstrument(program: UInt8) async {
+  /// Loads all needed instrument programs from the sound bank.
+  private func loadProgram(_ program: UInt8) async {
+    let neededPrograms: [UInt8] = [0, 25, 27]  // Piano, Jazz Guitar, Electric Guitar
+    guard !loadedPrograms.contains(program) else { return }
     guard let bankURL = Self.resolveBankURL() else { return }
 
-    // AVAudioUnitSampler is not thread-safe; loadSoundBankInstrument must run on the main thread.
-    do {
-      try self.sampler.loadSoundBankInstrument(
-        at: bankURL,
-        program: program,
-        bankMSB: UInt8(kAUSampler_DefaultMelodicBankMSB),
-        bankLSB: UInt8(kAUSampler_DefaultBankLSB)
-      )
-      self.instrumentGeneration += 1
-      self.engine.reset()
-      self.sampler.sendController(120, withValue: 0, onChannel: 0)
-      self.sampler.sendProgramChange(program, onChannel: 0)
-      self.instrumentLoaded = true
-    } catch {
-      print("Unable to load instrument (program \(program)): \(error.localizedDescription)")
+    for p in neededPrograms where !loadedPrograms.contains(p) {
+      do {
+        try self.sampler.loadSoundBankInstrument(
+          at: bankURL,
+          program: p,
+          bankMSB: UInt8(kAUSampler_DefaultMelodicBankMSB),
+          bankLSB: UInt8(kAUSampler_DefaultBankLSB)
+        )
+        self.loadedPrograms.insert(p)
+      } catch {
+        print("Unable to load instrument (program \(p)): \(error.localizedDescription)")
+      }
     }
+    self.sampler.sendProgramChange(program, onChannel: 0)
   }
 
-  /// Synchronous fallback for play() — ensures an instrument is loaded before playing.
+  /// Synchronous fallback for play() — ensures all needed programs are loaded.
   private func ensureInstrumentLoaded() {
-    guard !instrumentLoaded else { return }
+    let neededPrograms: [UInt8] = [0, 25, 27]  // Piano, Jazz Guitar, Electric Guitar
+    guard !loadedPrograms.contains(currentProgram) else { return }
     guard let bankURL = Self.resolveBankURL() else { return }
 
-    instrumentGeneration += 1
-    engine.reset()
-    sampler.sendController(120, withValue: 0, onChannel: 0)
-
-    do {
-      try sampler.loadSoundBankInstrument(
-        at: bankURL,
-        program: currentProgram,
-        bankMSB: UInt8(kAUSampler_DefaultMelodicBankMSB),
-        bankLSB: UInt8(kAUSampler_DefaultBankLSB)
-      )
-      sampler.sendProgramChange(currentProgram, onChannel: 0)
-      instrumentLoaded = true
-    } catch {
-      print("Unable to load instrument (program \(currentProgram)): \(error.localizedDescription)")
+    for program in neededPrograms where !loadedPrograms.contains(program) {
+      do {
+        try sampler.loadSoundBankInstrument(
+          at: bankURL,
+          program: program,
+          bankMSB: UInt8(kAUSampler_DefaultMelodicBankMSB),
+          bankLSB: UInt8(kAUSampler_DefaultBankLSB)
+        )
+        loadedPrograms.insert(program)
+      } catch {
+        print("Unable to load instrument (program \(program)): \(error.localizedDescription)")
+      }
     }
+    sampler.sendProgramChange(currentProgram, onChannel: 0)
   }
 
   func play(midiNotes: [UInt8], sustainDurationNanoseconds: UInt64 = 3_000_000_000) {
