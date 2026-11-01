@@ -87,6 +87,7 @@ final class SoundFontSynth {
 
   func play(midiNotes: [UInt8], sustainDurationNanoseconds: UInt64 = 3_000_000_000) {
     ensureInstrumentLoaded()
+    sampler.sendController(123, withValue: 0, onChannel: 0)
     let generation = instrumentGeneration
     for note in midiNotes {
       sampler.startNote(note, withVelocity: 88, onChannel: 0)

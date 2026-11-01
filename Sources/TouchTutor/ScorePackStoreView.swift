@@ -104,7 +104,8 @@ struct ScorePackStoreView: View {
       }
     }
     .padding(20)
-    .frame(width: 400)
+    .frame(maxWidth: .infinity)
+    .frame(maxWidth: 400)
     .task { await viewModel.scoreStore.loadProducts() }
   }
 }
