@@ -56,11 +56,6 @@ struct PianoContentView: View {
 
   private var mainContent: some View {
     VStack(spacing: 12) {
-      #if os(iOS)
-        Spacer()
-          .frame(height: UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0)
-      #endif
-
       HStack(spacing: 8) {
         if viewModel.currentScreen != .menu {
           Button(action: {
@@ -96,6 +91,7 @@ struct PianoContentView: View {
         AppearanceSwitcherView()
       }
       .frame(height: 26)
+      .padding(.top, 8)
       .layoutPriority(1)
 
       if viewModel.currentScreen == .menu {

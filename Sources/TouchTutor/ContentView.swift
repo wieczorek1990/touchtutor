@@ -16,11 +16,36 @@ struct ContentView: View {
 
   var body: some View {
     #if os(iOS)
-      ZStack {
+      ZStack(alignment: .bottom) {
         PianoContentView(viewModel: viewModel)
           .frame(maxWidth: .infinity)
           .padding(18)
           .background(PlatformColors.windowBackground)
+
+        // Play button overlay — outside ScrollView hierarchy so touches work
+        if viewModel.currentScreen == .menu {
+          Button(action: {
+            viewModel.startGame()
+          }) {
+            HStack(spacing: 8) {
+              Image(systemName: "play.fill")
+                .font(.system(size: 16, weight: .bold))
+              Text("Play", bundle: .module)
+                .font(.system(size: 17, weight: .bold, design: .rounded))
+            }
+            .foregroundColor(.white)
+            .frame(maxWidth: .infinity)
+            .frame(height: 48)
+            .background(
+              RoundedRectangle(cornerRadius: 12)
+                .fill(Color.blue)
+                .shadow(color: Color.blue.opacity(0.35), radius: 6, x: 0, y: 3)
+            )
+          }
+          .buttonStyle(.plain)
+          .padding(.horizontal, 34)
+          .padding(.bottom, 34)
+        }
 
         // Splash overlay — removed from hierarchy when done so the menu is interactive
         if splashPhase != .done {

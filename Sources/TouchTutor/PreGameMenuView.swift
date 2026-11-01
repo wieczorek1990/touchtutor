@@ -60,7 +60,7 @@ struct PreGameMenuView: View {
 
           ScrollViewReader { proxy in
             ScrollView(.vertical, showsIndicators: true) {
-              VStack(spacing: 5) {
+              LazyVStack(spacing: 5) {
                 ForEach(viewModel.availableScores) { item in
                   let isSelected = viewModel.selectedScoreItem?.id == item.id
                   let packColor = viewModel.scoreStore.packs.first {
@@ -129,11 +129,13 @@ struct PreGameMenuView: View {
                       .contentShape(Rectangle())
                     }
                     .buttonStyle(.plain)
-                    .simultaneousGesture(
-                      TapGesture(count: 2).onEnded {
-                        viewModel.selectScore(item)
-                        viewModel.startGame()
-                      })
+                    #if os(macOS)
+                      .simultaneousGesture(
+                        TapGesture(count: 2).onEnded {
+                          viewModel.selectScore(item)
+                          viewModel.startGame()
+                        })
+                    #endif
 
                     if item.isImported {
                       Button(action: {
@@ -174,7 +176,7 @@ struct PreGameMenuView: View {
               .padding(.vertical, 2)
               .padding(.horizontal, 1)
             }
-            .frame(minHeight: 60)
+            .frame(minHeight: 60, maxHeight: 300)
             .onChange(of: viewModel.selectedScoreItem?.id) {
               if let id = viewModel.selectedScoreItem?.id {
                 withAnimation(.easeInOut(duration: 0.15)) {
@@ -199,27 +201,27 @@ struct PreGameMenuView: View {
       .frame(maxWidth: .infinity, maxHeight: .infinity)
 
       VStack(spacing: 10) {
-        Button(action: {
-          viewModel.startGame()
-        }) {
-          HStack(spacing: 8) {
-            Image(systemName: "play.fill")
-              .font(.system(size: 16, weight: .bold))
-            Text("Play", bundle: .module)
-              .font(.system(size: 17, weight: .bold, design: .rounded))
-          }
-          .foregroundColor(.white)
-          .frame(maxWidth: .infinity)
-          .frame(height: 48)
-          .background(
-            RoundedRectangle(cornerRadius: 12)
-              .fill(Color.blue)
-              .shadow(color: Color.blue.opacity(0.35), radius: 6, x: 0, y: 3)
-          )
-        }
-        .buttonStyle(.plain)
-
         #if os(macOS)
+          Button(action: {
+            viewModel.startGame()
+          }) {
+            HStack(spacing: 8) {
+              Image(systemName: "play.fill")
+                .font(.system(size: 16, weight: .bold))
+              Text("Play", bundle: .module)
+                .font(.system(size: 17, weight: .bold, design: .rounded))
+            }
+            .foregroundColor(.white)
+            .frame(maxWidth: .infinity)
+            .frame(height: 48)
+            .background(
+              RoundedRectangle(cornerRadius: 12)
+                .fill(Color.blue)
+                .shadow(color: Color.blue.opacity(0.35), radius: 6, x: 0, y: 3)
+            )
+          }
+          .buttonStyle(.plain)
+
           Button(action: {
             viewModel.exitApp()
           }) {
