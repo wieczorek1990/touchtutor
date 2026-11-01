@@ -156,7 +156,10 @@ final class MusicXMLParser: NSObject, XMLParserDelegate {
     }
   }
 
-  func buildScore(defaultTitle: String = "To Zanarkand", defaultAlbum: String = "Unknown Album") -> ParsedScore {
+  func buildScore(
+    defaultTitle: String = "To Zanarkand",
+    defaultAlbum: String = "Unknown Album"
+  ) -> ParsedScore {
     struct RawGroup {
       var measure: Int
       var pitches: [ScorePitch]
@@ -230,7 +233,11 @@ final class MusicXMLParser: NSObject, XMLParserDelegate {
     return ParsedScore(title: title, artist: artist, album: defaultAlbum, steps: steps)
   }
 
-  static func parse(data: Data, defaultTitle: String = "To Zanarkand", defaultAlbum: String = "") -> ParsedScore? {
+  static func parse(
+    data: Data,
+    defaultTitle: String = "To Zanarkand",
+    defaultAlbum: String = ""
+  ) -> ParsedScore? {
     let parser = MusicXMLParser()
     let xmlParser = XMLParser(data: data)
     xmlParser.delegate = parser
@@ -256,7 +263,11 @@ final class MusicXMLParser: NSObject, XMLParserDelegate {
     ]
 
     for case let url? in candidateURLs {
-      if let score = loadScore(from: url, defaultTitle: item.defaultTitle, defaultAlbum: item.defaultAlbum) {
+      if let score = loadScore(
+        from: url,
+        defaultTitle: item.defaultTitle,
+        defaultAlbum: item.defaultAlbum
+      ) {
         return score
       }
     }

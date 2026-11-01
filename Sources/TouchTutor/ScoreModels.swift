@@ -204,7 +204,7 @@ enum SoundFont: Int, CaseIterable, Identifiable {
   /// MIDI program number (GM/GS bank 0).
   var program: UInt8 {
     switch self {
-    case .piano: return 0         // Acoustic Grand Piano
+    case .piano: return 0  // Acoustic Grand Piano
     case .electricGuitar: return 27  // Steel String Electric Guitar
     }
   }

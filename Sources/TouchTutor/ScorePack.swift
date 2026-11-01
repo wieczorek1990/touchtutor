@@ -61,8 +61,10 @@ struct ScorePack: Identifiable {
               defaultAlbum: L10n.string("Unknown Album")
             ),
             ScoreItem(
-              id: "practice_test_chords", name: L10n.string("C Major Chords"),
-              filename: "Practice - C Major Chords.xml", defaultTitle: L10n.string("C Major Chords"),
+              id: "practice_test_chords",
+              name: L10n.string("C Major Chords"),
+              filename: "Practice - C Major Chords.xml",
+              defaultTitle: L10n.string("C Major Chords"),
               defaultArtist: L10n.string("Unknown Artist"),
               defaultAlbum: L10n.string("Unknown Album")
             ),
