@@ -100,7 +100,6 @@ struct PianoContentView: View {
 
       if viewModel.currentScreen == .menu {
         PreGameMenuView(viewModel: viewModel)
-          .preferredColorScheme(.dark)
       } else {
         GamePlayView(viewModel: viewModel)
       }

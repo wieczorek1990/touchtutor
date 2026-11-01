@@ -55,9 +55,7 @@ struct ContentView: View {
         }
       }
       .preferredColorScheme(
-        viewModel.currentScreen == .menu
-          ? .dark
-          : (appearance == "dark" ? .dark : appearance == "light" ? .light : nil)
+        appearance == "dark" ? .dark : appearance == "light" ? .light : nil
       )
     #else
       PianoContentView(viewModel: viewModel)
@@ -66,12 +64,10 @@ struct ContentView: View {
         .padding(18)
         .background(PlatformColors.windowBackground)
         .preferredColorScheme(
-          viewModel.currentScreen == .menu
+          appearance == "dark"
             ? .dark
-            : (appearance == "dark"
-              ? .dark
-              : appearance == "light"
-                ? .light : systemAppearance.colorScheme)
+            : appearance == "light"
+              ? .light : systemAppearance.colorScheme
         )
         .onAppear {
           NSApp.setActivationPolicy(.regular)
