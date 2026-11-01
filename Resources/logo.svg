@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E0F2FE"/>
+      <stop offset="100%" stop-color="#BAE6FD"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3.5" flood-color="#0284C7" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Background rounded squircle / badge -->
+  <rect x="8" y="8" width="104" height="104" rx="28" fill="url(#bgGrad)" stroke="#7DD3FC" stroke-width="2" filter="url(#shadow)"/>
+
+  <!-- Music Notes (Beamed pair of eighth notes) filled with dark blue -->
+  <g fill="#0C4A6E">
+    <!-- Note heads (angled ellipses) -->
+    <ellipse cx="44" cy="78" rx="12" ry="9" transform="rotate(-22 44 78)"/>
+    <ellipse cx="78" cy="70" rx="12" ry="9" transform="rotate(-22 78 70)"/>
+
+    <!-- Left stem -->
+    <rect x="51" y="34" width="5.5" height="44" rx="2.5"/>
+
+    <!-- Right stem -->
+    <rect x="85" y="26" width="5.5" height="44" rx="2.5"/>
+
+    <!-- Connecting Beam -->
+    <polygon points="51,34 90.5,26 90.5,37 51,45"/>
+  </g>
+</svg>

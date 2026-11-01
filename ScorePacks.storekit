@@ -1,0 +1,75 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "D94BD781-9FF1-45EC-A2AC-4F49C53BDE07",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "1.00",
+      "familyShareable" : false,
+      "internalID" : "64010001",
+      "localizations" : [
+        {
+          "description" : "Final Fantasy piano pieces",
+          "displayName" : "Final Fantasy",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "tech.soiree.touchtutor.scorepacks.finalfantasy",
+      "referenceName" : "Final Fantasy",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "1.00",
+      "familyShareable" : false,
+      "internalID" : "64010002",
+      "localizations" : [
+        {
+          "description" : "C Major Scale and C Major Chords for local purchase testing.",
+          "displayName" : "C Major",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "tech.soiree.touchtutor.scorepacks.cmajor",
+      "referenceName" : "C Major",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_askToBuyEnabled" : false,
+    "_billingGracePeriodEnabled" : false,
+    "_billingIssuesEnabled" : false,
+    "_disableDialogs" : false,
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_renewalBillingIssuesEnabled" : false,
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+
+    ],
+    "_timeRate" : 0
+  },
+  "subscriptionBundleGroups" : [
+
+  ],
+  "subscriptionGroups" : [
+
+  ],
+  "subscriptionSuiteGroups" : [
+
+  ],
+  "version" : {
+    "major" : 6,
+    "minor" : 3
+  }
+}
