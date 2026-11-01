@@ -28,7 +28,6 @@
 		AAAABB111111111111111111AA /* Sources/TouchTutor/SoireeTechLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAABB111111111111111111AB /* Sources/TouchTutor/SoireeTechLinkView.swift */; };
 		AAAABB222222222222222222AA /* Sources/TouchTutor/SystemAppearanceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAABB222222222222222222AB /* Sources/TouchTutor/SystemAppearanceObserver.swift */; };
 		AAAABB333333333333333333AA /* Sources/TouchTutor/TempoSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAABB333333333333333333AB /* Sources/TouchTutor/TempoSelectorView.swift */; };
-		DEAD0001BEEF4242CAFE0001 /* Sources/TouchTutor/SoundFontSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD0002BEEF4242CAFE0002 /* Sources/TouchTutor/SoundFontSelectorView.swift */; };
 		ABCD0001E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/SVGRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCD0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/SVGRenderer.swift */; };
 		BADD200FE97D203DF515488B /* Sources/TouchTutor/ImportedScoreLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CFFD86CCD5AD61ABA8F23 /* Sources/TouchTutor/ImportedScoreLibrary.swift */; };
 		C0F208B12ACF8CEDA2C5D448 /* Sources/TouchTutor/PreGameMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB17DCAFB293C1C36001AF /* Sources/TouchTutor/PreGameMenuView.swift */; };
@@ -38,7 +37,7 @@
 		CB6DB7FB3095C72C0084C852 /* Nobuo Uematsu - To Zanarkand.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F53095C72C0084C852 /* Nobuo Uematsu - To Zanarkand.xml */; };
 		CB6DB7FC3095C72C0084C852 /* Nobuo Uematsu - Dancing Mad.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F33095C72C0084C852 /* Nobuo Uematsu - Dancing Mad.xml */; };
 		CB6DB7FD3095C72C0084C852 /* Practice - C Major Scale.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F73095C72C0084C852 /* Practice - C Major Scale.xml */; };
-		CB6DB7FE3095C72C0084C852 /* logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F23095C72C0084C852 /* logo.svg */; };
+		CB6DB7FE3095C72C0084C852 /* soiree_logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F23095C72C0084C852 /* soiree_logo.svg */; };
 		CB6DB7FF3095C72C0084C852 /* Nobuo Uematsu - Eyes on Me.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F43095C72C0084C852 /* Nobuo Uematsu - Eyes on Me.xml */; };
 		CB6DB8013095C72C0084C852 /* Practice - C Major Chords.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F63095C72C0084C852 /* Practice - C Major Chords.xml */; };
 		CB6DB8023095C72C0084C852 /* Test.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F93095C72C0084C852 /* Test.xml */; };
@@ -48,7 +47,12 @@
 		CB6DB8093095C80B0084C852 /* Aeriths theme.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB8053095C80B0084C852 /* Aeriths theme.xml */; };
 		CB6DB80A3095C80B0084C852 /* You're not alone.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB8073095C80B0084C852 /* You're not alone.xml */; };
 		CB6DB80B3095C72C0084C852 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB80C3095C72C0084C853 /* AppIcon.xcassets */; };
+		CB6DB8113095C72C0084C852 /* soiree_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB8123095C72C0084C852 /* soiree_logo.png */; };
 		CCC27994459E14D69EF2A4D5 /* Tests/TouchTutorTests/ScorePackStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C11413BD14308ACD28ED7B /* Tests/TouchTutorTests/ScorePackStoreTests.swift */; };
+		DEAD0001BEEF4242CAFE0001 /* Sources/TouchTutor/SoundFontSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD0002BEEF4242CAFE0002 /* Sources/TouchTutor/SoundFontSelectorView.swift */; };
+		DEAD0003BEEF4242CAFE0003 /* Sources/TouchTutor/SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD0004BEEF4242CAFE0004 /* Sources/TouchTutor/SplashView.swift */; };
+		DEAD0005BEEF4242CAFE0005 /* Sources/TouchTutor/SoireeSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD0006BEEF4242CAFE0006 /* Sources/TouchTutor/SoireeSplashView.swift */; };
+		DEAD0007BEEF4242CAFE0007 /* Sources/TouchTutor/TouchTutorSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD0008BEEF4242CAFE0008 /* Sources/TouchTutor/TouchTutorSplashView.swift */; };
 		E186FF72E889E66FB6748E4A /* Sources/TouchTutor/ScoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12935B72E0B88D88414FA173 /* Sources/TouchTutor/ScoreModels.swift */; };
 		E89A839B7BA28C98C80A0E7D /* Sources/TouchTutor/StoreKitScorePackCommerce.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE268657E31E27CC54AD4504 /* Sources/TouchTutor/StoreKitScorePackCommerce.swift */; };
 		F47768F5CAAA0B6FDF943D1C /* Sources/TouchTutor/ScorePack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474C74CBD295CDD1F5D31A9 /* Sources/TouchTutor/ScorePack.swift */; };
@@ -93,13 +97,12 @@
 		AAAABB111111111111111111AB /* Sources/TouchTutor/SoireeTechLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/SoireeTechLinkView.swift; sourceTree = "<group>"; };
 		AAAABB222222222222222222AB /* Sources/TouchTutor/SystemAppearanceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/SystemAppearanceObserver.swift; sourceTree = "<group>"; };
 		AAAABB333333333333333333AB /* Sources/TouchTutor/TempoSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/TempoSelectorView.swift; sourceTree = "<group>"; };
-		DEAD0002BEEF4242CAFE0002 /* Sources/TouchTutor/SoundFontSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/SoundFontSelectorView.swift; sourceTree = "<group>"; };
 		ABCD0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/SVGRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/SVGRenderer.swift; sourceTree = "<group>"; };
 		AD4D2A41CEE91C8CD15BE50C /* Sources/TouchTutor/App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/App.swift; sourceTree = "<group>"; };
 		CB4342A93097630900F12665 /* MS Basic.sf3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MS Basic.sf3"; sourceTree = "<group>"; };
 		CB4342AB3097639F00F12665 /* FluidR3Mono_GM.sf3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = FluidR3Mono_GM.sf3; sourceTree = "<group>"; };
 		CB6DB7F03095C72C0084C852 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		CB6DB7F23095C72C0084C852 /* logo.svg */ = {isa = PBXFileReference; lastKnownFileType = image.svg; path = logo.svg; sourceTree = "<group>"; };
+		CB6DB7F23095C72C0084C852 /* soiree_logo.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = soiree_logo.svg; sourceTree = "<group>"; };
 		CB6DB7F33095C72C0084C852 /* Nobuo Uematsu - Dancing Mad.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Nobuo Uematsu - Dancing Mad.xml"; sourceTree = "<group>"; };
 		CB6DB7F43095C72C0084C852 /* Nobuo Uematsu - Eyes on Me.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Nobuo Uematsu - Eyes on Me.xml"; sourceTree = "<group>"; };
 		CB6DB7F53095C72C0084C852 /* Nobuo Uematsu - To Zanarkand.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Nobuo Uematsu - To Zanarkand.xml"; sourceTree = "<group>"; };
@@ -111,10 +114,15 @@
 		CB6DB8063095C80B0084C852 /* Tifas theme.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Tifas theme.xml"; sourceTree = "<group>"; };
 		CB6DB8073095C80B0084C852 /* You're not alone.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "You're not alone.xml"; sourceTree = "<group>"; };
 		CB6DB80C3095C72C0084C853 /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppIcon.xcassets; sourceTree = "<group>"; };
+		CB6DB8123095C72C0084C852 /* soiree_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soiree_logo.png; sourceTree = "<group>"; };
 		CB8713BB0FA0509CD417AA7E /* ScorePacks.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = ScorePacks.storekit; sourceTree = "<group>"; };
 		CE268657E31E27CC54AD4504 /* Sources/TouchTutor/StoreKitScorePackCommerce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/StoreKitScorePackCommerce.swift; sourceTree = "<group>"; };
 		D296E8E32459957722F55719 /* Sources/TouchTutor/MusicXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/MusicXMLParser.swift; sourceTree = "<group>"; };
 		D3EAF67814D82380EF33218E /* Tests/TouchTutorTests/ImportedScoreLibraryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests/TouchTutorTests/ImportedScoreLibraryTests.swift; sourceTree = "<group>"; };
+		DEAD0002BEEF4242CAFE0002 /* Sources/TouchTutor/SoundFontSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/SoundFontSelectorView.swift; sourceTree = "<group>"; };
+		DEAD0004BEEF4242CAFE0004 /* Sources/TouchTutor/SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/SplashView.swift; sourceTree = "<group>"; };
+		DEAD0006BEEF4242CAFE0006 /* Sources/TouchTutor/SoireeSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/SoireeSplashView.swift; sourceTree = "<group>"; };
+		DEAD0008BEEF4242CAFE0008 /* Sources/TouchTutor/TouchTutorSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/TouchTutorSplashView.swift; sourceTree = "<group>"; };
 		E474C74CBD295CDD1F5D31A9 /* Sources/TouchTutor/ScorePack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/ScorePack.swift; sourceTree = "<group>"; };
 		EEE757404F55F44A50586896 /* TouchTutorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = TouchTutorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4ECD50D9C03A7E2600EECDB /* Sources/TouchTutor/GamePlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/GamePlayView.swift; sourceTree = "<group>"; };
@@ -196,6 +204,9 @@
 				AAAABB222222222222222222AB /* Sources/TouchTutor/SystemAppearanceObserver.swift */,
 				AAAABB333333333333333333AB /* Sources/TouchTutor/TempoSelectorView.swift */,
 				DEAD0002BEEF4242CAFE0002 /* Sources/TouchTutor/SoundFontSelectorView.swift */,
+				DEAD0004BEEF4242CAFE0004 /* Sources/TouchTutor/SplashView.swift */,
+				DEAD0006BEEF4242CAFE0006 /* Sources/TouchTutor/SoireeSplashView.swift */,
+				DEAD0008BEEF4242CAFE0008 /* Sources/TouchTutor/TouchTutorSplashView.swift */,
 				ABCD0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/SVGRenderer.swift */,
 			);
 			name = Sources;
@@ -219,7 +230,8 @@
 				CB6DB8043095C72C0084C853 /* AppIcon.icns */,
 				CB6DB80C3095C72C0084C853 /* AppIcon.xcassets */,
 				CB6DB7F13095C72C0084C852 /* Localizable.strings */,
-				CB6DB7F23095C72C0084C852 /* logo.svg */,
+				CB6DB7F23095C72C0084C852 /* soiree_logo.svg */,
+				CB6DB8123095C72C0084C852 /* soiree_logo.png */,
 				6E69DD8FF1024E608BA67D6D /* Scores */,
 				CB4342A93097630900F12665 /* MS Basic.sf3 */,
 				CB4342AB3097639F00F12665 /* FluidR3Mono_GM.sf3 */,
@@ -332,7 +344,8 @@
 				CB6DB7FB3095C72C0084C852 /* Nobuo Uematsu - To Zanarkand.xml in Resources */,
 				CB6DB7FC3095C72C0084C852 /* Nobuo Uematsu - Dancing Mad.xml in Resources */,
 				CB6DB7FD3095C72C0084C852 /* Practice - C Major Scale.xml in Resources */,
-				CB6DB7FE3095C72C0084C852 /* logo.svg in Resources */,
+				CB6DB7FE3095C72C0084C852 /* soiree_logo.svg in Resources */,
+				CB6DB8113095C72C0084C852 /* soiree_logo.png in Resources */,
 				CB6DB7FF3095C72C0084C852 /* Nobuo Uematsu - Eyes on Me.xml in Resources */,
 				CB6DB8013095C72C0084C852 /* Practice - C Major Chords.xml in Resources */,
 				CB6DB8023095C72C0084C852 /* Test.xml in Resources */,
@@ -376,6 +389,9 @@
 				AAAABB222222222222222222AA /* Sources/TouchTutor/SystemAppearanceObserver.swift in Sources */,
 				AAAABB333333333333333333AA /* Sources/TouchTutor/TempoSelectorView.swift in Sources */,
 				DEAD0001BEEF4242CAFE0001 /* Sources/TouchTutor/SoundFontSelectorView.swift in Sources */,
+				DEAD0003BEEF4242CAFE0003 /* Sources/TouchTutor/SplashView.swift in Sources */,
+				DEAD0005BEEF4242CAFE0005 /* Sources/TouchTutor/SoireeSplashView.swift in Sources */,
+				DEAD0007BEEF4242CAFE0007 /* Sources/TouchTutor/TouchTutorSplashView.swift in Sources */,
 				ABCD0001E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/SVGRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

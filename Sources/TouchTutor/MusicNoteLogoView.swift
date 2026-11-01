@@ -12,9 +12,9 @@ struct MusicNoteLogoView: View {
 
     private var logoURL: URL? {
       let candidateURLs: [URL?] = [
-        Bundle.module.url(forResource: "logo", withExtension: "svg"),
-        Bundle.main.url(forResource: "logo", withExtension: "svg"),
-        URL(fileURLWithPath: "Resources/logo.svg"),
+        Bundle.module.url(forResource: "soiree_logo", withExtension: "svg"),
+        Bundle.main.url(forResource: "soiree_logo", withExtension: "svg"),
+        URL(fileURLWithPath: "Resources/soiree_logo.svg"),
       ]
       return candidateURLs.compactMap { $0 }.first
     }
@@ -71,11 +71,11 @@ struct MusicNoteLogoView: View {
   }
 
   #if os(macOS)
-    private static func logoURLStatic() -> URL? {
+    static func logoURLStatic() -> URL? {
       let candidateURLs: [URL?] = [
-        Bundle.module.url(forResource: "logo", withExtension: "svg"),
-        Bundle.main.url(forResource: "logo", withExtension: "svg"),
-        URL(fileURLWithPath: "Resources/logo.svg"),
+        Bundle.module.url(forResource: "soiree_logo", withExtension: "svg"),
+        Bundle.main.url(forResource: "soiree_logo", withExtension: "svg"),
+        URL(fileURLWithPath: "Resources/soiree_logo.svg"),
       ]
       return candidateURLs.compactMap { $0 }.first
     }

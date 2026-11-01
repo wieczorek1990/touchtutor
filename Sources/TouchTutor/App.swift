@@ -10,7 +10,9 @@ struct TouchTutorApp: App {
   var body: some Scene {
     WindowGroup {
       ContentView(viewModel: viewModel)
-        .task { await viewModel.scoreStore.start() }
+        .task {
+          await viewModel.scoreStore.start()
+        }
     }
     #if os(macOS)
       .windowResizability(.contentSize)
