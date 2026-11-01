@@ -17,12 +17,10 @@ struct ContentView: View {
   var body: some View {
     #if os(iOS)
       ZStack {
-        ScrollView {
-          PianoContentView(viewModel: viewModel)
-            .frame(maxWidth: .infinity)
-            .padding(18)
-        }
-        .background(PlatformColors.windowBackground)
+        PianoContentView(viewModel: viewModel)
+          .frame(maxWidth: .infinity)
+          .padding(18)
+          .background(PlatformColors.windowBackground)
 
         // Splash overlay — removed from hierarchy when done so the menu is interactive
         if splashPhase != .done {
