@@ -32,9 +32,9 @@ final class SoundFontSynth {
   }
 
   private static func resolveBankURL() -> URL? {
-    let systemBankURL = URL(
-      fileURLWithPath: "/System/Library/Components/CoreAudio.component/Contents/Resources/gs_instruments.dls"
-    )
+    let systemBankPath =
+      "/System/Library/Components/CoreAudio.component/Contents/Resources/gs_instruments.dls"
+    let systemBankURL = URL(fileURLWithPath: systemBankPath)
     if FileManager.default.fileExists(atPath: systemBankURL.path) {
       return systemBankURL
     }

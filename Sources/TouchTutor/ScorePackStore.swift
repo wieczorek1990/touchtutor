@@ -112,7 +112,8 @@ final class ScorePackStore {
     let description = error.localizedDescription
     // Generic StoreKit/NSError messages are unhelpful; replace them with context-specific guidance.
     if description == "The operation couldn't be completed."
-      || description == "Unable to complete request." {
+      || description == "Unable to complete request."
+    {
       return "\(context) failed. Please check your connection and try again."
     }
     return description
