@@ -34,74 +34,50 @@ final class SoundFontSynth {
   func setProgram(_ program: UInt8) {
     guard program != currentProgram else { return }
     currentProgram = program
-    if loadedPrograms.contains(program) {
-      // Instrument already loaded; just switch via program change (fast path).
-      sampler.sendProgramChange(program, onChannel: 0)
-    } else {
-      // Load this instrument on-demand.
-      Task { @MainActor in
-        await self.loadProgram(program)
-      }
+    sampler.sendProgramChange(program, onChannel: 0)
+  }
+
+  private static func resolveSoundFontURL() -> URL? {
+    Bundle.main.url(forResource: "MS Basic", withExtension: "sf2")
+  }
+
+  /// Loads the MS Basic soundfont.
+  private func loadSoundFont() async {
+    guard let sfURL = Self.resolveSoundFontURL() else { return }
+    do {
+      try sampler.loadSoundBankInstrument(
+        at: sfURL,
+        program: 0,
+        bankMSB: UInt8(kAUSampler_DefaultMelodicBankMSB),
+        bankLSB: UInt8(kAUSampler_DefaultBankLSB)
+      )
+      self.loaded = true
+    } catch {
+      print("Unable to load MS Basic.sf2: \(error.localizedDescription)")
     }
   }
 
-  private static func resolveBankURL() -> URL? {
-    // Use system DLS for fast loading (bundled SF3 files are too large and freeze the UI).
-    let systemBankPath =
-      "/System/Library/Components/CoreAudio.component/Contents/Resources/gs_instruments.dls"
-    let systemBankURL = URL(fileURLWithPath: systemBankPath)
-    if FileManager.default.fileExists(atPath: systemBankURL.path) {
-      return systemBankURL
+  private var loaded = false
+
+  /// Synchronous fallback for play() — ensures the soundfont is loaded.
+  private func ensureSoundFontLoaded() {
+    guard !loaded else { return }
+    guard let sfURL = Self.resolveSoundFontURL() else { return }
+    do {
+      try sampler.loadSoundBankInstrument(
+        at: sfURL,
+        program: 0,
+        bankMSB: UInt8(kAUSampler_DefaultMelodicBankMSB),
+        bankLSB: UInt8(kAUSampler_DefaultBankLSB)
+      )
+      loaded = true
+    } catch {
+      print("Unable to load MS Basic.sf2: \(error.localizedDescription)")
     }
-    return nil
-  }
-
-  /// Loads all needed instrument programs from the sound bank.
-  private func loadProgram(_ program: UInt8) async {
-    let neededPrograms: [UInt8] = [0, 25, 27]  // Piano, Jazz Guitar, Electric Guitar
-    guard !loadedPrograms.contains(program) else { return }
-    guard let bankURL = Self.resolveBankURL() else { return }
-
-    for p in neededPrograms where !loadedPrograms.contains(p) {
-      do {
-        try self.sampler.loadSoundBankInstrument(
-          at: bankURL,
-          program: p,
-          bankMSB: UInt8(kAUSampler_DefaultMelodicBankMSB),
-          bankLSB: UInt8(kAUSampler_DefaultBankLSB)
-        )
-        self.loadedPrograms.insert(p)
-      } catch {
-        print("Unable to load instrument (program \(p)): \(error.localizedDescription)")
-      }
-    }
-    self.sampler.sendProgramChange(program, onChannel: 0)
-  }
-
-  /// Synchronous fallback for play() — ensures all needed programs are loaded.
-  private func ensureInstrumentLoaded() {
-    let neededPrograms: [UInt8] = [0, 25, 27]  // Piano, Jazz Guitar, Electric Guitar
-    guard !loadedPrograms.contains(currentProgram) else { return }
-    guard let bankURL = Self.resolveBankURL() else { return }
-
-    for program in neededPrograms where !loadedPrograms.contains(program) {
-      do {
-        try sampler.loadSoundBankInstrument(
-          at: bankURL,
-          program: program,
-          bankMSB: UInt8(kAUSampler_DefaultMelodicBankMSB),
-          bankLSB: UInt8(kAUSampler_DefaultBankLSB)
-        )
-        loadedPrograms.insert(program)
-      } catch {
-        print("Unable to load instrument (program \(program)): \(error.localizedDescription)")
-      }
-    }
-    sampler.sendProgramChange(currentProgram, onChannel: 0)
   }
 
   func play(midiNotes: [UInt8], sustainDurationNanoseconds: UInt64 = 3_000_000_000) {
-    ensureInstrumentLoaded()
+    ensureSoundFontLoaded()
     sampler.sendController(123, withValue: 0, onChannel: 0)
     let generation = instrumentGeneration
     for note in midiNotes {

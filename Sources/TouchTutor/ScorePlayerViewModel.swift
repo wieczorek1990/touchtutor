@@ -140,7 +140,14 @@ final class ScorePlayerViewModel: ObservableObject {
       isShowingScoreStore = true
       return
     }
-    guard score != nil else { return }
+    if score == nil {
+      // Try to load the score if it hasn't been parsed yet
+      if let parsed = MusicXMLParser.loadScore(item: selected) {
+        score = parsed
+      } else {
+        return
+      }
+    }
     circleScale = 0.2
     withAnimation(.easeInOut(duration: 0.22)) {
       currentScreen = .game
