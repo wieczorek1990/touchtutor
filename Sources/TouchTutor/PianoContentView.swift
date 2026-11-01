@@ -20,21 +20,24 @@ struct PianoContentView: View {
       ZStack {
         mainContent
 
-        // Splash overlay
-        if splashPhase != .done {
-          ZStack {
-            SoireeSplashView()
-              .frame(maxWidth: .infinity, maxHeight: .infinity)
-              .ignoresSafeArea()
-              .opacity(splashPhase == .soiree ? 1 : 0)
+        // Splash overlay — hidden when done so the menu is interactive
+        ZStack {
+          PlatformColors.windowBackground
+            .edgesIgnoringSafeArea(.all)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-            TouchTutorSplashView()
-              .frame(maxWidth: .infinity, maxHeight: .infinity)
-              .ignoresSafeArea()
-              .opacity(splashPhase != .soiree ? 1 : 0)
-          }
-          .transition(.opacity)
+          SoireeSplashView()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .ignoresSafeArea()
+            .opacity(splashPhase == .soiree ? 1 : 0)
+
+          TouchTutorSplashView()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .ignoresSafeArea()
+            .opacity(splashPhase != .soiree ? 1 : 0)
         }
+        .opacity(splashPhase != .done ? 1 : 0)
+        .allowsHitTesting(splashPhase != .done)
       }
       .edgesIgnoringSafeArea(.all)
       .task {
@@ -53,6 +56,11 @@ struct PianoContentView: View {
 
   private var mainContent: some View {
     VStack(spacing: 12) {
+      #if os(iOS)
+        Spacer()
+          .frame(height: UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0)
+      #endif
+
       HStack(spacing: 8) {
         if viewModel.currentScreen != .menu {
           Button(action: {
@@ -92,6 +100,7 @@ struct PianoContentView: View {
 
       if viewModel.currentScreen == .menu {
         PreGameMenuView(viewModel: viewModel)
+          .preferredColorScheme(.dark)
       } else {
         GamePlayView(viewModel: viewModel)
       }

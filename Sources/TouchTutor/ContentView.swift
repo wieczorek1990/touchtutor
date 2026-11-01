@@ -24,9 +24,13 @@ struct ContentView: View {
         }
         .background(PlatformColors.windowBackground)
 
-        // Splash overlay — outside ScrollView so it fills the full screen
+        // Splash overlay — removed from hierarchy when done so the menu is interactive
         if splashPhase != .done {
           ZStack {
+            PlatformColors.windowBackground
+              .edgesIgnoringSafeArea(.all)
+              .frame(maxWidth: .infinity, maxHeight: .infinity)
+
             SoireeSplashView()
               .frame(maxWidth: .infinity, maxHeight: .infinity)
               .opacity(splashPhase == .soiree ? 1 : 0)
@@ -35,7 +39,7 @@ struct ContentView: View {
               .frame(maxWidth: .infinity, maxHeight: .infinity)
               .opacity(splashPhase != .soiree ? 1 : 0)
           }
-          .transition(.opacity)
+          .edgesIgnoringSafeArea(.all)
         }
       }
       .edgesIgnoringSafeArea(.all)
@@ -50,7 +54,11 @@ struct ContentView: View {
           splashPhase = .done
         }
       }
-      .preferredColorScheme(appearance == "dark" ? .dark : appearance == "light" ? .light : nil)
+      .preferredColorScheme(
+        viewModel.currentScreen == .menu
+          ? .dark
+          : (appearance == "dark" ? .dark : appearance == "light" ? .light : nil)
+      )
     #else
       PianoContentView(viewModel: viewModel)
         .frame(width: 366, height: 518, alignment: .top)
@@ -58,8 +66,12 @@ struct ContentView: View {
         .padding(18)
         .background(PlatformColors.windowBackground)
         .preferredColorScheme(
-          appearance == "dark"
-            ? .dark : appearance == "light" ? .light : systemAppearance.colorScheme
+          viewModel.currentScreen == .menu
+            ? .dark
+            : (appearance == "dark"
+              ? .dark
+              : appearance == "light"
+                ? .light : systemAppearance.colorScheme)
         )
         .onAppear {
           NSApp.setActivationPolicy(.regular)

@@ -14,7 +14,7 @@ struct PreGameMenuView: View {
 
   var body: some View {
     VStack(spacing: 0) {
-      VStack(spacing: 16) {
+      VStack(spacing: 0) {
         VStack(alignment: .leading, spacing: 6) {
           HStack {
             Text("Scores", bundle: .module)
@@ -244,7 +244,6 @@ struct PreGameMenuView: View {
       .padding(.horizontal, 16)
       .padding(.bottom, 0)
     }
-    .ignoresSafeArea()
     #if os(iOS)
       .fileImporter(isPresented: $isImporting, allowedContentTypes: [.xml, .data]) { result in
         do {
