@@ -38,7 +38,6 @@
 		CB6DB7FC3095C72C0084C852 /* Nobuo Uematsu - Dancing Mad.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F33095C72C0084C852 /* Nobuo Uematsu - Dancing Mad.xml */; };
 		CB6DB7FD3095C72C0084C852 /* Practice - C Major Scale.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F73095C72C0084C852 /* Practice - C Major Scale.xml */; };
 		CB6DB7FE3095C72C0084C852 /* soiree_logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F23095C72C0084C852 /* soiree_logo.svg */; };
-		WHITE0013095C72C0084C852 /* soiree_logo_white.svg in Resources */ = {isa = PBXBuildFile; fileRef = WHITE0023095C72C0084C852 /* soiree_logo_white.svg */; };
 		CB6DB7FF3095C72C0084C852 /* Nobuo Uematsu - Eyes on Me.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F43095C72C0084C852 /* Nobuo Uematsu - Eyes on Me.xml */; };
 		CB6DB8013095C72C0084C852 /* Practice - C Major Chords.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F63095C72C0084C852 /* Practice - C Major Chords.xml */; };
 		CB6DB8023095C72C0084C852 /* Test.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F93095C72C0084C852 /* Test.xml */; };
@@ -49,9 +48,6 @@
 		CB6DB80A3095C80B0084C852 /* You're not alone.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB8073095C80B0084C852 /* You're not alone.xml */; };
 		CB6DB80B3095C72C0084C852 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB80C3095C72C0084C853 /* AppIcon.xcassets */; };
 		CB6DB8113095C72C0084C852 /* soiree_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB8123095C72C0084C852 /* soiree_logo.png */; };
-		WHITEPNG013095C72C0084C852 /* soiree_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = WHITEPNG023095C72C0084C852 /* soiree_logo_white.png */; };
-		TTLOGO013095C72C0084C852 /* touchtutor_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = TTLOGO023095C72C0084C852 /* touchtutor_logo.png */; };
-		TTLOGOW13095C72C0084C852 /* touchtutor_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = TTLOGOW23095C72C0084C852 /* touchtutor_logo_white.png */; };
 		CCC27994459E14D69EF2A4D5 /* Tests/TouchTutorTests/ScorePackStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C11413BD14308ACD28ED7B /* Tests/TouchTutorTests/ScorePackStoreTests.swift */; };
 		DEAD0001BEEF4242CAFE0001 /* Sources/TouchTutor/SoundFontSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD0002BEEF4242CAFE0002 /* Sources/TouchTutor/SoundFontSelectorView.swift */; };
 		DEAD0003BEEF4242CAFE0003 /* Sources/TouchTutor/SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD0004BEEF4242CAFE0004 /* Sources/TouchTutor/SplashView.swift */; };
@@ -63,6 +59,10 @@
 		F47AF83A641D803D03C9B46E /* Sources/TouchTutor/SoundFontSynth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA733087A571D9DD4561858 /* Sources/TouchTutor/SoundFontSynth.swift */; };
 		FC6E4D1A21082BB01EF63D15 /* Sources/TouchTutor/ScorePlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2FCA2B261527262F3DF4D7 /* Sources/TouchTutor/ScorePlayerViewModel.swift */; };
 		STOREKIT000000000000000001 /* ScorePacks.storekit in Resources */ = {isa = PBXBuildFile; fileRef = CB8713BB0FA0509CD417AA7E /* ScorePacks.storekit */; };
+		TTLOGO013095C72C0084C852 /* touchtutor_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = TTLOGO023095C72C0084C852 /* touchtutor_logo.png */; };
+		TTLOGOW13095C72C0084C852 /* touchtutor_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = TTLOGOW23095C72C0084C852 /* touchtutor_logo_white.png */; };
+		WHITE0013095C72C0084C852 /* soiree_logo_white.svg in Resources */ = {isa = PBXBuildFile; fileRef = WHITE0023095C72C0084C852 /* soiree_logo_white.svg */; };
+		WHITEPNG013095C72C0084C852 /* soiree_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = WHITEPNG023095C72C0084C852 /* soiree_logo_white.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,7 +107,6 @@
 		CB4342AB3097639F00F12665 /* FluidR3Mono_GM.sf3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = FluidR3Mono_GM.sf3; sourceTree = "<group>"; };
 		CB6DB7F03095C72C0084C852 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CB6DB7F23095C72C0084C852 /* soiree_logo.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = soiree_logo.svg; sourceTree = "<group>"; };
-		WHITE0023095C72C0084C852 /* soiree_logo_white.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = soiree_logo_white.svg; sourceTree = "<group>"; };
 		CB6DB7F33095C72C0084C852 /* Nobuo Uematsu - Dancing Mad.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Nobuo Uematsu - Dancing Mad.xml"; sourceTree = "<group>"; };
 		CB6DB7F43095C72C0084C852 /* Nobuo Uematsu - Eyes on Me.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Nobuo Uematsu - Eyes on Me.xml"; sourceTree = "<group>"; };
 		CB6DB7F53095C72C0084C852 /* Nobuo Uematsu - To Zanarkand.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Nobuo Uematsu - To Zanarkand.xml"; sourceTree = "<group>"; };
@@ -120,9 +119,6 @@
 		CB6DB8073095C80B0084C852 /* You're not alone.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "You're not alone.xml"; sourceTree = "<group>"; };
 		CB6DB80C3095C72C0084C853 /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppIcon.xcassets; sourceTree = "<group>"; };
 		CB6DB8123095C72C0084C852 /* soiree_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soiree_logo.png; sourceTree = "<group>"; };
-		WHITEPNG023095C72C0084C852 /* soiree_logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soiree_logo_white.png; sourceTree = "<group>"; };
-		TTLOGO023095C72C0084C852 /* touchtutor_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touchtutor_logo.png; sourceTree = "<group>"; };
-		TTLOGOW23095C72C0084C852 /* touchtutor_logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touchtutor_logo_white.png; sourceTree = "<group>"; };
 		CB8713BB0FA0509CD417AA7E /* ScorePacks.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = ScorePacks.storekit; sourceTree = "<group>"; };
 		CE268657E31E27CC54AD4504 /* Sources/TouchTutor/StoreKitScorePackCommerce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/StoreKitScorePackCommerce.swift; sourceTree = "<group>"; };
 		D296E8E32459957722F55719 /* Sources/TouchTutor/MusicXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/MusicXMLParser.swift; sourceTree = "<group>"; };
@@ -135,6 +131,10 @@
 		EEE757404F55F44A50586896 /* TouchTutorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = TouchTutorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4ECD50D9C03A7E2600EECDB /* Sources/TouchTutor/GamePlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/GamePlayView.swift; sourceTree = "<group>"; };
 		FA1CFFD86CCD5AD61ABA8F23 /* Sources/TouchTutor/ImportedScoreLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/ImportedScoreLibrary.swift; sourceTree = "<group>"; };
+		TTLOGO023095C72C0084C852 /* touchtutor_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touchtutor_logo.png; sourceTree = "<group>"; };
+		TTLOGOW23095C72C0084C852 /* touchtutor_logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touchtutor_logo_white.png; sourceTree = "<group>"; };
+		WHITE0023095C72C0084C852 /* soiree_logo_white.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = soiree_logo_white.svg; sourceTree = "<group>"; };
+		WHITEPNG023095C72C0084C852 /* soiree_logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soiree_logo_white.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -504,7 +504,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = RHX53VZ224;
@@ -633,7 +633,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = RHX53VZ224;
