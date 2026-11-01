@@ -16,6 +16,8 @@ let package = Package(
       exclude: [
         "Tests", "Docs", "bin", "macOS", "TouchTutor.xcodeproj",
         "dist", "TouchTutor.dmg",
+        "Resources/LaunchScreen.storyboard",
+        "Resources/SplashLogo.imageset",
       ],
       sources: ["Sources/TouchTutor"],
       resources: [
