@@ -23,6 +23,7 @@ final class ScorePlayerViewModel: ObservableObject {
   @Published var circleScale: CGFloat = 1.0
   @Published var circleColor: Color = CircleAnimationHelper.defaultColor
   @Published var tempoAdjustment: TempoAdjustment = .normal
+  @Published var selectedSoundFont: SoundFont = .piano
 
   @Published var libraryError: String?
   @Published var isShowingScoreStore = false
@@ -30,8 +31,9 @@ final class ScorePlayerViewModel: ObservableObject {
   let scoreStore: ScorePackStore
 
   private let importedLibrary: ImportedScoreLibrary
-  private let soundFontSynth: SoundFontSynth
+  private var soundFontSynth: SoundFontSynth
   private let circleAnimation = CircleAnimationHelper()
+  private var cancellables = Set<AnyCancellable>()
   #if os(macOS)
     private var keyboardMonitor: KeyboardMonitor?
   #endif
@@ -97,6 +99,12 @@ final class ScorePlayerViewModel: ObservableObject {
     {
       selectScore(initialScore)
     }
+
+    $selectedSoundFont
+      .sink { [soundFontSynth] soundFont in
+        soundFontSynth.setProgram(soundFont.program)
+      }
+      .store(in: &cancellables)
     #if os(macOS)
       keyboardMonitor = KeyboardMonitor(
         currentScreen: { [weak self] in self?.currentScreen ?? .menu },

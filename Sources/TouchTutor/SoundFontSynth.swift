@@ -9,6 +9,7 @@ final class SoundFontSynth {
   private let reverb = AVAudioUnitReverb()
   private var instrumentLoaded = false
   private var instrumentGeneration = 0
+  private var currentProgram: UInt8 = 0
 
   init() {
     engine.attach(sampler)
@@ -27,11 +28,21 @@ final class SoundFontSynth {
     try? engine.start()
 
     Task { @MainActor in
-      await self.loadPianoInstrument()
+      await self.loadInstrument(program: 0)
+    }
+  }
+
+  /// Switch to a different instrument program.
+  func setProgram(_ program: UInt8) {
+    guard program != currentProgram else { return }
+    currentProgram = program
+    Task { @MainActor in
+      await self.loadInstrument(program: program)
     }
   }
 
   private static func resolveBankURL() -> URL? {
+    // Use system DLS for fast loading (bundled SF3 files are too large and freeze the UI).
     let systemBankPath =
       "/System/Library/Components/CoreAudio.component/Contents/Resources/gs_instruments.dls"
     let systemBankURL = URL(fileURLWithPath: systemBankPath)
@@ -41,28 +52,29 @@ final class SoundFontSynth {
     return nil
   }
 
-  /// Loads the piano instrument on a background thread.
-  private func loadPianoInstrument() async {
+  /// Loads a single instrument program.
+  private func loadInstrument(program: UInt8) async {
     guard let bankURL = Self.resolveBankURL() else { return }
 
+    // AVAudioUnitSampler is not thread-safe; loadSoundBankInstrument must run on the main thread.
     do {
-      try await Task.sleep(nanoseconds: 10_000_000)
-      try await MainActor.run {
-        try self.sampler.loadSoundBankInstrument(
-          at: bankURL,
-          program: 0,
-          bankMSB: UInt8(kAUSampler_DefaultMelodicBankMSB),
-          bankLSB: UInt8(kAUSampler_DefaultBankLSB)
-        )
-        self.sampler.sendProgramChange(0, onChannel: 0)
-        self.instrumentLoaded = true
-      }
+      try self.sampler.loadSoundBankInstrument(
+        at: bankURL,
+        program: program,
+        bankMSB: UInt8(kAUSampler_DefaultMelodicBankMSB),
+        bankLSB: UInt8(kAUSampler_DefaultBankLSB)
+      )
+      self.instrumentGeneration += 1
+      self.engine.reset()
+      self.sampler.sendController(120, withValue: 0, onChannel: 0)
+      self.sampler.sendProgramChange(program, onChannel: 0)
+      self.instrumentLoaded = true
     } catch {
-      print("Unable to load piano instrument: \(error.localizedDescription)")
+      print("Unable to load instrument (program \(program)): \(error.localizedDescription)")
     }
   }
 
-  /// Synchronous fallback for play() — ensures piano is loaded before playing.
+  /// Synchronous fallback for play() — ensures an instrument is loaded before playing.
   private func ensureInstrumentLoaded() {
     guard !instrumentLoaded else { return }
     guard let bankURL = Self.resolveBankURL() else { return }
@@ -74,14 +86,14 @@ final class SoundFontSynth {
     do {
       try sampler.loadSoundBankInstrument(
         at: bankURL,
-        program: 0,
+        program: currentProgram,
         bankMSB: UInt8(kAUSampler_DefaultMelodicBankMSB),
         bankLSB: UInt8(kAUSampler_DefaultBankLSB)
       )
-      sampler.sendProgramChange(0, onChannel: 0)
+      sampler.sendProgramChange(currentProgram, onChannel: 0)
       instrumentLoaded = true
     } catch {
-      print("Unable to load piano instrument: \(error.localizedDescription)")
+      print("Unable to load instrument (program \(currentProgram)): \(error.localizedDescription)")
     }
   }
 

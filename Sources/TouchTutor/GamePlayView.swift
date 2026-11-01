@@ -89,6 +89,19 @@ struct GamePlayView: View {
         Spacer(minLength: 0)
       }
 
+      HStack(spacing: 4) {
+        Spacer(minLength: 0)
+
+        Text("Sound font", bundle: .module)
+          .font(.system(size: 10, weight: .semibold))
+          .foregroundColor(.secondary)
+
+        SoundFontSelectorView(selectedSoundFont: $viewModel.selectedSoundFont)
+          .frame(width: 180)
+
+        Spacer(minLength: 0)
+      }
+
       if let score = viewModel.score {
         let total = score.steps.count
         let current = viewModel.currentStepIndex

@@ -15,7 +15,7 @@ struct ScoreItem: Identifiable, Hashable {
     var scores = [
       ScoreItem(
         id: "zanarkand",
-        name: L10n.string("To Zanarkand (Final Fantasy X)"),
+        name: L10n.string("To Zanarkand"),
         filename: "Nobuo Uematsu - To Zanarkand.xml",
         defaultTitle: L10n.string("To Zanarkand"),
         defaultArtist: L10n.string("Nobuo Uematsu"),
@@ -23,7 +23,7 @@ struct ScoreItem: Identifiable, Hashable {
       ),
       ScoreItem(
         id: "eyes_on_me",
-        name: L10n.string("Eyes On Me (Final Fantasy VIII)"),
+        name: L10n.string("Eyes On Me"),
         filename: "Nobuo Uematsu - Eyes on Me.xml",
         defaultTitle: L10n.string("Eyes on Me"),
         defaultArtist: L10n.string("Nobuo Uematsu"),
@@ -31,7 +31,7 @@ struct ScoreItem: Identifiable, Hashable {
       ),
       ScoreItem(
         id: "dancing_mad",
-        name: L10n.string("Dancing Mad (Final Fantasy VI)"),
+        name: L10n.string("Dancing Mad"),
         filename: "Nobuo Uematsu - Dancing Mad.xml",
         defaultTitle: L10n.string("Dancing Mad"),
         defaultArtist: L10n.string("Nobuo Uematsu"),
@@ -186,6 +186,28 @@ struct ScoreStep: Identifiable, Equatable {
   let durationSeconds: Double
   let noteValueType: NoteValueType
   let isDotted: Bool
+}
+
+enum SoundFont: Int, CaseIterable, Identifiable {
+  case piano
+  case electricGuitar
+
+  var id: Int { rawValue }
+
+  var displayName: String {
+    switch self {
+    case .piano: return L10n.string("Piano")
+    case .electricGuitar: return L10n.string("E. Guitar")
+    }
+  }
+
+  /// MIDI program number (GM/GS bank 0).
+  var program: UInt8 {
+    switch self {
+    case .piano: return 0         // Acoustic Grand Piano
+    case .electricGuitar: return 27  // Steel String Electric Guitar
+    }
+  }
 }
 
 struct ParsedScore: Equatable {
