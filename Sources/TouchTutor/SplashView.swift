@@ -16,6 +16,8 @@ struct SplashView: View {
           .font(.system(size: 28, weight: .semibold))
           .foregroundColor(.primary)
       }
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .ignoresSafeArea()
     }
     .edgesIgnoringSafeArea(.all)
     .opacity(opacity)

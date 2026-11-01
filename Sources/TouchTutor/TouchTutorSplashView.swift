@@ -51,6 +51,7 @@ struct TouchTutorSplashView: View {
           .foregroundColor(.primary)
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .ignoresSafeArea()
     }
     .edgesIgnoringSafeArea(.all)
   }
