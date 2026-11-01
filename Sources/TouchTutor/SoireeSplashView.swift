@@ -1,6 +1,18 @@
 import SwiftUI
 
+#if os(macOS)
+  import AppKit
+#else
+  import UIKit
+#endif
+
 struct SoireeSplashView: View {
+  #if os(macOS)
+    @State private var logoImage: NSImage?
+  #else
+    @State private var logoImage: UIImage?
+  #endif
+
   var body: some View {
     ZStack {
       PlatformColors.windowBackground
@@ -9,12 +21,29 @@ struct SoireeSplashView: View {
 
       VStack(alignment: .center, spacing: 16) {
         #if os(macOS)
-          MusicNoteLogoView(size: 120)
+          if let nsImage = logoImage {
+            Image(nsImage: nsImage)
+              .resizable()
+              .aspectRatio(contentMode: .fit)
+              .frame(width: 120, height: 120)
+          } else {
+            Image(systemName: "guitars")
+              .font(.system(size: 80, weight: .bold))
+              .foregroundColor(.primary)
+              .frame(width: 120, height: 120)
+          }
         #else
-          Image("soiree_logo")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 120, height: 120)
+          if let uiImage = logoImage {
+            Image(uiImage: uiImage)
+              .resizable()
+              .aspectRatio(contentMode: .fit)
+              .frame(width: 120, height: 120)
+          } else {
+            Image(systemName: "guitars")
+              .font(.system(size: 80, weight: .bold))
+              .foregroundColor(.primary)
+              .frame(width: 120, height: 120)
+          }
         #endif
 
         Text("Soiree", bundle: .module)
@@ -25,4 +54,31 @@ struct SoireeSplashView: View {
     }
     .edgesIgnoringSafeArea(.all)
   }
+
+  #if os(macOS)
+    init() {
+      _logoImage = State(wrappedValue: Self.loadLogo())
+    }
+
+    private static func loadLogo() -> NSImage? {
+      if let url = Bundle.main.url(forResource: "soiree_logo", withExtension: "png") {
+        return NSImage(contentsOf: url)
+      }
+      if let url = Bundle.module.url(forResource: "soiree_logo", withExtension: "png") {
+        return NSImage(contentsOf: url)
+      }
+      return nil
+    }
+  #else
+    init() {
+      _logoImage = State(wrappedValue: Self.loadLogo())
+    }
+
+    private static func loadLogo() -> UIImage? {
+      if let url = Bundle.main.url(forResource: "soiree_logo", withExtension: "png") {
+        return UIImage(contentsOfFile: url.path)
+      }
+      return nil
+    }
+  #endif
 }

@@ -88,13 +88,13 @@ struct PianoContentView: View {
     }
     .edgesIgnoringSafeArea(.all)
     .task {
-      // Show Soiree splash for 2.5s, then TouchTutor splash for 2.5s
-      try? await Task.sleep(nanoseconds: 2_500_000_000)
-      withAnimation(.easeInOut(duration: 0.3)) {
+      // Show Soiree splash for 0.5s, then TouchTutor splash for 0.5s
+      try? await Task.sleep(nanoseconds: 500_000_000)
+      withAnimation(.easeInOut(duration: 0.2)) {
         splashPhase = .touchTutor
       }
-      try? await Task.sleep(nanoseconds: 2_500_000_000)
-      withAnimation(.easeInOut(duration: 0.3)) {
+      try? await Task.sleep(nanoseconds: 500_000_000)
+      withAnimation(.easeInOut(duration: 0.2)) {
         splashPhase = .done
       }
     }
