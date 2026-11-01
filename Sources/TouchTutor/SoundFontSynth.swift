@@ -12,7 +12,11 @@ final class SoundFontSynth {
 
   init() {
     engine.attach(sampler)
-    engine.connect(sampler, to: engine.mainMixerNode, format: nil)
+    if #available(iOS 27.0, macOS 27.0, *) {
+      try? engine.connectNode(sampler, to: engine.mainMixerNode, fromBus: 0, toBus: 0, format: nil)
+    } else {
+      engine.connect(sampler, to: engine.mainMixerNode, format: nil)
+    }
     try? engine.start()
   }
 

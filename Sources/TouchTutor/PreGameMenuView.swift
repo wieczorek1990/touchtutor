@@ -22,13 +22,6 @@ struct PreGameMenuView: View {
               .foregroundColor(.secondary)
               .textCase(.uppercase)
             Spacer()
-            Button {
-              viewModel.isShowingScoreStore = true
-            } label: {
-              Text("Packs", bundle: .module)
-                .font(.caption.weight(.semibold))
-            }
-            .buttonStyle(.borderless)
             Button(action: {
               #if os(iOS)
                 isImporting = true
@@ -129,13 +122,11 @@ struct PreGameMenuView: View {
                       .contentShape(Rectangle())
                     }
                     .buttonStyle(.plain)
-                    #if os(macOS)
-                      .simultaneousGesture(
-                        TapGesture(count: 2).onEnded {
-                          viewModel.selectScore(item)
-                          viewModel.startGame()
-                        })
-                    #endif
+                    .simultaneousGesture(
+                      TapGesture(count: 2).onEnded {
+                        viewModel.selectScore(item)
+                        viewModel.startGame()
+                      })
 
                     if item.isImported {
                       Button(action: {
@@ -176,7 +167,7 @@ struct PreGameMenuView: View {
               .padding(.vertical, 2)
               .padding(.horizontal, 1)
             }
-            .frame(minHeight: 60, maxHeight: 300)
+            .frame(minHeight: 60)
             .onChange(of: viewModel.selectedScoreItem?.id) {
               if let id = viewModel.selectedScoreItem?.id {
                 withAnimation(.easeInOut(duration: 0.15)) {
