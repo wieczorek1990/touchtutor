@@ -19,9 +19,6 @@ struct PreGameMenuView: View {
         Text("TouchTutor", bundle: .module)
           .font(.system(size: 18, weight: .bold, design: .rounded))
           .foregroundColor(.primary)
-        Text("Select a score and press Play.", bundle: .module)
-          .font(.system(size: 13, weight: .medium))
-          .foregroundColor(.secondary)
       }
       .padding(.top, 4)
       .frame(maxWidth: .infinity)
@@ -91,33 +88,47 @@ struct PreGameMenuView: View {
                   Button(action: {
                     viewModel.selectScore(item)
                   }) {
-                    HStack(spacing: 8) {
-                      Text(item.name)
-                        .font(.system(size: 16, weight: isSelected ? .bold : .medium))
-                        .foregroundColor(.primary)
+                    VStack(alignment: .leading, spacing: 2) {
+                      HStack(spacing: 8) {
+                        Text(item.name)
+                          .font(.system(size: 16, weight: isSelected ? .bold : .medium))
+                          .foregroundColor(.primary)
+                          .lineLimit(1)
+                          .truncationMode(.tail)
+
+                        if item.requiredProductID != nil {
+                          let isUnlocked = viewModel.storeState.canPlay(item)
+                          Image(systemName: isUnlocked ? "lock.open.fill" : "lock.fill")
+                            .accessibilityLabel(
+                              isUnlocked
+                                ? Text("Unlocked score", bundle: .module)
+                                : Text("Locked score", bundle: .module))
+                        }
+
+                        if item.isImported {
+                          Text("imported", bundle: .module)
+                            .font(.system(size: 9, weight: .bold, design: .rounded))
+                            .foregroundColor(.purple)
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 2)
+                            .background(Color.purple.opacity(0.12))
+                            .clipShape(RoundedRectangle(cornerRadius: 4))
+                        }
+
+                        Spacer(minLength: 4)
+                      }
+
+                      Text(item.defaultArtist)
+                        .font(.system(size: 12, weight: .medium, design: .rounded))
+                        .foregroundColor(.secondary)
                         .lineLimit(1)
                         .truncationMode(.tail)
 
-                      if item.requiredProductID != nil {
-                        let isUnlocked = viewModel.storeState.canPlay(item)
-                        Image(systemName: isUnlocked ? "lock.open.fill" : "lock.fill")
-                          .accessibilityLabel(
-                            isUnlocked
-                              ? Text("Unlocked score", bundle: .module)
-                              : Text("Locked score", bundle: .module))
-                      }
-
-                      if item.isImported {
-                        Text("imported", bundle: .module)
-                          .font(.system(size: 9, weight: .bold, design: .rounded))
-                          .foregroundColor(.purple)
-                          .padding(.horizontal, 6)
-                          .padding(.vertical, 2)
-                          .background(Color.purple.opacity(0.12))
-                          .clipShape(RoundedRectangle(cornerRadius: 4))
-                      }
-
-                      Spacer(minLength: 4)
+                      Text(item.defaultAlbum)
+                        .font(.system(size: 11, weight: .regular, design: .rounded))
+                        .foregroundColor(.secondary)
+                        .lineLimit(1)
+                        .truncationMode(.tail)
                     }
                     .padding(.leading, 11)
                     .padding(.trailing, item.isImported ? 0 : 11)

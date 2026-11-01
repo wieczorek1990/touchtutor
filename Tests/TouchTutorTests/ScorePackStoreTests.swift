@@ -7,7 +7,7 @@ struct ScorePackStoreTests {
     private func pack() -> ScorePack {
         ScorePack(productID: "test.pack", title: "Test Pack", scores: [
             ScoreItem(id: "paid", name: "Paid", filename: "Nobuo Uematsu - To Zanarkand.xml",
-                      defaultTitle: "Paid")
+                      defaultTitle: "Paid", defaultArtist: "Nobuo Uematsu", defaultAlbum: "Final Fantasy X")
         ])
     }
 
@@ -20,7 +20,8 @@ struct ScorePackStoreTests {
         #expect(store.state.ownedProductIDs == ["test.pack"])
         #expect(store.state.canPlay(pack.scores[0]))
         let imported = ScoreItem(id: "import", name: "Import", filename: "import.xml",
-                                 defaultTitle: "Import", isImported: true)
+                                 defaultTitle: "Import", defaultArtist: "Artist", defaultAlbum: "Album",
+                                 isImported: true)
         #expect(ScorePackStoreState().canPlay(imported))
         #expect(!ScorePackStoreState().canPlay(pack.scores[0]))
     }

@@ -4,6 +4,8 @@ struct ImportedScoreLibrary {
   private struct Record: Codable {
     let id: UUID
     let name: String
+    let artist: String
+    let album: String
 
     var filename: String { "\(id.uuidString).xml" }
   }
@@ -41,7 +43,7 @@ struct ImportedScoreLibrary {
     }
 
     try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
-    let record = Record(id: UUID(), name: name)
+    let record = Record(id: UUID(), name: parsed.title, artist: parsed.artist, album: parsed.album)
     let destination = fileURL(for: record)
     try data.write(to: destination, options: .atomic)
     records.append(record)
@@ -81,6 +83,7 @@ struct ImportedScoreLibrary {
   private func item(for record: Record) -> ScoreItem {
     ScoreItem(
       id: record.id.uuidString, name: record.name, filename: record.filename,
-      defaultTitle: record.name, isImported: true, importedFileURL: fileURL(for: record))
+      defaultTitle: record.name, defaultArtist: record.artist, defaultAlbum: record.album,
+      isImported: true, importedFileURL: fileURL(for: record))
   }
 }

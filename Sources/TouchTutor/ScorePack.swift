@@ -28,15 +28,21 @@ struct ScorePack: Identifiable {
         scores: [
           ScoreItem(
             id: "aeriths_theme", name: "Aerith's Theme",
-            filename: "Aeriths theme.xml", defaultTitle: "Aerith's Theme"
+            filename: "Aeriths theme.xml", defaultTitle: "Aerith's Theme",
+            defaultArtist: "Nobuo Uematsu",
+            defaultAlbum: "Final Fantasy VII"
           ),
           ScoreItem(
             id: "tifas_theme", name: "Tifa's Theme",
-            filename: "Tifas theme.xml", defaultTitle: "Tifa's Theme"
+            filename: "Tifas theme.xml", defaultTitle: "Tifa's Theme",
+            defaultArtist: "Nobuo Uematsu",
+            defaultAlbum: "Final Fantasy VII"
           ),
           ScoreItem(
             id: "youre_not_alone", name: "You're Not Alone",
-            filename: "You're not alone.xml", defaultTitle: "You're Not Alone"
+            filename: "You're not alone.xml", defaultTitle: "You're Not Alone",
+            defaultArtist: "Nobuo Uematsu",
+            defaultAlbum: "Final Fantasy IX"
           ),
         ]
       )
@@ -50,11 +56,15 @@ struct ScorePack: Identifiable {
           scores: [
             ScoreItem(
               id: "practice_test_scale", name: L10n.string("C Major Scale"),
-              filename: "Practice - C Major Scale.xml", defaultTitle: L10n.string("C Major Scale")
+              filename: "Practice - C Major Scale.xml", defaultTitle: L10n.string("C Major Scale"),
+              defaultArtist: L10n.string("Unknown Artist"),
+              defaultAlbum: L10n.string("Unknown Album")
             ),
             ScoreItem(
               id: "practice_test_chords", name: L10n.string("C Major Chords"),
-              filename: "Practice - C Major Chords.xml", defaultTitle: L10n.string("C Major Chords")
+              filename: "Practice - C Major Chords.xml", defaultTitle: L10n.string("C Major Chords"),
+              defaultArtist: L10n.string("Unknown Artist"),
+              defaultAlbum: L10n.string("Unknown Album")
             ),
           ]
         )

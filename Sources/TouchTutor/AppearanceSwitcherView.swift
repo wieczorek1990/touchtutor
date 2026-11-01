@@ -6,21 +6,28 @@ struct AppearanceSwitcherView: View {
   var body: some View {
     HStack(spacing: 2) {
       appearanceButton("■", dark: true)
+        .preferredColorScheme(.light)
       Text("|")
-        .foregroundColor(.secondary)
+        .foregroundColor(getDividerColor())
         .accessibilityHidden(true)
       appearanceButton("□", dark: false)
+        .preferredColorScheme(.dark)
       Text("|")
-        .foregroundColor(.secondary)
+        .foregroundColor(getDividerColor())
         .accessibilityHidden(true)
       Button {
         appearance = "system"
       } label: {
         Text("Auto", bundle: .module)
           .font(.system(size: 11, weight: .medium))
-          .foregroundColor(.primary)
+          .foregroundColor(getAutoColor())
           .padding(.horizontal, 4)
           .frame(height: 26)
+          .background(
+            appearance == "system"
+              ? Capsule().fill(Color.secondary.opacity(0.15))
+              : nil
+          )
           .contentShape(Rectangle())
       }
       .buttonStyle(.plain)
@@ -29,25 +36,68 @@ struct AppearanceSwitcherView: View {
     }
     .font(.system(size: 16, weight: .medium))
     .padding(.horizontal, 4)
-    .background(PlatformColors.controlBackground.opacity(0.7))
+    .background(getBackgroundColor())
     .clipShape(Capsule())
+    .overlay(Capsule().stroke(getBorderColor(), lineWidth: 1))
     .fixedSize()
     .accessibilityElement(children: .contain)
     .accessibilityLabel(L10n.string("Appearance"))
   }
 
+  private func getBackgroundColor() -> AnyShapeStyle {
+    if appearance == "dark" {
+      return AnyShapeStyle(.white)
+    } else if appearance == "light" {
+      return AnyShapeStyle(.white.opacity(0.9))
+    } else {
+      return AnyShapeStyle(PlatformColors.controlBackground.opacity(0.7))
+    }
+  }
+
+  private func getDividerColor() -> Color {
+    if appearance == "dark" {
+      return Color(red: 0, green: 0, blue: 0)
+    } else {
+      return Color.secondary
+    }
+  }
+
+  private func getBorderColor() -> Color {
+    if appearance == "dark" {
+      return Color(red: 0, green: 0, blue: 0)
+    } else if appearance == "light" {
+      return Color.secondary.opacity(0.5)
+    } else {
+      return Color.secondary.opacity(0.3)
+    }
+  }
+
+  private func getLightColor() -> Color {
+    return Color(red: 0, green: 0, blue: 0)
+  }
+
+  private func getAutoColor() -> Color {
+    return Color(red: 0, green: 0, blue: 0)
+  }
+
   private func appearanceButton(_ symbol: String, dark: Bool) -> some View {
-    Button {
+    let isSelected = appearance == (dark ? "dark" : "light")
+    return Button {
       appearance = dark ? "dark" : "light"
     } label: {
       Text(symbol)
-        .foregroundColor(.primary)
+        .foregroundColor(dark ? Color(red: 0, green: 0, blue: 0) : getLightColor())
         .frame(width: 24, height: 26)
+        .background(
+          isSelected
+            ? Capsule().fill(Color.secondary.opacity(0.15))
+            : nil
+        )
         .contentShape(Rectangle())
     }
     .buttonStyle(.plain)
     .help(L10n.string(dark ? "Switch to Dark appearance" : "Switch to Light appearance"))
     .accessibilityLabel(L10n.string(dark ? "Dark" : "Light"))
-    .accessibilityAddTraits(appearance == (dark ? "dark" : "light") ? [.isSelected] : [])
+    .accessibilityAddTraits(isSelected ? [.isSelected] : [])
   }
 }

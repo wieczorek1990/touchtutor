@@ -23,7 +23,8 @@ final class ScoreLoadingTests: XCTestCase {
         """
         try Data(xml.utf8).write(to: url)
         let item = ScoreItem(id: url.path, name: "Custom", filename: url.lastPathComponent,
-                             defaultTitle: "Custom", isImported: true)
+                             defaultTitle: "Custom", defaultArtist: "Custom Artist", defaultAlbum: "Custom Album",
+                             isImported: true)
         let score = try XCTUnwrap(MusicXMLParser.loadScore(item: item))
         XCTAssertEqual(score.title, "Custom")
         XCTAssertEqual(score.steps.first?.notes.first?.midiNote, 62)

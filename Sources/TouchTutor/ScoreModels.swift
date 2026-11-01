@@ -5,6 +5,8 @@ struct ScoreItem: Identifiable, Hashable {
   let name: String
   let filename: String
   let defaultTitle: String
+  let defaultArtist: String
+  let defaultAlbum: String
   var isImported: Bool = false
   var importedFileURL: URL?
   var requiredProductID: String?
@@ -15,19 +17,25 @@ struct ScoreItem: Identifiable, Hashable {
         id: "zanarkand",
         name: L10n.string("To Zanarkand (Final Fantasy X)"),
         filename: "Nobuo Uematsu - To Zanarkand.xml",
-        defaultTitle: L10n.string("To Zanarkand")
+        defaultTitle: L10n.string("To Zanarkand"),
+        defaultArtist: L10n.string("Nobuo Uematsu"),
+        defaultAlbum: L10n.string("Final Fantasy X")
       ),
       ScoreItem(
         id: "eyes_on_me",
         name: L10n.string("Eyes On Me (Final Fantasy VIII)"),
         filename: "Nobuo Uematsu - Eyes on Me.xml",
-        defaultTitle: L10n.string("Eyes on Me")
+        defaultTitle: L10n.string("Eyes on Me"),
+        defaultArtist: L10n.string("Nobuo Uematsu"),
+        defaultAlbum: L10n.string("Final Fantasy VIII")
       ),
       ScoreItem(
         id: "dancing_mad",
         name: L10n.string("Dancing Mad (Final Fantasy VI)"),
         filename: "Nobuo Uematsu - Dancing Mad.xml",
-        defaultTitle: L10n.string("Dancing Mad")
+        defaultTitle: L10n.string("Dancing Mad"),
+        defaultArtist: L10n.string("Nobuo Uematsu"),
+        defaultAlbum: L10n.string("Final Fantasy VI")
       ),
     ]
     #if DEBUG
@@ -36,7 +44,9 @@ struct ScoreItem: Identifiable, Hashable {
           id: "test",
           name: L10n.string("Test"),
           filename: "Test.xml",
-          defaultTitle: L10n.string("Test")
+          defaultTitle: L10n.string("Test"),
+          defaultArtist: L10n.string("Test Artist"),
+          defaultAlbum: L10n.string("Test Album")
         ),
         at: 0
       )
@@ -47,7 +57,9 @@ struct ScoreItem: Identifiable, Hashable {
             "Test with a Very Long Title That Should Be Exactly Eighty Eight Characters in Length Now"
           ),
           filename: "Test.xml",
-          defaultTitle: L10n.string("Test Long Title")
+          defaultTitle: L10n.string("Test Long Title"),
+          defaultArtist: L10n.string("Test Artist"),
+          defaultAlbum: L10n.string("Test Album")
         ),
         at: 1
       )
@@ -61,11 +73,12 @@ struct ScorePitch: Hashable {
   let alter: Int
   let octave: Int
 
+  private static let stepOffsets: [String: Int] = [
+    "C": 0, "D": 2, "E": 4, "F": 5, "G": 7, "A": 9, "B": 11,
+  ]
+
   var midiNote: UInt8 {
-    let stepOffsets: [String: Int] = [
-      "C": 0, "D": 2, "E": 4, "F": 5, "G": 7, "A": 9, "B": 11,
-    ]
-    let base = stepOffsets[step.uppercased()] ?? 0
+    let base = ScorePitch.stepOffsets[step.uppercased()] ?? 0
     let val = (octave + 1) * 12 + base + alter
     return UInt8(clamping: max(0, min(127, val)))
   }
@@ -86,6 +99,9 @@ enum NoteValueType: String, CaseIterable, Equatable {
   case thirtySecond = "32nd"
   case sixtyFourth = "64th"
 
+  private static let noStemCases: Set<NoteValueType> = [.breve, .whole]
+  private static let hollowCases: Set<NoteValueType> = [.breve, .whole, .half]
+
   var flagsCount: Int {
     switch self {
     case .eighth: return 1
@@ -97,17 +113,11 @@ enum NoteValueType: String, CaseIterable, Equatable {
   }
 
   var hasStem: Bool {
-    switch self {
-    case .breve, .whole: return false
-    default: return true
-    }
+    !NoteValueType.noStemCases.contains(self)
   }
 
   var isHollow: Bool {
-    switch self {
-    case .breve, .whole, .half: return true
-    default: return false
-    }
+    NoteValueType.hollowCases.contains(self)
   }
 
   static func from(xmlType: String) -> NoteValueType? {
@@ -121,26 +131,27 @@ enum NoteValueType: String, CaseIterable, Equatable {
     }
   }
 
+  // Thresholds represent the fraction of a quarter note for each note value.
+  // e.g., a half note = 0.5 quarter notes, an eighth = 0.25 quarter notes, etc.
+  private static let noteValueThresholds: [(threshold: Double, value: NoteValueType)] = [
+    (6.0, .breve),
+    (3.0, .whole),
+    (1.5, .half),
+    (0.75, .quarter),
+    (0.375, .eighth),
+    (0.1875, .sixteenth),
+    (0.09375, .thirtySecond),
+  ]
+
   static func from(divisions: Int, durationInDivisions: Int) -> NoteValueType {
     guard divisions > 0 else { return .quarter }
     let quarterFraction = Double(durationInDivisions) / Double(divisions)
-    if quarterFraction >= 6.0 {
-      return .breve
-    } else if quarterFraction >= 3.0 {
-      return .whole
-    } else if quarterFraction >= 1.5 {
-      return .half
-    } else if quarterFraction >= 0.75 {
-      return .quarter
-    } else if quarterFraction >= 0.375 {
-      return .eighth
-    } else if quarterFraction >= 0.1875 {
-      return .sixteenth
-    } else if quarterFraction >= 0.09375 {
-      return .thirtySecond
-    } else {
-      return .sixtyFourth
+    for entry in noteValueThresholds {
+      if quarterFraction >= entry.threshold {
+        return entry.value
+      }
     }
+    return .sixtyFourth
   }
 }
 enum TempoAdjustment: String, CaseIterable, Identifiable {
@@ -179,5 +190,7 @@ struct ScoreStep: Identifiable, Equatable {
 
 struct ParsedScore: Equatable {
   let title: String
+  let artist: String
+  let album: String
   let steps: [ScoreStep]
 }

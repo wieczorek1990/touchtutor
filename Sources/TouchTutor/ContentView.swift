@@ -19,7 +19,7 @@ struct ContentView: View {
     #else
       PianoContentView(viewModel: viewModel)
         .frame(width: 366, height: 518, alignment: .top)
-        .padding(.top, 6)
+        .padding(.top, 0)
         .padding(18)
         .background(PlatformColors.windowBackground)
         .preferredColorScheme(

@@ -27,7 +27,6 @@ import SwiftUI
           Button(L10n.string("Play Score")) {
             viewModel.startGame()
           }
-          .keyboardShortcut(.return, modifiers: [])
         } else {
           Button(L10n.string("Return to Menu")) {
             viewModel.returnToMenu()

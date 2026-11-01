@@ -4,6 +4,7 @@ final class MusicXMLParser: NSObject, XMLParserDelegate {
   private var currentText: String = ""
 
   private var workTitle: String = ""
+  private var workArtist: String = ""
   private var measureNumber: Int = 1
   private var currentDivisions: Int = 24
   private var currentTempo: Double = 80.0
@@ -95,6 +96,10 @@ final class MusicXMLParser: NSObject, XMLParserDelegate {
       if !text.isEmpty && workTitle.isEmpty {
         workTitle = text
       }
+    case "creator":
+      if !text.isEmpty && workArtist.isEmpty {
+        workArtist = text
+      }
     case "divisions":
       if let val = Int(text), val > 0 {
         currentDivisions = val
@@ -151,7 +156,7 @@ final class MusicXMLParser: NSObject, XMLParserDelegate {
     }
   }
 
-  func buildScore(defaultTitle: String = "To Zanarkand") -> ParsedScore {
+  func buildScore(defaultTitle: String = "To Zanarkand", defaultAlbum: String = "Unknown Album") -> ParsedScore {
     struct RawGroup {
       var measure: Int
       var pitches: [ScorePitch]
@@ -221,15 +226,16 @@ final class MusicXMLParser: NSObject, XMLParserDelegate {
     }
 
     let title = workTitle.isEmpty ? defaultTitle : workTitle
-    return ParsedScore(title: title, steps: steps)
+    let artist = workArtist.isEmpty ? L10n.string("Unknown Artist") : workArtist
+    return ParsedScore(title: title, artist: artist, album: defaultAlbum, steps: steps)
   }
 
-  static func parse(data: Data, defaultTitle: String = "To Zanarkand") -> ParsedScore? {
+  static func parse(data: Data, defaultTitle: String = "To Zanarkand", defaultAlbum: String = "") -> ParsedScore? {
     let parser = MusicXMLParser()
     let xmlParser = XMLParser(data: data)
     xmlParser.delegate = parser
     if xmlParser.parse() {
-      return parser.buildScore(defaultTitle: defaultTitle)
+      return parser.buildScore(defaultTitle: defaultTitle, defaultAlbum: defaultAlbum)
     }
     return nil
   }
@@ -237,7 +243,8 @@ final class MusicXMLParser: NSObject, XMLParserDelegate {
   static func loadScore(item: ScoreItem) -> ParsedScore? {
     if item.isImported {
       return loadScore(
-        from: item.importedFileURL ?? URL(fileURLWithPath: item.id), defaultTitle: item.defaultTitle
+        from: item.importedFileURL ?? URL(fileURLWithPath: item.id),
+        defaultTitle: item.defaultTitle, defaultAlbum: item.defaultAlbum
       )
     }
 
@@ -249,17 +256,19 @@ final class MusicXMLParser: NSObject, XMLParserDelegate {
     ]
 
     for case let url? in candidateURLs {
-      if let score = loadScore(from: url, defaultTitle: item.defaultTitle) {
+      if let score = loadScore(from: url, defaultTitle: item.defaultTitle, defaultAlbum: item.defaultAlbum) {
         return score
       }
     }
     return nil
   }
 
-  static func loadScore(from url: URL, defaultTitle: String = L10n.string("Custom Score"))
-    -> ParsedScore?
-  {
+  static func loadScore(
+    from url: URL,
+    defaultTitle: String = L10n.string("Custom Score"),
+    defaultAlbum: String = ""
+  ) -> ParsedScore? {
     guard let data = try? Data(contentsOf: url) else { return nil }
-    return parse(data: data, defaultTitle: defaultTitle)
+    return parse(data: data, defaultTitle: defaultTitle, defaultAlbum: defaultAlbum)
   }
 }

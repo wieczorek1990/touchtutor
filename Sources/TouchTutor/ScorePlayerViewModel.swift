@@ -188,7 +188,7 @@ final class ScorePlayerViewModel: ObservableObject {
     }
     let nextIndex = min(max(currentIndex + offset, 0), availableScores.count - 1)
     if nextIndex != currentIndex {
-      selectScore(availableScores[nextIndex])
+      selectedScoreItem = availableScores[nextIndex]
     }
   }
 

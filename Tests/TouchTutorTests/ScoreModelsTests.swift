@@ -202,9 +202,9 @@ struct ScoreModelsTests {
   }
 
   @Test func scoreItemHashable() {
-    let a = ScoreItem(id: "x", name: "X", filename: "x.xml", defaultTitle: "X")
-    let b = ScoreItem(id: "x", name: "X", filename: "x.xml", defaultTitle: "X")
-    let c = ScoreItem(id: "y", name: "Y", filename: "y.xml", defaultTitle: "Y")
+    let a = ScoreItem(id: "x", name: "X", filename: "x.xml", defaultTitle: "X", defaultArtist: "A", defaultAlbum: "Alb")
+    let b = ScoreItem(id: "x", name: "X", filename: "x.xml", defaultTitle: "X", defaultArtist: "A", defaultAlbum: "Alb")
+    let c = ScoreItem(id: "y", name: "Y", filename: "y.xml", defaultTitle: "Y", defaultArtist: "B", defaultAlbum: "Alb2")
     #expect(a == b)
     #expect(a != c)
     var set: Set<ScoreItem> = []
@@ -215,7 +215,7 @@ struct ScoreModelsTests {
   }
 
   @Test func scoreItemIdentifiable() {
-    let item = ScoreItem(id: "unique-1", name: "Test", filename: "test.xml", defaultTitle: "Test")
+    let item = ScoreItem(id: "unique-1", name: "Test", filename: "test.xml", defaultTitle: "Test", defaultArtist: "Artist", defaultAlbum: "Album")
     #expect(item.id == "unique-1")
   }
 
@@ -235,9 +235,9 @@ struct ScoreModelsTests {
   // MARK: - ParsedScore
 
   @Test func parsedScoreEquatable() {
-    let a = ParsedScore(title: "Test", steps: [])
-    let b = ParsedScore(title: "Test", steps: [])
-    let c = ParsedScore(title: "Other", steps: [])
+    let a = ParsedScore(title: "Test", artist: "Artist", album: "Album", steps: [])
+    let b = ParsedScore(title: "Test", artist: "Artist", album: "Album", steps: [])
+    let c = ParsedScore(title: "Other", artist: "Artist", album: "Album", steps: [])
     #expect(a == b)
     #expect(a != c)
   }

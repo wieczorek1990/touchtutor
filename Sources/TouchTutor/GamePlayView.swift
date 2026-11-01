@@ -18,21 +18,51 @@ struct GamePlayView: View {
 
   var body: some View {
     VStack(spacing: 12) {
-      HStack(spacing: 8) {
-        Image(systemName: "music.note")
-          .font(.system(size: 14, weight: .semibold))
-          .foregroundColor(.blue)
+      VStack(spacing: 2) {
+        HStack(spacing: 8) {
+          Image(systemName: "music.note")
+            .font(.system(size: 14, weight: .semibold))
+            .foregroundColor(.blue)
+
+          Text(
+            viewModel.selectedScoreItem?.name
+              ?? viewModel.score?.title
+              ?? L10n.string("Touch Piano")
+          )
+          .font(.system(size: 15, weight: .bold, design: .rounded))
+          .foregroundColor(.primary)
+          .lineLimit(1)
+          .truncationMode(.tail)
+
+        }
 
         Text(
-          viewModel.selectedScoreItem?.name
-            ?? viewModel.score?.title
-            ?? L10n.string("Touch Piano")
+          viewModel.selectedScoreItem?.defaultArtist
+            ?? viewModel.score?.artist
+            ?? ""
         )
-        .font(.system(size: 15, weight: .bold, design: .rounded))
-        .foregroundColor(.primary)
+        .font(.system(size: 12, weight: .medium, design: .rounded))
+        .foregroundColor(.secondary)
         .lineLimit(1)
         .truncationMode(.tail)
+        .opacity(
+          (viewModel.selectedScoreItem?.defaultArtist ?? viewModel.score?.artist ?? "").isEmpty
+            ? 0 : 1
+        )
 
+        Text(
+          viewModel.selectedScoreItem?.defaultAlbum
+            ?? viewModel.score?.album
+            ?? ""
+        )
+        .font(.system(size: 11, weight: .regular, design: .rounded))
+        .foregroundColor(.secondary)
+        .lineLimit(1)
+        .truncationMode(.tail)
+        .opacity(
+          (viewModel.selectedScoreItem?.defaultAlbum ?? viewModel.score?.album ?? "").isEmpty
+            ? 0 : 1
+        )
       }
       .padding(.horizontal, 12)
       .padding(.vertical, 6)
@@ -86,7 +116,7 @@ struct GamePlayView: View {
           HStack(spacing: 8) {
             ProgressView(value: Double(current), total: Double(max(1, total)))
               .tint(.blue)
-              .frame(maxWidth: .infinity, alignment: .leading)
+              .frame(maxWidth: .infinity)
 
             Button(action: {
               viewModel.restart()
@@ -107,6 +137,7 @@ struct GamePlayView: View {
             .disabled(current == 0)
             .help(L10n.string("Reset score to start"))
           }
+          .frame(maxWidth: .infinity, alignment: .center)
         }
       }
 
