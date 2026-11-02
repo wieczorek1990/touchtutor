@@ -1,5 +1,5 @@
 [[packs]]
-id = "tech.soiree.touchtutor.scorepacks.cmajor"
+id = "tech.soiree.touchtutor.scorepacks.cmajor.test"
 title = "C Major"
 color = "orange"
 

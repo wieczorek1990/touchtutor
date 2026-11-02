@@ -1,5 +1,5 @@
 [[packs]]
-id = "tech.soiree.touchtutor.scorepacks.finalfantasy"
+id = "tech.soiree.touchtutor.scorepacks.finalfantasy.1"
 title = "Final Fantasy"
 color = "teal"
 
@@ -11,3 +11,11 @@ id = "tifas_theme"
 
 [[packs.scores]]
 id = "youre_not_alone"
+
+[[packs]]
+id = "tech.soiree.touchtutor.scorepacks.finalfantasy.2"
+title = "Final Fantasy (2)"
+color = "blue"
+
+[[packs.scores]]
+id = "main_theme_ff5"

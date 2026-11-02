@@ -68,7 +68,13 @@ final class ScorePlayerViewModel: ObservableObject {
       availableScores.append(contentsOf: freeDefaults.filter { !testIds.contains($0.id) })
       // 4. Paid (Final Fantasy scores)
       for pack in scoreStore.packs {
-        if pack.id == "tech.soiree.touchtutor.scorepacks.finalfantasy" {
+        if pack.id == "tech.soiree.touchtutor.scorepacks.finalfantasy.1" {
+          availableScores.append(contentsOf: pack.scores)
+        }
+      }
+      // 5. Paid (Final Fantasy (2) scores)
+      for pack in scoreStore.packs {
+        if pack.id == "tech.soiree.touchtutor.scorepacks.finalfantasy.2" {
           availableScores.append(contentsOf: pack.scores)
         }
       }

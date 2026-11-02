@@ -15,3 +15,9 @@
  title = "You're Not Alone"
  artist = "Nobuo Uematsu"
  album = "Final Fantasy VII"
+
+[[scores]]
+id = "main_theme_ff5"
+title = "Main Theme"
+artist = "Nobuo Uematsu"
+album = "Final Fantasy V"

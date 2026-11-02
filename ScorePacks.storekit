@@ -17,21 +17,6 @@
     {
       "displayPrice" : "1.00",
       "familyShareable" : false,
-      "internalID" : "64010001",
-      "localizations" : [
-        {
-          "description" : "Final Fantasy piano pieces",
-          "displayName" : "Final Fantasy",
-          "locale" : "en_US"
-        }
-      ],
-      "productID" : "tech.soiree.touchtutor.scorepacks.finalfantasy",
-      "referenceName" : "Final Fantasy",
-      "type" : "NonConsumable"
-    },
-    {
-      "displayPrice" : "1.00",
-      "familyShareable" : false,
       "internalID" : "64010002",
       "localizations" : [
         {
@@ -40,8 +25,38 @@
           "locale" : "en_US"
         }
       ],
-      "productID" : "tech.soiree.touchtutor.scorepacks.cmajor",
+      "productID" : "tech.soiree.touchtutor.scorepacks.cmajor.test",
       "referenceName" : "C Major",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "1.00",
+      "familyShareable" : false,
+      "internalID" : "0CE0048F",
+      "localizations" : [
+        {
+          "description" : "Final Fantasy piano pieces",
+          "displayName" : "Final Fantasy",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "tech.soiree.touchtutor.scorepacks.finalfantasy.2",
+      "referenceName" : "Final Fantasy (2)",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "1.00",
+      "familyShareable" : false,
+      "internalID" : "64010001",
+      "localizations" : [
+        {
+          "description" : "Final Fantasy piano pieces",
+          "displayName" : "Final Fantasy",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "tech.soiree.touchtutor.scorepacks.finalfantasy.1",
+      "referenceName" : "Final Fantasy (1)",
       "type" : "NonConsumable"
     }
   ],
