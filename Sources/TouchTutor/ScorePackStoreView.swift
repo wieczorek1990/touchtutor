@@ -56,7 +56,11 @@ struct ScorePackStoreView: View {
                 Text("No score packs are available yet.", bundle: .module)
                   .padding(.vertical)
               }
-              ForEach(viewModel.scoreStore.packs) { pack in
+              ForEach(viewModel.scoreStore.packs.sorted { a, b in
+                let aOwned = viewModel.storeState.ownedProductIDs.contains(a.id)
+                let bOwned = viewModel.storeState.ownedProductIDs.contains(b.id)
+                return !aOwned && bOwned
+              }) { pack in
                 ScorePackRow(
                   pack: pack,
                   product: viewModel.storeState.products[pack.id],
@@ -96,6 +100,7 @@ struct ScorePackStoreView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
           }
+          .layoutPriority(-1)
           #if os(iOS)
           ScorePackStoreActions(
             state: viewModel.storeState,
