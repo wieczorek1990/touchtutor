@@ -15,7 +15,7 @@ id = "youre_not_alone"
 [[packs]]
 id = "tech.soiree.touchtutor.scorepacks.finalfantasy.2"
 title = "Final Fantasy (2)"
-color = "blue"
+color = "red"
 
 [[packs.scores]]
 id = "main_theme_ff5"
