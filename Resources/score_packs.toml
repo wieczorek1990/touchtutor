@@ -20,6 +20,12 @@ color = "red"
 [[packs.scores]]
 id = "main_theme_ff5"
 
+[[packs.scores]]
+id = "on_our_way"
+
+[[packs.scores]]
+id = "underneath_the_rotting_pizza"
+
 [[packs]]
 id = "tech.soiree.touchtutor.scorepacks.classical.1"
 title = "Bach BMV"

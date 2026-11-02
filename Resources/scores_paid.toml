@@ -23,6 +23,18 @@ artist = "Nobuo Uematsu"
 album = "Final Fantasy V"
 
 [[scores]]
+id = "on_our_way"
+title = "On Our Way"
+artist = "Nobuo Uematsu"
+album = "Final Fantasy X"
+
+[[scores]]
+id = "underneath_the_rotting_pizza"
+title = "Underneath the Rotting Pizza"
+artist = "Nobuo Uematsu"
+album = "Final Fantasy XI"
+
+[[scores]]
 id = "bmv_846"
 title = "BMV 846"
 artist = "Johann Sebastian Bach"
