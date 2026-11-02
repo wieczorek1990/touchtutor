@@ -96,7 +96,6 @@ struct ScorePackStoreView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
           }
-          .frame(maxHeight: .infinity)
           #if os(iOS)
           ScorePackStoreActions(
             state: viewModel.storeState,

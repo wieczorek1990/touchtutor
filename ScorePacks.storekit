@@ -65,23 +65,23 @@
       "internalID" : "C142DEEC",
       "localizations" : [
         {
-          "description" : "Final Fantasy piano pieces",
-          "displayName" : "Final Fantasy",
+          "description" : "Bach BMV piano pieces",
+          "displayName" : "Bach BMV",
           "locale" : "en_US"
         }
       ],
-      "productID" : "tech.soiree.touchtutor.scorepacks.classical.2",
-      "referenceName" : "Classical (2)",
+      "productID" : "tech.soiree.touchtutor.scorepacks.classical.1",
+      "referenceName" : "Bach BMV",
       "type" : "NonConsumable"
     },
     {
       "displayPrice" : "1.00",
       "familyShareable" : false,
-      "internalID" : "C142DEEC",
+      "internalID" : "B5E3F1A2",
       "localizations" : [
         {
-          "description" : "Final Fantasy piano pieces",
-          "displayName" : "Final Fantasy",
+          "description" : "Classical vocal scores",
+          "displayName" : "Classical (2)",
           "locale" : "en_US"
         }
       ],
