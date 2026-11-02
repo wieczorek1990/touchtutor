@@ -40,13 +40,13 @@
 		CB6DB7FF3095C72C0084C852 /* eyes_on_me.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F43095C72C0084C852 /* eyes_on_me.xml */; };
 		CB6DB8013095C72C0084C852 /* practice_test_chords.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F63095C72C0084C852 /* practice_test_chords.xml */; };
 		CB6DB8023095C72C0084C852 /* test.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F93095C72C0084C852 /* test.xml */; };
-		CB6DB80D3095C72C0084C852 /* test_long_title.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB80A3095C72C0084C852 /* test_long_title.xml */; };
 		CB6DB8033095C72C0084C852 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB8043095C72C0084C853 /* AppIcon.icns */; };
 		CB6DB8043095C72C0084C852 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F13095C72C0084C852 /* Localizable.strings */; };
 		CB6DB8083095C80B0084C852 /* tifas_theme.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB8063095C80B0084C852 /* tifas_theme.xml */; };
 		CB6DB8093095C80B0084C852 /* aeriths_theme.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB8053095C80B0084C852 /* aeriths_theme.xml */; };
 		CB6DB80A3095C80B0084C852 /* youre_not_alone.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB8073095C80B0084C852 /* youre_not_alone.xml */; };
 		CB6DB80B3095C72C0084C852 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB80C3095C72C0084C853 /* AppIcon.xcassets */; };
+		CB6DB80D3095C72C0084C852 /* test_long_title.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB80A3095C72C0084C852 /* test_long_title.xml */; };
 		CB6DB8113095C72C0084C852 /* soiree_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB8123095C72C0084C852 /* soiree_logo.png */; };
 		CCC27994459E14D69EF2A4D5 /* Tests/TouchTutorTests/ScorePackStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C11413BD14308ACD28ED7B /* Tests/TouchTutorTests/ScorePackStoreTests.swift */; };
 		DEAD0001BEEF4242CAFE0001 /* Sources/TouchTutor/SoundFontSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD0002BEEF4242CAFE0002 /* Sources/TouchTutor/SoundFontSelectorView.swift */; };
@@ -117,11 +117,11 @@
 		CB6DB7F63095C72C0084C852 /* practice_test_chords.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = practice_test_chords.xml; sourceTree = "<group>"; };
 		CB6DB7F73095C72C0084C852 /* practice_test_scale.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = practice_test_scale.xml; sourceTree = "<group>"; };
 		CB6DB7F93095C72C0084C852 /* test.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = test.xml; sourceTree = "<group>"; };
-		CB6DB80A3095C72C0084C852 /* test_long_title.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = test_long_title.xml; sourceTree = "<group>"; };
 		CB6DB8043095C72C0084C853 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
 		CB6DB8053095C80B0084C852 /* aeriths_theme.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = aeriths_theme.xml; sourceTree = "<group>"; };
 		CB6DB8063095C80B0084C852 /* tifas_theme.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = tifas_theme.xml; sourceTree = "<group>"; };
 		CB6DB8073095C80B0084C852 /* youre_not_alone.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = youre_not_alone.xml; sourceTree = "<group>"; };
+		CB6DB80A3095C72C0084C852 /* test_long_title.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = test_long_title.xml; sourceTree = "<group>"; };
 		CB6DB80C3095C72C0084C853 /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppIcon.xcassets; sourceTree = "<group>"; };
 		CB6DB8123095C72C0084C852 /* soiree_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soiree_logo.png; sourceTree = "<group>"; };
 		CB8713BB0FA0509CD417AA7E /* ScorePacks.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = ScorePacks.storekit; sourceTree = "<group>"; };
@@ -483,7 +483,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 27.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = tech.soiree.TouchTutor.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.soiree.touchtutor.tests;
 				PRODUCT_NAME = TouchTutorTests;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -507,7 +507,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 27.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tech.soiree.TouchTutor.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.soiree.touchtutor.tests;
 				PRODUCT_NAME = TouchTutorTests;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TouchTutor.app/Contents/MacOS/TouchTutor";
