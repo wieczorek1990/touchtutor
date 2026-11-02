@@ -5,18 +5,9 @@ color = "teal"
 
 [[packs.scores]]
 id = "aeriths_theme"
-title = "Aerith's Theme"
-artist = "Nobuo Uematsu"
-album = "Final Fantasy VII"
 
 [[packs.scores]]
 id = "tifas_theme"
-title = "Tifa's Theme"
-artist = "Nobuo Uematsu"
-album = "Final Fantasy VII"
 
 [[packs.scores]]
 id = "youre_not_alone"
-title = "You're Not Alone"
-artist = "Nobuo Uematsu"
-album = "Final Fantasy VII"

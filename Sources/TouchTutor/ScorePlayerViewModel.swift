@@ -332,10 +332,11 @@ final class ScorePlayerViewModel: ObservableObject {
     currentStepIndex = clampedIndex
     if clampedIndex < score.steps.count {
       currentStep = score.steps[clampedIndex]
+      isFinished = false
     } else {
       currentStep = nil
+      isFinished = false
     }
-    isFinished = clampedIndex >= score.steps.count
   }
 
   private func triggerButtonPulse() {

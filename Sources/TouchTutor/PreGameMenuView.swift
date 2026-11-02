@@ -166,6 +166,9 @@ struct PreGameMenuView: View {
               }
               .padding(.vertical, 2)
               .padding(.horizontal, 1)
+            #if os(iOS)
+              .padding(.bottom, 96)
+            #endif
             }
             .frame(minHeight: 60)
             .onChange(of: viewModel.selectedScoreItem?.id) {

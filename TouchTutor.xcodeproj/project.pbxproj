@@ -32,6 +32,7 @@
 		BADD200FE97D203DF515488B /* Sources/TouchTutor/ImportedScoreLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CFFD86CCD5AD61ABA8F23 /* Sources/TouchTutor/ImportedScoreLibrary.swift */; };
 		C0F208B12ACF8CEDA2C5D448 /* Sources/TouchTutor/PreGameMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB17DCAFB293C1C36001AF /* Sources/TouchTutor/PreGameMenuView.swift */; };
 		C56EDE9094A531666789557E /* Tests/TouchTutorTests/ScoreLoadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9507F84DAE68E626200D7669 /* Tests/TouchTutorTests/ScoreLoadingTests.swift */; };
+		CB58C91B3098770F00E476C4 /* scores_paid.toml in Resources */ = {isa = PBXBuildFile; fileRef = CB58C91A3098770400E476C4 /* scores_paid.toml */; };
 		CB6DB7FB3095C72C0084C852 /* zanarkand.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F53095C72C0084C852 /* zanarkand.xml */; };
 		CB6DB7FC3095C72C0084C852 /* dancing_mad.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F33095C72C0084C852 /* dancing_mad.xml */; };
 		CB6DB7FD3095C72C0084C852 /* practice_test_scale.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F73095C72C0084C852 /* practice_test_scale.xml */; };
@@ -57,14 +58,14 @@
 		F47AF83A641D803D03C9B46E /* Sources/TouchTutor/SoundFontSynth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA733087A571D9DD4561858 /* Sources/TouchTutor/SoundFontSynth.swift */; };
 		FC6E4D1A21082BB01EF63D15 /* Sources/TouchTutor/ScorePlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2FCA2B261527262F3DF4D7 /* Sources/TouchTutor/ScorePlayerViewModel.swift */; };
 		STOREKIT000000000000000001 /* ScorePacks.storekit in Resources */ = {isa = PBXBuildFile; fileRef = CB8713BB0FA0509CD417AA7E /* ScorePacks.storekit */; };
+		TOML0001E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/TOMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = TOML0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/TOMLParser.swift */; };
+		TOMLFREE000000000000000001 /* scores_free.toml in Resources */ = {isa = PBXBuildFile; fileRef = TOMLFREE000000000000000002 /* scores_free.toml */; };
+		TOMLPACKS00000000000000001 /* score_packs.toml in Resources */ = {isa = PBXBuildFile; fileRef = TOMLPACKS00000000000000002 /* score_packs.toml */; };
+		TOMLPACKSTEST00000000000001 /* score_packs_test.toml in Resources */ = {isa = PBXBuildFile; fileRef = TOMLPACKSTEST00000000000002 /* score_packs_test.toml */; };
+		TOMLTEST000000000000000001 /* scores_test.toml in Resources */ = {isa = PBXBuildFile; fileRef = TOMLTEST000000000000000002 /* scores_test.toml */; };
 		TTLOGO013095C72C0084C852 /* touchtutor_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = TTLOGO023095C72C0084C852 /* touchtutor_logo.png */; };
 		TTLOGOW13095C72C0084C852 /* touchtutor_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = TTLOGOW23095C72C0084C852 /* touchtutor_logo_white.png */; };
 		WHITE0013095C72C0084C852 /* soiree_logo_white.svg in Resources */ = {isa = PBXBuildFile; fileRef = WHITE0023095C72C0084C852 /* soiree_logo_white.svg */; };
-		TOML0001E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/TOMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = TOML0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/TOMLParser.swift */; };
-		TOMLFREE000000000000000001 /* scores_free.toml in Resources */ = {isa = PBXBuildFile; fileRef = TOMLFREE000000000000000002 /* scores_free.toml */; };
-		TOMLTEST000000000000000001 /* scores_test.toml in Resources */ = {isa = PBXBuildFile; fileRef = TOMLTEST000000000000000002 /* scores_test.toml */; };
-		TOMLPACKS00000000000000001 /* score_packs.toml in Resources */ = {isa = PBXBuildFile; fileRef = TOMLPACKS00000000000000002 /* score_packs.toml */; };
-		TOMLPACKSTEST00000000000001 /* score_packs_test.toml in Resources */ = {isa = PBXBuildFile; fileRef = TOMLPACKSTEST00000000000002 /* score_packs_test.toml */; };
 		WHITEPNG013095C72C0084C852 /* soiree_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = WHITEPNG023095C72C0084C852 /* soiree_logo_white.png */; };
 /* End PBXBuildFile section */
 
@@ -105,24 +106,20 @@
 		AAAABB222222222222222222AB /* Sources/TouchTutor/SystemAppearanceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/SystemAppearanceObserver.swift; sourceTree = "<group>"; };
 		AAAABB333333333333333333AB /* Sources/TouchTutor/TempoSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/TempoSelectorView.swift; sourceTree = "<group>"; };
 		ABCD0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/SVGRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/SVGRenderer.swift; sourceTree = "<group>"; };
-		TOML0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/TOMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/TOMLParser.swift; sourceTree = "<group>"; };
-		TOMLFREE000000000000000002 /* scores_free.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = scores_free.toml; sourceTree = "<group>"; };
-		TOMLTEST000000000000000002 /* scores_test.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = scores_test.toml; sourceTree = "<group>"; };
-		TOMLPACKS00000000000000002 /* score_packs.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = score_packs.toml; sourceTree = "<group>"; };
-		TOMLPACKSTEST00000000000002 /* score_packs_test.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = score_packs_test.toml; sourceTree = "<group>"; };
 		AD4D2A41CEE91C8CD15BE50C /* Sources/TouchTutor/App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/App.swift; sourceTree = "<group>"; };
+		CB58C91A3098770400E476C4 /* scores_paid.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = scores_paid.toml; sourceTree = "<group>"; };
 		CB6DB7F03095C72C0084C852 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CB6DB7F23095C72C0084C852 /* soiree_logo.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = soiree_logo.svg; sourceTree = "<group>"; };
-		CB6DB7F33095C72C0084C852 /* dancing_mad.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "dancing_mad.xml"; sourceTree = "<group>"; };
-		CB6DB7F43095C72C0084C852 /* eyes_on_me.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "eyes_on_me.xml"; sourceTree = "<group>"; };
-		CB6DB7F53095C72C0084C852 /* zanarkand.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "zanarkand.xml"; sourceTree = "<group>"; };
-		CB6DB7F63095C72C0084C852 /* practice_test_chords.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "practice_test_chords.xml"; sourceTree = "<group>"; };
-		CB6DB7F73095C72C0084C852 /* practice_test_scale.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "practice_test_scale.xml"; sourceTree = "<group>"; };
+		CB6DB7F33095C72C0084C852 /* dancing_mad.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = dancing_mad.xml; sourceTree = "<group>"; };
+		CB6DB7F43095C72C0084C852 /* eyes_on_me.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = eyes_on_me.xml; sourceTree = "<group>"; };
+		CB6DB7F53095C72C0084C852 /* zanarkand.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = zanarkand.xml; sourceTree = "<group>"; };
+		CB6DB7F63095C72C0084C852 /* practice_test_chords.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = practice_test_chords.xml; sourceTree = "<group>"; };
+		CB6DB7F73095C72C0084C852 /* practice_test_scale.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = practice_test_scale.xml; sourceTree = "<group>"; };
 		CB6DB7F93095C72C0084C852 /* Test.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Test.xml; sourceTree = "<group>"; };
 		CB6DB8043095C72C0084C853 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
-		CB6DB8053095C80B0084C852 /* aeriths_theme.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "aeriths_theme.xml"; sourceTree = "<group>"; };
-		CB6DB8063095C80B0084C852 /* tifas_theme.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tifas_theme.xml"; sourceTree = "<group>"; };
-		CB6DB8073095C80B0084C852 /* youre_not_alone.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "youre_not_alone.xml"; sourceTree = "<group>"; };
+		CB6DB8053095C80B0084C852 /* aeriths_theme.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = aeriths_theme.xml; sourceTree = "<group>"; };
+		CB6DB8063095C80B0084C852 /* tifas_theme.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = tifas_theme.xml; sourceTree = "<group>"; };
+		CB6DB8073095C80B0084C852 /* youre_not_alone.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = youre_not_alone.xml; sourceTree = "<group>"; };
 		CB6DB80C3095C72C0084C853 /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppIcon.xcassets; sourceTree = "<group>"; };
 		CB6DB8123095C72C0084C852 /* soiree_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soiree_logo.png; sourceTree = "<group>"; };
 		CB8713BB0FA0509CD417AA7E /* ScorePacks.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = ScorePacks.storekit; sourceTree = "<group>"; };
@@ -137,6 +134,11 @@
 		EEE757404F55F44A50586896 /* TouchTutorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = TouchTutorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4ECD50D9C03A7E2600EECDB /* Sources/TouchTutor/GamePlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/GamePlayView.swift; sourceTree = "<group>"; };
 		FA1CFFD86CCD5AD61ABA8F23 /* Sources/TouchTutor/ImportedScoreLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/ImportedScoreLibrary.swift; sourceTree = "<group>"; };
+		TOML0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/TOMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/TOMLParser.swift; sourceTree = "<group>"; };
+		TOMLFREE000000000000000002 /* scores_free.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = scores_free.toml; sourceTree = "<group>"; };
+		TOMLPACKS00000000000000002 /* score_packs.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = score_packs.toml; sourceTree = "<group>"; };
+		TOMLPACKSTEST00000000000002 /* score_packs_test.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = score_packs_test.toml; sourceTree = "<group>"; };
+		TOMLTEST000000000000000002 /* scores_test.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = scores_test.toml; sourceTree = "<group>"; };
 		TTLOGO023095C72C0084C852 /* touchtutor_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touchtutor_logo.png; sourceTree = "<group>"; };
 		TTLOGOW23095C72C0084C852 /* touchtutor_logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touchtutor_logo_white.png; sourceTree = "<group>"; };
 		WHITE0023095C72C0084C852 /* soiree_logo_white.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = soiree_logo_white.svg; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				TTLOGOW23095C72C0084C852 /* touchtutor_logo_white.png */,
 				6E69DD8FF1024E608BA67D6D /* Scores */,
 				TOMLFREE000000000000000002 /* scores_free.toml */,
+				CB58C91A3098770400E476C4 /* scores_paid.toml */,
 				TOMLTEST000000000000000002 /* scores_test.toml */,
 				TOMLPACKS00000000000000002 /* score_packs.toml */,
 				TOMLPACKSTEST00000000000002 /* score_packs_test.toml */,
@@ -362,6 +365,7 @@
 				CB6DB8093095C80B0084C852 /* aeriths_theme.xml in Resources */,
 				CB6DB80A3095C80B0084C852 /* youre_not_alone.xml in Resources */,
 				CB6DB7FB3095C72C0084C852 /* zanarkand.xml in Resources */,
+				CB58C91B3098770F00E476C4 /* scores_paid.toml in Resources */,
 				CB6DB7FC3095C72C0084C852 /* dancing_mad.xml in Resources */,
 				CB6DB7FD3095C72C0084C852 /* practice_test_scale.xml in Resources */,
 				CB6DB7FE3095C72C0084C852 /* soiree_logo.svg in Resources */,

@@ -20,12 +20,63 @@ struct ScorePack: Identifiable {
   }
 
   static let catalog: [ScorePack] = {
-    var packs = loadPacksFromTOML("score_packs")
+    let packs = loadPacksFromTOML("score_packs")
+    let paidScoreDetails = loadPaidScoreDetails()
+    var enrichedPacks: [ScorePack] = []
+    for pack in packs {
+      let enrichedScores = pack.scores.map { score in
+        if let details = paidScoreDetails[score.id] {
+          return ScoreItem(
+            id: score.id,
+            title: details.title,
+            filename: score.filename,
+            artist: details.artist,
+            album: details.album,
+            isImported: score.isImported,
+            importedFileURL: score.importedFileURL,
+            requiredProductID: score.requiredProductID
+          )
+        }
+        return score
+      }
+      enrichedPacks.append(
+        ScorePack(productID: pack.id, title: pack.title, color: pack.color, scores: enrichedScores)
+      )
+    }
     #if DEBUG
-      packs.append(contentsOf: loadPacksFromTOML("score_packs_test"))
+      enrichedPacks.append(contentsOf: loadPacksFromTOML("score_packs_test"))
     #endif
-    return packs
+    return enrichedPacks
   }()
+
+  private struct PaidScoreDetail {
+    let title: String
+    let artist: String
+    let album: String
+  }
+
+  private static func loadPaidScoreDetails() -> [String: PaidScoreDetail] {
+    guard let toml = TOMLParser.loadResource("scores_paid") else { return [:] }
+    let tables = TOMLParser.parse(toml)
+    var details: [String: PaidScoreDetail] = [:]
+    for table in tables {
+      if let scoresArray = table["scores"] as? [[String: Any]] {
+        for entry in scoresArray {
+          if let id = entry["id"] as? String {
+            let title = (entry["title"] as? String) ?? id
+            let artist = entry["artist"] as? String ?? ""
+            let album = entry["album"] as? String ?? ""
+            details[id] = PaidScoreDetail(
+              title: L10n.string(title),
+              artist: L10n.string(artist),
+              album: L10n.string(album)
+            )
+          }
+        }
+      }
+    }
+    return details
+  }
 
   private static func loadPacksFromTOML(_ name: String) -> [ScorePack] {
     guard let toml = TOMLParser.loadResource(name) else { return [] }
