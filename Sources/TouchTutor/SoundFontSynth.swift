@@ -9,6 +9,7 @@ final class SoundFontSynth {
   private var instrumentGeneration = 0
   private var currentProgram: UInt8 = 0
   private var loadedPrograms: Set<UInt8> = []
+  private var isReady = false
 
   init() {
     engine.attach(sampler)
@@ -17,11 +18,17 @@ final class SoundFontSynth {
     } else {
       engine.connect(sampler, to: engine.mainMixerNode, format: nil)
     }
-    try? engine.start()
+    Task.detached { [weak self] in
+      try? self?.engine.start()
+      await MainActor.run {
+        self?.isReady = true
+      }
+    }
   }
 
   /// Switch to a different instrument program.
   func setProgram(_ program: UInt8) {
+    guard isReady else { return }
     guard program != currentProgram else { return }
     currentProgram = program
     ensureInstrumentLoaded(program)
@@ -64,6 +71,7 @@ final class SoundFontSynth {
   }
 
   func play(midiNotes: [UInt8], sustainDurationNanoseconds: UInt64 = 3_000_000_000) {
+    guard isReady else { return }
     ensureInstrumentLoaded(currentProgram)
     sampler.sendController(123, withValue: 0, onChannel: 0)
     let generation = instrumentGeneration
