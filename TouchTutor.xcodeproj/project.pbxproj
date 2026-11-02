@@ -226,7 +226,7 @@
 				AA1111111111111111111111AB /* Sources/TouchTutor/AppearanceSwitcherView.swift */,
 				AA2222222222222222222222AB /* Sources/TouchTutor/CircleAnimationHelper.swift */,
 				AA3333333333333333333333AB /* Sources/TouchTutor/ContentView.swift */,
- 			AA7777777777777777777777AB /* Sources/TouchTutor/MusicNoteLogoView.swift */,
+				AA7777777777777777777777AB /* Sources/TouchTutor/MusicNoteLogoView.swift */,
 				AA8888888888888888888888AB /* Sources/TouchTutor/NoteCapsuleButton.swift */,
 				AA9999999999999999999999AB /* Sources/TouchTutor/PianoContentView.swift */,
 				AAAABB111111111111111111AB /* Sources/TouchTutor/SoireeTechLinkView.swift */,
@@ -429,7 +429,7 @@
 				AA1111111111111111111111AA /* Sources/TouchTutor/AppearanceSwitcherView.swift in Sources */,
 				AA2222222222222222222222AA /* Sources/TouchTutor/CircleAnimationHelper.swift in Sources */,
 				AA3333333333333333333333AA /* Sources/TouchTutor/ContentView.swift in Sources */,
- 			AA7777777777777777777777AA /* Sources/TouchTutor/MusicNoteLogoView.swift in Sources */,
+				AA7777777777777777777777AA /* Sources/TouchTutor/MusicNoteLogoView.swift in Sources */,
 				AA8888888888888888888888AA /* Sources/TouchTutor/NoteCapsuleButton.swift in Sources */,
 				AA9999999999999999999999AA /* Sources/TouchTutor/PianoContentView.swift in Sources */,
 				AAAABB111111111111111111AA /* Sources/TouchTutor/SoireeTechLinkView.swift in Sources */,
@@ -485,11 +485,11 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.soiree.touchtutor.tests;
 				PRODUCT_NAME = TouchTutorTests;
@@ -510,11 +510,11 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.soiree.touchtutor.tests;
 				PRODUCT_NAME = TouchTutorTests;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -532,7 +532,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = RHX53VZ224;
@@ -656,7 +656,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = RHX53VZ224;
