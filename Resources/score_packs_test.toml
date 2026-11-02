@@ -1,0 +1,20 @@
+[[packs]]
+id = "tech.soiree.touchtutor.scorepacks.cmajor"
+title = "C Major"
+color = "orange"
+
+[[packs.scores]]
+id = "practice_test_scale"
+name = "C Major Scale"
+filename = "Practice - C Major Scale.xml"
+defaultTitle = "C Major Scale"
+defaultArtist = "Unknown Artist"
+defaultAlbum = "Unknown Album"
+
+[[packs.scores]]
+id = "practice_test_chords"
+name = "C Major Chords"
+filename = "Practice - C Major Chords.xml"
+defaultTitle = "C Major Chords"
+defaultArtist = "Unknown Artist"
+defaultAlbum = "Unknown Album"

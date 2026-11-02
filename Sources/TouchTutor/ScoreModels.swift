@@ -12,60 +12,51 @@ struct ScoreItem: Identifiable, Hashable {
   var requiredProductID: String?
 
   static let defaultScores: [ScoreItem] = {
-    var scores = [
-      ScoreItem(
-        id: "zanarkand",
-        name: L10n.string("To Zanarkand"),
-        filename: "Nobuo Uematsu - To Zanarkand.xml",
-        defaultTitle: L10n.string("To Zanarkand"),
-        defaultArtist: L10n.string("Nobuo Uematsu"),
-        defaultAlbum: L10n.string("Final Fantasy X")
-      ),
-      ScoreItem(
-        id: "eyes_on_me",
-        name: L10n.string("Eyes On Me"),
-        filename: "Nobuo Uematsu - Eyes on Me.xml",
-        defaultTitle: L10n.string("Eyes on Me"),
-        defaultArtist: L10n.string("Nobuo Uematsu"),
-        defaultAlbum: L10n.string("Final Fantasy VIII")
-      ),
-      ScoreItem(
-        id: "dancing_mad",
-        name: L10n.string("Dancing Mad"),
-        filename: "Nobuo Uematsu - Dancing Mad.xml",
-        defaultTitle: L10n.string("Dancing Mad"),
-        defaultArtist: L10n.string("Nobuo Uematsu"),
-        defaultAlbum: L10n.string("Final Fantasy VI")
-      ),
-    ]
+    var scores = loadScoresFromTOML("free")
     #if DEBUG
-      scores.insert(
-        ScoreItem(
-          id: "test",
-          name: L10n.string("Test"),
-          filename: "Test.xml",
-          defaultTitle: L10n.string("Test"),
-          defaultArtist: L10n.string("Test Artist"),
-          defaultAlbum: L10n.string("Test Album")
-        ),
-        at: 0
-      )
-      scores.insert(
-        ScoreItem(
-          id: "test_long_title",
-          name: L10n.string(
-            "Test with a Very Long Title That Should Be Exactly Eighty Eight Characters in Length Now"
-          ),
-          filename: "Test.xml",
-          defaultTitle: L10n.string("Test Long Title"),
-          defaultArtist: L10n.string("Test Artist"),
-          defaultAlbum: L10n.string("Test Album")
-        ),
-        at: 1
-      )
+      let testScores = loadScoresFromTOML("scores_test")
+      scores.insert(contentsOf: testScores, at: 0)
     #endif
     return scores
   }()
+
+  private static func loadScoresFromTOML(_ name: String) -> [ScoreItem] {
+    guard let toml = TOMLParser.loadResource(name) else { return [] }
+    let tables = TOMLParser.parse(toml)
+    var scores: [ScoreItem] = []
+    for table in tables {
+      // Each table may be a wrapper containing a "scores" array, or a direct score entry
+      if let scoresArray = table["scores"] as? [[String: Any]] {
+        for entry in scoresArray {
+          if let item = ScoreItem.fromTOML(entry) {
+            scores.append(item)
+          }
+        }
+      } else if let item = ScoreItem.fromTOML(table) {
+        scores.append(item)
+      }
+    }
+    return scores
+  }
+
+  /// Create a ScoreItem from a TOML table entry.
+  static func fromTOML(_ table: [String: Any]) -> ScoreItem? {
+    guard let id = table["id"] as? String,
+          let name = table["name"] as? String,
+          let filename = table["filename"] as? String,
+          let defaultTitle = table["defaultTitle"] as? String,
+          let defaultArtist = table["defaultArtist"] as? String,
+          let defaultAlbum = table["defaultAlbum"] as? String
+    else { return nil }
+    return ScoreItem(
+      id: id,
+      name: L10n.string(name),
+      filename: filename,
+      defaultTitle: L10n.string(defaultTitle),
+      defaultArtist: L10n.string(defaultArtist),
+      defaultAlbum: L10n.string(defaultAlbum)
+    )
+  }
 }
 
 struct ScorePitch: Hashable {

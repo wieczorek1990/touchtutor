@@ -20,60 +20,72 @@ struct ScorePack: Identifiable {
   }
 
   static let catalog: [ScorePack] = {
-    var packs: [ScorePack] = [
-      ScorePack(
-        productID: "tech.soiree.touchtutor.scorepacks.finalfantasy",
-        title: "Final Fantasy",
-        color: .teal,
-        scores: [
-          ScoreItem(
-            id: "aeriths_theme", name: "Aerith's Theme",
-            filename: "Aeriths theme.xml", defaultTitle: "Aerith's Theme",
-            defaultArtist: "Nobuo Uematsu",
-            defaultAlbum: "Final Fantasy VII"
-          ),
-          ScoreItem(
-            id: "tifas_theme", name: "Tifa's Theme",
-            filename: "Tifas theme.xml", defaultTitle: "Tifa's Theme",
-            defaultArtist: "Nobuo Uematsu",
-            defaultAlbum: "Final Fantasy VII"
-          ),
-          ScoreItem(
-            id: "youre_not_alone", name: "You're Not Alone",
-            filename: "You're not alone.xml", defaultTitle: "You're Not Alone",
-            defaultArtist: "Nobuo Uematsu",
-            defaultAlbum: "Final Fantasy IX"
-          ),
-        ]
-      )
-    ]
+    var packs = loadPacksFromTOML("score_packs")
     #if DEBUG
-      packs.append(
-        ScorePack(
-          productID: "tech.soiree.touchtutor.scorepacks.cmajor",
-          title: "C Major",
-          color: .orange,
-          scores: [
-            ScoreItem(
-              id: "practice_test_scale", name: L10n.string("C Major Scale"),
-              filename: "Practice - C Major Scale.xml", defaultTitle: L10n.string("C Major Scale"),
-              defaultArtist: L10n.string("Unknown Artist"),
-              defaultAlbum: L10n.string("Unknown Album")
-            ),
-            ScoreItem(
-              id: "practice_test_chords",
-              name: L10n.string("C Major Chords"),
-              filename: "Practice - C Major Chords.xml",
-              defaultTitle: L10n.string("C Major Chords"),
-              defaultArtist: L10n.string("Unknown Artist"),
-              defaultAlbum: L10n.string("Unknown Album")
-            ),
-          ]
-        )
-      )
+      packs.append(contentsOf: loadPacksFromTOML("score_packs_test"))
     #endif
     return packs
   }()
+
+  private static func loadPacksFromTOML(_ name: String) -> [ScorePack] {
+    guard let toml = TOMLParser.loadResource(name) else { return [] }
+    let tables = TOMLParser.parse(toml)
+    var packs: [ScorePack] = []
+    for table in tables {
+      // Each table may be a wrapper containing a "packs" array, or a direct pack entry
+      if let packsArray = table["packs"] as? [[String: Any]] {
+        for entry in packsArray {
+          if let pack = ScorePack.fromTOML(entry) {
+            packs.append(pack)
+          }
+        }
+      } else if let pack = ScorePack.fromTOML(table) {
+        packs.append(pack)
+      }
+    }
+    return packs
+  }
+
+  /// Create a ScorePack from a TOML table entry.
+  static func fromTOML(_ table: [String: Any]) -> ScorePack? {
+    guard let id = table["id"] as? String,
+          let title = table["title"] as? String
+    else { return nil }
+
+    let colorName = (table["color"] as? String) ?? "teal"
+    let color: Color = colorFromName(colorName)
+
+    guard let scoresArray = table["scores"] as? [[String: Any]] else { return nil }
+    var scores: [ScoreItem] = []
+    for entry in scoresArray {
+      if let item = ScoreItem.fromTOML(entry) {
+        scores.append(item)
+      }
+    }
+
+    return ScorePack(
+      productID: id,
+      title: LocalizedStringResource(stringLiteral: title),
+      color: color,
+      scores: scores
+    )
+  }
+
+  private static func colorFromName(_ name: String) -> Color {
+    switch name.lowercased() {
+    case "teal": return .teal
+    case "orange": return .orange
+    case "blue": return .blue
+    case "red": return .red
+    case "green": return .green
+    case "purple": return .purple
+    case "pink": return .pink
+    case "yellow": return .yellow
+    case "indigo": return .indigo
+    case "mint": return .mint
+    default: return .teal
+    }
+  }
 }
 
 struct ScorePackProduct: Equatable, Sendable {

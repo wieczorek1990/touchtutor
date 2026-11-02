@@ -60,6 +60,11 @@
 		TTLOGO013095C72C0084C852 /* touchtutor_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = TTLOGO023095C72C0084C852 /* touchtutor_logo.png */; };
 		TTLOGOW13095C72C0084C852 /* touchtutor_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = TTLOGOW23095C72C0084C852 /* touchtutor_logo_white.png */; };
 		WHITE0013095C72C0084C852 /* soiree_logo_white.svg in Resources */ = {isa = PBXBuildFile; fileRef = WHITE0023095C72C0084C852 /* soiree_logo_white.svg */; };
+		TOML0001E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/TOMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = TOML0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/TOMLParser.swift */; };
+		TOMLFREE000000000000000001 /* free.toml in Resources */ = {isa = PBXBuildFile; fileRef = TOMLFREE000000000000000002 /* free.toml */; };
+		TOMLTEST000000000000000001 /* scores_test.toml in Resources */ = {isa = PBXBuildFile; fileRef = TOMLTEST000000000000000002 /* scores_test.toml */; };
+		TOMLPACKS00000000000000001 /* score_packs.toml in Resources */ = {isa = PBXBuildFile; fileRef = TOMLPACKS00000000000000002 /* score_packs.toml */; };
+		TOMLPACKSTEST00000000000001 /* score_packs_test.toml in Resources */ = {isa = PBXBuildFile; fileRef = TOMLPACKSTEST00000000000002 /* score_packs_test.toml */; };
 		WHITEPNG013095C72C0084C852 /* soiree_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = WHITEPNG023095C72C0084C852 /* soiree_logo_white.png */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +105,11 @@
 		AAAABB222222222222222222AB /* Sources/TouchTutor/SystemAppearanceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/SystemAppearanceObserver.swift; sourceTree = "<group>"; };
 		AAAABB333333333333333333AB /* Sources/TouchTutor/TempoSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/TempoSelectorView.swift; sourceTree = "<group>"; };
 		ABCD0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/SVGRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/SVGRenderer.swift; sourceTree = "<group>"; };
+		TOML0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/TOMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/TOMLParser.swift; sourceTree = "<group>"; };
+		TOMLFREE000000000000000002 /* free.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = free.toml; sourceTree = "<group>"; };
+		TOMLTEST000000000000000002 /* scores_test.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = scores_test.toml; sourceTree = "<group>"; };
+		TOMLPACKS00000000000000002 /* score_packs.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = score_packs.toml; sourceTree = "<group>"; };
+		TOMLPACKSTEST00000000000002 /* score_packs_test.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = score_packs_test.toml; sourceTree = "<group>"; };
 		AD4D2A41CEE91C8CD15BE50C /* Sources/TouchTutor/App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/App.swift; sourceTree = "<group>"; };
 		CB6DB7F03095C72C0084C852 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CB6DB7F23095C72C0084C852 /* soiree_logo.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = soiree_logo.svg; sourceTree = "<group>"; };
@@ -212,6 +222,7 @@
 				DEAD0006BEEF4242CAFE0006 /* Sources/TouchTutor/SoireeSplashView.swift */,
 				DEAD0008BEEF4242CAFE0008 /* Sources/TouchTutor/TouchTutorSplashView.swift */,
 				ABCD0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/SVGRenderer.swift */,
+				TOML0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/TOMLParser.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -241,6 +252,10 @@
 				TTLOGO023095C72C0084C852 /* touchtutor_logo.png */,
 				TTLOGOW23095C72C0084C852 /* touchtutor_logo_white.png */,
 				6E69DD8FF1024E608BA67D6D /* Scores */,
+				TOMLFREE000000000000000002 /* free.toml */,
+				TOMLTEST000000000000000002 /* scores_test.toml */,
+				TOMLPACKS00000000000000002 /* score_packs.toml */,
+				TOMLPACKSTEST00000000000002 /* score_packs_test.toml */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -360,6 +375,10 @@
 				CB6DB8023095C72C0084C852 /* Test.xml in Resources */,
 				CB6DB8043095C72C0084C852 /* Localizable.strings in Resources */,
 				STOREKIT000000000000000001 /* ScorePacks.storekit in Resources */,
+				TOMLFREE000000000000000001 /* free.toml in Resources */,
+				TOMLTEST000000000000000001 /* scores_test.toml in Resources */,
+				TOMLPACKS00000000000000001 /* score_packs.toml in Resources */,
+				TOMLPACKSTEST00000000000001 /* score_packs_test.toml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +420,7 @@
 				DEAD0005BEEF4242CAFE0005 /* Sources/TouchTutor/SoireeSplashView.swift in Sources */,
 				DEAD0007BEEF4242CAFE0007 /* Sources/TouchTutor/TouchTutorSplashView.swift in Sources */,
 				ABCD0001E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/SVGRenderer.swift in Sources */,
+				TOML0001E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/TOMLParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

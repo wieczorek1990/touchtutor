@@ -1,0 +1,15 @@
+[[scores]]
+id = "test"
+name = "Test"
+filename = "Test.xml"
+defaultTitle = "Test"
+defaultArtist = "Test Artist"
+defaultAlbum = "Test Album"
+
+[[scores]]
+id = "test_long_title"
+name = "Test with a Very Long Title That Should Be Exactly Eighty Eight Characters in Length Now"
+filename = "Test.xml"
+defaultTitle = "Test Long Title"
+defaultArtist = "Test Artist"
+defaultAlbum = "Test Album"

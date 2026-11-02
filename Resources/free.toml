@@ -1,0 +1,23 @@
+[[scores]]
+id = "zanarkand"
+name = "To Zanarkand"
+filename = "Nobuo Uematsu - To Zanarkand.xml"
+defaultTitle = "To Zanarkand"
+defaultArtist = "Nobuo Uematsu"
+defaultAlbum = "Final Fantasy X"
+
+[[scores]]
+id = "eyes_on_me"
+name = "Eyes On Me"
+filename = "Nobuo Uematsu - Eyes on Me.xml"
+defaultTitle = "Eyes on Me"
+defaultArtist = "Nobuo Uematsu"
+defaultAlbum = "Final Fantasy VIII"
+
+[[scores]]
+id = "dancing_mad"
+name = "Dancing Mad"
+filename = "Nobuo Uematsu - Dancing Mad.xml"
+defaultTitle = "Dancing Mad"
+defaultArtist = "Nobuo Uematsu"
+defaultAlbum = "Final Fantasy VI"
