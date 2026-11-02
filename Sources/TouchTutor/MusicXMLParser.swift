@@ -251,22 +251,21 @@ final class MusicXMLParser: NSObject, XMLParserDelegate {
     if item.isImported {
       return loadScore(
         from: item.importedFileURL ?? URL(fileURLWithPath: item.id),
-        defaultTitle: item.defaultTitle, defaultAlbum: item.defaultAlbum
+        defaultTitle: item.title, defaultAlbum: item.album
       )
     }
 
-    let baseName = (item.filename as NSString).deletingPathExtension
     let candidateURLs: [URL?] = [
-      Bundle.module.url(forResource: baseName, withExtension: "xml"),
-      Bundle.main.url(forResource: baseName, withExtension: "xml"),
-      URL(fileURLWithPath: "Resources/Scores/\(item.filename)"),
+      Bundle.module.url(forResource: item.id, withExtension: "xml"),
+      Bundle.main.url(forResource: item.id, withExtension: "xml"),
+      URL(fileURLWithPath: "Resources/Scores/\(item.id).xml"),
     ]
 
     for case let url? in candidateURLs {
       if let score = loadScore(
         from: url,
-        defaultTitle: item.defaultTitle,
-        defaultAlbum: item.defaultAlbum
+        defaultTitle: item.title,
+        defaultAlbum: item.album
       ) {
         return score
       }

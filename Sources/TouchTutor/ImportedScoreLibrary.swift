@@ -82,8 +82,8 @@ struct ImportedScoreLibrary {
 
   private func item(for record: Record) -> ScoreItem {
     ScoreItem(
-      id: record.id.uuidString, name: record.name, filename: record.filename,
-      defaultTitle: record.name, defaultArtist: record.artist, defaultAlbum: record.album,
+      id: record.id.uuidString, title: record.name, filename: record.filename,
+      artist: record.artist, album: record.album,
       isImported: true, importedFileURL: fileURL(for: record))
   }
 }

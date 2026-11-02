@@ -34,12 +34,11 @@ def score_item(path):
     )
     score_id = re.sub(r"[\W_]+", "_", path.stem.lower()).strip("_") or path.stem
     return (
-        "ScoreItem(\n"
-        f"    id: {swift_string(score_id)},\n"
-        f"    name: L10n.string({swift_string(title)}),\n"
-        f"    filename: {swift_string(path.name)},\n"
-        f"    defaultTitle: L10n.string({swift_string(title)})\n"
-        ")"
+        "[[scores]]\n"
+        f"    id = {swift_string(score_id)},\n"
+        f"    title = {swift_string(title)},\n"
+        f"    artist = \"\",\n"
+        f"    album = \"\"\n"
     )
 
 

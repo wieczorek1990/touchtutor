@@ -2,22 +2,22 @@
 
 The app has a StoreKit 2 purchase flow for non-consumable score packs, restoration, transaction updates, and playback access checks. Scores and score packs are defined in TOML configuration files in `Resources/`:
 
-- **`free.toml`** — Free default scores (always included).
+- **`scores_free.toml`** — Free default scores (always included).
 - **`scores_test.toml`** — Test scores (included only in DEBUG builds).
 - **`score_packs.toml`** — Paid score packs (always included).
 - **`score_packs_test.toml`** — Test score packs (included only in DEBUG builds).
 
-The parser in `Sources/TouchTutor/TOMLParser.swift` reads these files at startup. `ScoreItem.defaultScores` loads from `free.toml` (and `scores_test.toml` in DEBUG). `ScorePack.catalog` loads from `score_packs.toml` (and `score_packs_test.toml` in DEBUG).
+The parser in `Sources/TouchTutor/TOMLParser.swift` reads these files at startup. `ScoreItem.defaultScores` loads from `scores_free.toml` (and `scores_test.toml` in DEBUG). `ScorePack.catalog` loads from `score_packs.toml` (and `score_packs_test.toml` in DEBUG).
 
 ## Add a free score
 
 1. Add its MusicXML file to `Resources/Scores`.
-2. Add a `[[scores]]` entry to `Resources/free.toml` with `id`, `name`, `filename`, `defaultTitle`, `defaultArtist`, and `defaultAlbum`.
+2. Add a `[[scores]]` entry to `Resources/scores_free.toml` with `id`, `title`, `artist`, and `album`. The MusicXML file must be named `{id}.xml` and placed in `Resources/Scores`.
 
 ## Add a paid score pack
 
 1. Add its MusicXML files to `Resources/Scores`.
-2. Add a `[[packs]]` entry to `Resources/score_packs.toml` with `id` (the App Store Connect product ID), `title`, `color`, and one or more `[[packs.scores]]` child entries. Use unique score IDs and do not also list paid scores in `free.toml`.
+2. Add a `[[packs]]` entry to `Resources/score_packs.toml` with `id` (the App Store Connect product ID), `title`, `color`, and one or more `[[packs.scores]]` child entries. Each score child only needs `id`. The MusicXML file for each score must be named `{id}.xml`. Use unique score IDs and do not also list paid scores in `scores_free.toml`.
 3. Create that product as a **non-consumable** in App Store Connect.
 4. Add both iOS and macOS to the same App Store Connect app record, with the same bundle ID, for universal purchase.
 
@@ -67,11 +67,11 @@ Older versions did not save an import index, so previously forgotten imports mus
 Run the Python script with a score file to print a TOML `[[scores]]` entry:
 
 ```sh
-python3 bin/score_metadata.py "Resources/Scores/Nobuo Uematsu - To Zanarkand.xml"
+python3 bin/score_metadata.py "Resources/Scores/zanarkand.xml"
 ```
 
-The script emits `id`, `name`, `filename`, and `defaultTitle` as a TOML table entry. Paste it into the appropriate TOML file (`scores.toml`, `scores_test.toml`, or `score_packs.toml`). Add the display strings to the localization file when translating them.
+The script emits `id`, `title`, `artist`, and `album` as a TOML table entry. Paste it into the appropriate TOML file (`scores_free.toml`, `scores_test.toml`, or `score_packs.toml`). Add the display strings to the localization file when translating them.
 
-The title comes from the MusicXML work title, then movement title, then filename. The ID comes from the filename. Edit the generated fields as needed. The script takes one uncompressed MusicXML file and prints TOML to stdout; Python 3 and its standard library are sufficient. For the app, use a bundled `.xml` file.
+The title comes from the MusicXML work title, then movement title, then filename. The ID comes from the filename. Rename the MusicXML file to `{id}.xml` and place it in `Resources/Scores`. Edit the generated fields as needed. The script takes one uncompressed MusicXML file and prints TOML to stdout; Python 3 and its standard library are sufficient. For the app, use a bundled `.xml` file.
 
 Run script tests with `python3 -B -m unittest discover -s Tests/Python -v`.

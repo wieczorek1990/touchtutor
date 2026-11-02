@@ -49,7 +49,7 @@ import SwiftUI
           }) {
             let prefix = viewModel.selectedScoreItem?.id == item.id ? "✓ " : "   "
             let suffix = item.isImported ? L10n.string(" [Imported]") : ""
-            Text("\(prefix)\(item.name)\(suffix)")
+            Text("\(prefix)\(item.title)\(suffix)")
           }
         }
 

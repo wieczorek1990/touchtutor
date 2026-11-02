@@ -32,18 +32,18 @@
 		BADD200FE97D203DF515488B /* Sources/TouchTutor/ImportedScoreLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CFFD86CCD5AD61ABA8F23 /* Sources/TouchTutor/ImportedScoreLibrary.swift */; };
 		C0F208B12ACF8CEDA2C5D448 /* Sources/TouchTutor/PreGameMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB17DCAFB293C1C36001AF /* Sources/TouchTutor/PreGameMenuView.swift */; };
 		C56EDE9094A531666789557E /* Tests/TouchTutorTests/ScoreLoadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9507F84DAE68E626200D7669 /* Tests/TouchTutorTests/ScoreLoadingTests.swift */; };
-		CB6DB7FB3095C72C0084C852 /* Nobuo Uematsu - To Zanarkand.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F53095C72C0084C852 /* Nobuo Uematsu - To Zanarkand.xml */; };
-		CB6DB7FC3095C72C0084C852 /* Nobuo Uematsu - Dancing Mad.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F33095C72C0084C852 /* Nobuo Uematsu - Dancing Mad.xml */; };
-		CB6DB7FD3095C72C0084C852 /* Practice - C Major Scale.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F73095C72C0084C852 /* Practice - C Major Scale.xml */; };
+		CB6DB7FB3095C72C0084C852 /* zanarkand.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F53095C72C0084C852 /* zanarkand.xml */; };
+		CB6DB7FC3095C72C0084C852 /* dancing_mad.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F33095C72C0084C852 /* dancing_mad.xml */; };
+		CB6DB7FD3095C72C0084C852 /* practice_test_scale.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F73095C72C0084C852 /* practice_test_scale.xml */; };
 		CB6DB7FE3095C72C0084C852 /* soiree_logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F23095C72C0084C852 /* soiree_logo.svg */; };
-		CB6DB7FF3095C72C0084C852 /* Nobuo Uematsu - Eyes on Me.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F43095C72C0084C852 /* Nobuo Uematsu - Eyes on Me.xml */; };
-		CB6DB8013095C72C0084C852 /* Practice - C Major Chords.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F63095C72C0084C852 /* Practice - C Major Chords.xml */; };
+		CB6DB7FF3095C72C0084C852 /* eyes_on_me.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F43095C72C0084C852 /* eyes_on_me.xml */; };
+		CB6DB8013095C72C0084C852 /* practice_test_chords.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F63095C72C0084C852 /* practice_test_chords.xml */; };
 		CB6DB8023095C72C0084C852 /* Test.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F93095C72C0084C852 /* Test.xml */; };
 		CB6DB8033095C72C0084C852 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB8043095C72C0084C853 /* AppIcon.icns */; };
 		CB6DB8043095C72C0084C852 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F13095C72C0084C852 /* Localizable.strings */; };
-		CB6DB8083095C80B0084C852 /* Tifas theme.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB8063095C80B0084C852 /* Tifas theme.xml */; };
-		CB6DB8093095C80B0084C852 /* Aeriths theme.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB8053095C80B0084C852 /* Aeriths theme.xml */; };
-		CB6DB80A3095C80B0084C852 /* You're not alone.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB8073095C80B0084C852 /* You're not alone.xml */; };
+		CB6DB8083095C80B0084C852 /* tifas_theme.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB8063095C80B0084C852 /* tifas_theme.xml */; };
+		CB6DB8093095C80B0084C852 /* aeriths_theme.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB8053095C80B0084C852 /* aeriths_theme.xml */; };
+		CB6DB80A3095C80B0084C852 /* youre_not_alone.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB8073095C80B0084C852 /* youre_not_alone.xml */; };
 		CB6DB80B3095C72C0084C852 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB80C3095C72C0084C853 /* AppIcon.xcassets */; };
 		CB6DB8113095C72C0084C852 /* soiree_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB8123095C72C0084C852 /* soiree_logo.png */; };
 		CCC27994459E14D69EF2A4D5 /* Tests/TouchTutorTests/ScorePackStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C11413BD14308ACD28ED7B /* Tests/TouchTutorTests/ScorePackStoreTests.swift */; };
@@ -61,7 +61,7 @@
 		TTLOGOW13095C72C0084C852 /* touchtutor_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = TTLOGOW23095C72C0084C852 /* touchtutor_logo_white.png */; };
 		WHITE0013095C72C0084C852 /* soiree_logo_white.svg in Resources */ = {isa = PBXBuildFile; fileRef = WHITE0023095C72C0084C852 /* soiree_logo_white.svg */; };
 		TOML0001E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/TOMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = TOML0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/TOMLParser.swift */; };
-		TOMLFREE000000000000000001 /* free.toml in Resources */ = {isa = PBXBuildFile; fileRef = TOMLFREE000000000000000002 /* free.toml */; };
+		TOMLFREE000000000000000001 /* scores_free.toml in Resources */ = {isa = PBXBuildFile; fileRef = TOMLFREE000000000000000002 /* scores_free.toml */; };
 		TOMLTEST000000000000000001 /* scores_test.toml in Resources */ = {isa = PBXBuildFile; fileRef = TOMLTEST000000000000000002 /* scores_test.toml */; };
 		TOMLPACKS00000000000000001 /* score_packs.toml in Resources */ = {isa = PBXBuildFile; fileRef = TOMLPACKS00000000000000002 /* score_packs.toml */; };
 		TOMLPACKSTEST00000000000001 /* score_packs_test.toml in Resources */ = {isa = PBXBuildFile; fileRef = TOMLPACKSTEST00000000000002 /* score_packs_test.toml */; };
@@ -106,23 +106,23 @@
 		AAAABB333333333333333333AB /* Sources/TouchTutor/TempoSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/TempoSelectorView.swift; sourceTree = "<group>"; };
 		ABCD0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/SVGRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/SVGRenderer.swift; sourceTree = "<group>"; };
 		TOML0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/TOMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/TOMLParser.swift; sourceTree = "<group>"; };
-		TOMLFREE000000000000000002 /* free.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = free.toml; sourceTree = "<group>"; };
+		TOMLFREE000000000000000002 /* scores_free.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = scores_free.toml; sourceTree = "<group>"; };
 		TOMLTEST000000000000000002 /* scores_test.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = scores_test.toml; sourceTree = "<group>"; };
 		TOMLPACKS00000000000000002 /* score_packs.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = score_packs.toml; sourceTree = "<group>"; };
 		TOMLPACKSTEST00000000000002 /* score_packs_test.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = score_packs_test.toml; sourceTree = "<group>"; };
 		AD4D2A41CEE91C8CD15BE50C /* Sources/TouchTutor/App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/App.swift; sourceTree = "<group>"; };
 		CB6DB7F03095C72C0084C852 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CB6DB7F23095C72C0084C852 /* soiree_logo.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = soiree_logo.svg; sourceTree = "<group>"; };
-		CB6DB7F33095C72C0084C852 /* Nobuo Uematsu - Dancing Mad.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Nobuo Uematsu - Dancing Mad.xml"; sourceTree = "<group>"; };
-		CB6DB7F43095C72C0084C852 /* Nobuo Uematsu - Eyes on Me.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Nobuo Uematsu - Eyes on Me.xml"; sourceTree = "<group>"; };
-		CB6DB7F53095C72C0084C852 /* Nobuo Uematsu - To Zanarkand.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Nobuo Uematsu - To Zanarkand.xml"; sourceTree = "<group>"; };
-		CB6DB7F63095C72C0084C852 /* Practice - C Major Chords.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Practice - C Major Chords.xml"; sourceTree = "<group>"; };
-		CB6DB7F73095C72C0084C852 /* Practice - C Major Scale.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Practice - C Major Scale.xml"; sourceTree = "<group>"; };
+		CB6DB7F33095C72C0084C852 /* dancing_mad.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "dancing_mad.xml"; sourceTree = "<group>"; };
+		CB6DB7F43095C72C0084C852 /* eyes_on_me.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "eyes_on_me.xml"; sourceTree = "<group>"; };
+		CB6DB7F53095C72C0084C852 /* zanarkand.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "zanarkand.xml"; sourceTree = "<group>"; };
+		CB6DB7F63095C72C0084C852 /* practice_test_chords.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "practice_test_chords.xml"; sourceTree = "<group>"; };
+		CB6DB7F73095C72C0084C852 /* practice_test_scale.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "practice_test_scale.xml"; sourceTree = "<group>"; };
 		CB6DB7F93095C72C0084C852 /* Test.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Test.xml; sourceTree = "<group>"; };
 		CB6DB8043095C72C0084C853 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
-		CB6DB8053095C80B0084C852 /* Aeriths theme.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Aeriths theme.xml"; sourceTree = "<group>"; };
-		CB6DB8063095C80B0084C852 /* Tifas theme.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Tifas theme.xml"; sourceTree = "<group>"; };
-		CB6DB8073095C80B0084C852 /* You're not alone.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "You're not alone.xml"; sourceTree = "<group>"; };
+		CB6DB8053095C80B0084C852 /* aeriths_theme.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "aeriths_theme.xml"; sourceTree = "<group>"; };
+		CB6DB8063095C80B0084C852 /* tifas_theme.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tifas_theme.xml"; sourceTree = "<group>"; };
+		CB6DB8073095C80B0084C852 /* youre_not_alone.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "youre_not_alone.xml"; sourceTree = "<group>"; };
 		CB6DB80C3095C72C0084C853 /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppIcon.xcassets; sourceTree = "<group>"; };
 		CB6DB8123095C72C0084C852 /* soiree_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soiree_logo.png; sourceTree = "<group>"; };
 		CB8713BB0FA0509CD417AA7E /* ScorePacks.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = ScorePacks.storekit; sourceTree = "<group>"; };
@@ -175,14 +175,14 @@
 		6E69DD8FF1024E608BA67D6D /* Scores */ = {
 			isa = PBXGroup;
 			children = (
-				CB6DB8053095C80B0084C852 /* Aeriths theme.xml */,
-				CB6DB8063095C80B0084C852 /* Tifas theme.xml */,
-				CB6DB8073095C80B0084C852 /* You're not alone.xml */,
-				CB6DB7F33095C72C0084C852 /* Nobuo Uematsu - Dancing Mad.xml */,
-				CB6DB7F43095C72C0084C852 /* Nobuo Uematsu - Eyes on Me.xml */,
-				CB6DB7F53095C72C0084C852 /* Nobuo Uematsu - To Zanarkand.xml */,
-				CB6DB7F63095C72C0084C852 /* Practice - C Major Chords.xml */,
-				CB6DB7F73095C72C0084C852 /* Practice - C Major Scale.xml */,
+				CB6DB8053095C80B0084C852 /* aeriths_theme.xml */,
+				CB6DB8063095C80B0084C852 /* tifas_theme.xml */,
+				CB6DB8073095C80B0084C852 /* youre_not_alone.xml */,
+				CB6DB7F33095C72C0084C852 /* dancing_mad.xml */,
+				CB6DB7F43095C72C0084C852 /* eyes_on_me.xml */,
+				CB6DB7F53095C72C0084C852 /* zanarkand.xml */,
+				CB6DB7F63095C72C0084C852 /* practice_test_chords.xml */,
+				CB6DB7F73095C72C0084C852 /* practice_test_scale.xml */,
 				CB6DB7F93095C72C0084C852 /* Test.xml */,
 			);
 			path = Scores;
@@ -252,7 +252,7 @@
 				TTLOGO023095C72C0084C852 /* touchtutor_logo.png */,
 				TTLOGOW23095C72C0084C852 /* touchtutor_logo_white.png */,
 				6E69DD8FF1024E608BA67D6D /* Scores */,
-				TOMLFREE000000000000000002 /* free.toml */,
+				TOMLFREE000000000000000002 /* scores_free.toml */,
 				TOMLTEST000000000000000002 /* scores_test.toml */,
 				TOMLPACKS00000000000000002 /* score_packs.toml */,
 				TOMLPACKSTEST00000000000002 /* score_packs_test.toml */,
@@ -358,24 +358,24 @@
 			files = (
 				CB6DB8033095C72C0084C852 /* AppIcon.icns in Resources */,
 				CB6DB80B3095C72C0084C852 /* AppIcon.xcassets in Resources */,
-				CB6DB8083095C80B0084C852 /* Tifas theme.xml in Resources */,
-				CB6DB8093095C80B0084C852 /* Aeriths theme.xml in Resources */,
-				CB6DB80A3095C80B0084C852 /* You're not alone.xml in Resources */,
-				CB6DB7FB3095C72C0084C852 /* Nobuo Uematsu - To Zanarkand.xml in Resources */,
-				CB6DB7FC3095C72C0084C852 /* Nobuo Uematsu - Dancing Mad.xml in Resources */,
-				CB6DB7FD3095C72C0084C852 /* Practice - C Major Scale.xml in Resources */,
+				CB6DB8083095C80B0084C852 /* tifas_theme.xml in Resources */,
+				CB6DB8093095C80B0084C852 /* aeriths_theme.xml in Resources */,
+				CB6DB80A3095C80B0084C852 /* youre_not_alone.xml in Resources */,
+				CB6DB7FB3095C72C0084C852 /* zanarkand.xml in Resources */,
+				CB6DB7FC3095C72C0084C852 /* dancing_mad.xml in Resources */,
+				CB6DB7FD3095C72C0084C852 /* practice_test_scale.xml in Resources */,
 				CB6DB7FE3095C72C0084C852 /* soiree_logo.svg in Resources */,
 				WHITE0013095C72C0084C852 /* soiree_logo_white.svg in Resources */,
 				CB6DB8113095C72C0084C852 /* soiree_logo.png in Resources */,
 				WHITEPNG013095C72C0084C852 /* soiree_logo_white.png in Resources */,
 				TTLOGO013095C72C0084C852 /* touchtutor_logo.png in Resources */,
 				TTLOGOW13095C72C0084C852 /* touchtutor_logo_white.png in Resources */,
-				CB6DB7FF3095C72C0084C852 /* Nobuo Uematsu - Eyes on Me.xml in Resources */,
-				CB6DB8013095C72C0084C852 /* Practice - C Major Chords.xml in Resources */,
+				CB6DB7FF3095C72C0084C852 /* eyes_on_me.xml in Resources */,
+				CB6DB8013095C72C0084C852 /* practice_test_chords.xml in Resources */,
 				CB6DB8023095C72C0084C852 /* Test.xml in Resources */,
 				CB6DB8043095C72C0084C852 /* Localizable.strings in Resources */,
 				STOREKIT000000000000000001 /* ScorePacks.storekit in Resources */,
-				TOMLFREE000000000000000001 /* free.toml in Resources */,
+				TOMLFREE000000000000000001 /* scores_free.toml in Resources */,
 				TOMLTEST000000000000000001 /* scores_test.toml in Resources */,
 				TOMLPACKS00000000000000001 /* score_packs.toml in Resources */,
 				TOMLPACKSTEST00000000000001 /* score_packs_test.toml in Resources */,

@@ -169,7 +169,7 @@ private struct ScorePackRow: View {
     VStack(alignment: .leading, spacing: 10) {
       Text(pack.title).font(.headline)
       ForEach(pack.scores) { score in
-        Text(score.name)
+        Text(score.title)
           .font(.subheadline)
       }
       if isOwned {
@@ -273,7 +273,7 @@ private struct ScorePackDetailView: View {
                   Image(systemName: "lock.circle")
                     .foregroundColor(.secondary)
                 }
-                Text(score.name)
+                Text(score.title)
                   .font(.subheadline)
                 Spacer()
               }

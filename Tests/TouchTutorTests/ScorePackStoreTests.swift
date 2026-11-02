@@ -6,8 +6,8 @@ import Testing
 struct ScorePackStoreTests {
     private func pack() -> ScorePack {
         ScorePack(productID: "test.pack", title: "Test Pack", scores: [
-            ScoreItem(id: "paid", name: "Paid", filename: "Nobuo Uematsu - To Zanarkand.xml",
-                      defaultTitle: "Paid", defaultArtist: "Nobuo Uematsu", defaultAlbum: "Final Fantasy X")
+            ScoreItem(id: "eyes_on_me", title: "Paid", filename: "eyes_on_me.xml",
+                      artist: "Nobuo Uematsu", album: "Final Fantasy VIII")
         ])
     }
 
@@ -19,8 +19,8 @@ struct ScorePackStoreTests {
         await store.start()
         #expect(store.state.ownedProductIDs == ["test.pack"])
         #expect(store.state.canPlay(pack.scores[0]))
-        let imported = ScoreItem(id: "import", name: "Import", filename: "import.xml",
-                                 defaultTitle: "Import", defaultArtist: "Artist", defaultAlbum: "Album",
+        let imported = ScoreItem(id: "import", title: "Import", filename: "import.xml",
+                                 artist: "Artist", album: "Album",
                                  isImported: true)
         #expect(ScorePackStoreState().canPlay(imported))
         #expect(!ScorePackStoreState().canPlay(pack.scores[0]))
@@ -135,7 +135,7 @@ struct ScorePackStoreTests {
         #expect(player.currentScreen == .menu)
     }
 
-    @Test func paidScoresArePositionedBelowTestAndAboveDefaultScores() async {
+    @Test func paidScoresArePositionedAfterDefaultScores() async {
         let pack = pack()
         let store = ScorePackStore(packs: [pack], commerce: MockScorePackCommerce())
         let player = ScorePlayerViewModel(scoreStore: store)
@@ -146,7 +146,7 @@ struct ScorePackStoreTests {
 
         if let zanarkandIndex = player.availableScores.firstIndex(where: { $0.id == "zanarkand" }),
            let paidIndex = player.availableScores.firstIndex(where: { $0.id == pack.scores[0].id }) {
-            #expect(paidIndex < zanarkandIndex)
+            #expect(paidIndex > zanarkandIndex)
         }
     }
 }

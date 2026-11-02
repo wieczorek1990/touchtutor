@@ -22,8 +22,8 @@ final class ScoreLoadingTests: XCTestCase {
         </measure></part></score-partwise>
         """
         try Data(xml.utf8).write(to: url)
-        let item = ScoreItem(id: url.path, name: "Custom", filename: url.lastPathComponent,
-                             defaultTitle: "Custom", defaultArtist: "Custom Artist", defaultAlbum: "Custom Album",
+        let item = ScoreItem(id: url.path, title: "Custom", filename: url.lastPathComponent,
+                             artist: "Custom Artist", album: "Custom Album",
                              isImported: true)
         let score = try XCTUnwrap(MusicXMLParser.loadScore(item: item))
         XCTAssertEqual(score.title, "Custom")

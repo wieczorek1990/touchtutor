@@ -96,7 +96,7 @@ struct ImportedScoreLibraryEdgeCaseTests {
     defer { try? FileManager.default.removeItem(at: root) }
     try FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
     let library = ImportedScoreLibrary(directory: root)
-    let notImported = ScoreItem(id: "bundled", name: "Bundled", filename: "bundled.xml", defaultTitle: "Bundled", defaultArtist: "Artist", defaultAlbum: "Album")
+    let notImported = ScoreItem(id: "bundled", title: "Bundled", filename: "bundled.xml", artist: "Artist", album: "Album")
     try library.deleteScore(notImported)
     #expect(try library.loadScores().isEmpty)
   }
@@ -107,8 +107,8 @@ struct ImportedScoreLibraryEdgeCaseTests {
     try FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
     let library = ImportedScoreLibrary(directory: root)
     let unknown = ScoreItem(
-      id: "non-existent-uuid", name: "Unknown", filename: "unknown.xml",
-      defaultTitle: "Unknown", defaultArtist: "Artist", defaultAlbum: "Album", isImported: true
+      id: "non-existent-uuid", title: "Unknown", filename: "unknown.xml",
+      artist: "Artist", album: "Album", isImported: true
     )
     try library.deleteScore(unknown)
     #expect(try library.loadScores().isEmpty)
@@ -126,7 +126,7 @@ struct ImportedScoreLibraryEdgeCaseTests {
     try Data(xml.utf8).write(to: source)
 
     let imported = try library.importScore(from: source)
-    #expect(imported.item.name == "My Score (Copy)")
+    #expect(imported.item.title == "My Score (Copy)")
   }
 
   // MARK: - Library persistence

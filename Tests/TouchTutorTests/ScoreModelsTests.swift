@@ -202,9 +202,9 @@ struct ScoreModelsTests {
   }
 
   @Test func scoreItemHashable() {
-    let a = ScoreItem(id: "x", name: "X", filename: "x.xml", defaultTitle: "X", defaultArtist: "A", defaultAlbum: "Alb")
-    let b = ScoreItem(id: "x", name: "X", filename: "x.xml", defaultTitle: "X", defaultArtist: "A", defaultAlbum: "Alb")
-    let c = ScoreItem(id: "y", name: "Y", filename: "y.xml", defaultTitle: "Y", defaultArtist: "B", defaultAlbum: "Alb2")
+    let a = ScoreItem(id: "x", title: "X", filename: "x.xml", artist: "A", album: "Alb")
+    let b = ScoreItem(id: "x", title: "X", filename: "x.xml", artist: "A", album: "Alb")
+    let c = ScoreItem(id: "y", title: "Y", filename: "y.xml", artist: "B", album: "Alb2")
     #expect(a == b)
     #expect(a != c)
     var set: Set<ScoreItem> = []
@@ -215,7 +215,7 @@ struct ScoreModelsTests {
   }
 
   @Test func scoreItemIdentifiable() {
-    let item = ScoreItem(id: "unique-1", name: "Test", filename: "test.xml", defaultTitle: "Test", defaultArtist: "Artist", defaultAlbum: "Album")
+    let item = ScoreItem(id: "unique-1", title: "Test", filename: "test.xml", artist: "Artist", album: "Album")
     #expect(item.id == "unique-1")
   }
 

@@ -10,19 +10,15 @@ struct TOMLParserTests {
     let toml = """
       [[scores]]
       id = "zanarkand"
-      name = "To Zanarkand"
-      filename = "Nobuo Uematsu - To Zanarkand.xml"
-      defaultTitle = "To Zanarkand"
-      defaultArtist = "Nobuo Uematsu"
-      defaultAlbum = "Final Fantasy X"
+      title = "To Zanarkand"
+      artist = "Nobuo Uematsu"
+      album = "Final Fantasy X"
 
       [[scores]]
       id = "eyes_on_me"
-      name = "Eyes On Me"
-      filename = "Nobuo Uematsu - Eyes on Me.xml"
-      defaultTitle = "Eyes on Me"
-      defaultArtist = "Nobuo Uematsu"
-      defaultAlbum = "Final Fantasy VIII"
+      title = "Eyes On Me"
+      artist = "Nobuo Uematsu"
+      album = "Final Fantasy VIII"
       """
 
     let tables = TOMLParser.parse(toml)
@@ -30,15 +26,13 @@ struct TOMLParserTests {
 
     let first = tables[0]
     #expect(first["id"] as? String == "zanarkand")
-    #expect(first["name"] as? String == "To Zanarkand")
-    #expect(first["filename"] as? String == "Nobuo Uematsu - To Zanarkand.xml")
-    #expect(first["defaultTitle"] as? String == "To Zanarkand")
-    #expect(first["defaultArtist"] as? String == "Nobuo Uematsu")
-    #expect(first["defaultAlbum"] as? String == "Final Fantasy X")
+    #expect(first["title"] as? String == "To Zanarkand")
+    #expect(first["artist"] as? String == "Nobuo Uematsu")
+    #expect(first["album"] as? String == "Final Fantasy X")
 
     let second = tables[1]
     #expect(second["id"] as? String == "eyes_on_me")
-    #expect(second["name"] as? String == "Eyes On Me")
+    #expect(second["title"] as? String == "Eyes On Me")
   }
 
   @Test func parseScoresWithComments() {
@@ -46,12 +40,10 @@ struct TOMLParserTests {
       # This is a comment
       [[scores]]
       id = "test"
-      name = "Test"
+      title = "Test"
       # Another comment
-      filename = "Test.xml"
-      defaultTitle = "Test"
-      defaultArtist = "Artist"
-      defaultAlbum = "Album"
+      artist = "Artist"
+      album = "Album"
       """
 
     let tables = TOMLParser.parse(toml)
@@ -84,19 +76,9 @@ struct TOMLParserTests {
 
       [[packs.scores]]
       id = "aeriths_theme"
-      name = "Aerith's Theme"
-      filename = "Aeriths theme.xml"
-      defaultTitle = "Aerith's Theme"
-      defaultArtist = "Nobuo Uematsu"
-      defaultAlbum = "Final Fantasy VII"
 
       [[packs.scores]]
       id = "tifas_theme"
-      name = "Tifa's Theme"
-      filename = "Tifas theme.xml"
-      defaultTitle = "Tifa's Theme"
-      defaultArtist = "Nobuo Uematsu"
-      defaultAlbum = "Final Fantasy VII"
       """
 
     let tables = TOMLParser.parse(toml)
@@ -122,11 +104,6 @@ struct TOMLParserTests {
 
       [[packs.scores]]
       id = "score1"
-      name = "Score 1"
-      filename = "score1.xml"
-      defaultTitle = "Score 1"
-      defaultArtist = "Artist"
-      defaultAlbum = "Album"
 
       [[packs]]
       id = "pack2"
@@ -135,11 +112,6 @@ struct TOMLParserTests {
 
       [[packs.scores]]
       id = "score2"
-      name = "Score 2"
-      filename = "score2.xml"
-      defaultTitle = "Score 2"
-      defaultArtist = "Artist"
-      defaultAlbum = "Album"
       """
 
     let tables = TOMLParser.parse(toml)
@@ -194,22 +166,32 @@ struct TOMLParserTests {
   @Test func scoreItemFromTOML() {
     let table: [String: Any] = [
       "id": "test",
-      "name": "Test Score",
-      "filename": "Test.xml",
-      "defaultTitle": "Test Score",
-      "defaultArtist": "Test Artist",
-      "defaultAlbum": "Test Album"
+      "title": "Test Score",
+      "artist": "Test Artist",
+      "album": "Test Album"
     ]
 
     let item = ScoreItem.fromTOML(table)
     #expect(item?.id == "test")
-    #expect(item?.filename == "Test.xml")
-    #expect(item?.defaultArtist == "Test Artist")
+    #expect(item?.filename == "test.xml")
+    #expect(item?.artist == "Test Artist")
   }
 
-  @Test func scoreItemFromTOML_missingFields() {
+  @Test func scoreItemFromTOML_minimalFields() {
     let table: [String: Any] = [
       "id": "test"
+    ]
+    let item = ScoreItem.fromTOML(table)
+    #expect(item != nil)
+    #expect(item?.id == "test")
+    #expect(item?.title == "test")
+    #expect(item?.artist == "")
+    #expect(item?.album == "")
+  }
+
+  @Test func scoreItemFromTOML_missingID() {
+    let table: [String: Any] = [
+      "title": "Test"
     ]
     let item = ScoreItem.fromTOML(table)
     #expect(item == nil)
@@ -224,12 +206,7 @@ struct TOMLParserTests {
       "color": "blue",
       "scores": [
         [
-          "id": "score1",
-          "name": "Score 1",
-          "filename": "score1.xml",
-          "defaultTitle": "Score 1",
-          "defaultArtist": "Artist",
-          "defaultAlbum": "Album"
+          "id": "score1"
         ] as [String: Any]
       ]
     ]
@@ -238,6 +215,7 @@ struct TOMLParserTests {
     #expect(pack?.id == "test.pack")
     #expect(pack?.scores.count == 1)
     #expect(pack?.scores[0].id == "score1")
+    #expect(pack?.scores[0].filename == "score1.xml")
   }
 
   @Test func scorePackFromTOML_missingScores() {
@@ -251,8 +229,8 @@ struct TOMLParserTests {
 
   // MARK: - Integration: loading from bundle
 
-  @Test func loadFreeResource() {
-    let toml = TOMLParser.loadResource("free")
+  @Test func loadScoresFreeResource() {
+    let toml = TOMLParser.loadResource("scores_free")
     #expect(toml != nil)
     #expect(toml?.contains("zanarkand") == true)
   }

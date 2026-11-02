@@ -24,7 +24,7 @@ struct ImportedScoreLibraryTests {
         #expect(reloaded.count == 1)
         let item = try #require(reloaded.first)
         #expect(item.id == imported.item.id)
-        #expect(item.name == "My Score")
+        #expect(item.title == "My Score")
         #expect(item.requiredProductID == nil)
         #expect(MusicXMLParser.loadScore(item: item)?.steps.first?.notes.first?.midiNote == 62)
 

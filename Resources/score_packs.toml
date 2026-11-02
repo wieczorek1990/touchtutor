@@ -5,24 +5,9 @@ color = "teal"
 
 [[packs.scores]]
 id = "aeriths_theme"
-name = "Aerith's Theme"
-filename = "Aeriths theme.xml"
-defaultTitle = "Aerith's Theme"
-defaultArtist = "Nobuo Uematsu"
-defaultAlbum = "Final Fantasy VII"
 
 [[packs.scores]]
 id = "tifas_theme"
-name = "Tifa's Theme"
-filename = "Tifas theme.xml"
-defaultTitle = "Tifa's Theme"
-defaultArtist = "Nobuo Uematsu"
-defaultAlbum = "Final Fantasy VII"
 
 [[packs.scores]]
 id = "youre_not_alone"
-name = "You're Not Alone"
-filename = "You're not alone.xml"
-defaultTitle = "You're Not Alone"
-defaultArtist = "Nobuo Uematsu"
-defaultAlbum = "Final Fantasy IX"

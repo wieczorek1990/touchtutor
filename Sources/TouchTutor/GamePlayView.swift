@@ -25,7 +25,7 @@ struct GamePlayView: View {
             .foregroundColor(.blue)
 
           Text(
-            viewModel.selectedScoreItem?.name
+            viewModel.selectedScoreItem?.title
               ?? viewModel.score?.title
               ?? L10n.string("Touch Piano")
           )
@@ -37,7 +37,7 @@ struct GamePlayView: View {
         }
 
         Text(
-          viewModel.selectedScoreItem?.defaultArtist
+          viewModel.selectedScoreItem?.artist
             ?? viewModel.score?.artist
             ?? ""
         )
@@ -46,12 +46,12 @@ struct GamePlayView: View {
         .lineLimit(1)
         .truncationMode(.tail)
         .opacity(
-          (viewModel.selectedScoreItem?.defaultArtist ?? viewModel.score?.artist ?? "").isEmpty
+          (viewModel.selectedScoreItem?.artist ?? viewModel.score?.artist ?? "").isEmpty
             ? 0 : 1
         )
 
         Text(
-          viewModel.selectedScoreItem?.defaultAlbum
+          viewModel.selectedScoreItem?.album
             ?? viewModel.score?.album
             ?? ""
         )
@@ -60,7 +60,7 @@ struct GamePlayView: View {
         .lineLimit(1)
         .truncationMode(.tail)
         .opacity(
-          (viewModel.selectedScoreItem?.defaultAlbum ?? viewModel.score?.album ?? "").isEmpty
+          (viewModel.selectedScoreItem?.album ?? viewModel.score?.album ?? "").isEmpty
             ? 0 : 1
         )
       }

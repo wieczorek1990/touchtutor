@@ -75,7 +75,7 @@ struct PreGameMenuView: View {
                     }) {
                       VStack(alignment: .leading, spacing: 2) {
                         HStack(spacing: 8) {
-                          Text(item.name)
+                          Text(item.title)
                             .font(.system(size: 16, weight: isSelected ? .bold : .medium))
                             .foregroundColor(.primary)
                             .lineLimit(1)
@@ -103,13 +103,13 @@ struct PreGameMenuView: View {
                           Spacer(minLength: 4)
                         }
 
-                        Text(item.defaultArtist)
+                        Text(item.artist)
                           .font(.system(size: 12, weight: .medium, design: .rounded))
                           .foregroundColor(.secondary)
                           .lineLimit(1)
                           .truncationMode(.tail)
 
-                        Text(item.defaultAlbum)
+                        Text(item.album)
                           .font(.system(size: 11, weight: .regular, design: .rounded))
                           .foregroundColor(.secondary)
                           .lineLimit(1)

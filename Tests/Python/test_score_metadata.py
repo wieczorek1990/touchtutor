@@ -21,7 +21,7 @@ class ScoreMetadataTests(unittest.TestCase):
             text=True,
         )
 
-    def test_title_and_swift_output(self):
+    def test_title_and_toml_output(self):
         result = self.run_script("""
         <score-partwise xmlns="https://example.test/musicxml">
         <work><work-title>Nocturne &amp; Étude</work-title></work>
@@ -29,14 +29,12 @@ class ScoreMetadataTests(unittest.TestCase):
         """)
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(
-            result.stdout,
-            """ScoreItem(
-    id: "example_score",
-    name: L10n.string("Nocturne & Étude"),
-    filename: "Example Score.xml",
-    defaultTitle: L10n.string("Nocturne & Étude")
-)
-""",
+            result.stdout.strip(),
+            '[[scores]]\n'
+            '    id = "example_score",\n'
+            '    title = "Nocturne & Étude",\n'
+            '    artist = "",\n'
+            '    album = ""',
         )
 
     def test_title_fallbacks(self):
@@ -52,14 +50,14 @@ class ScoreMetadataTests(unittest.TestCase):
         ]:
             result = self.run_script(xml)
             self.assertEqual(result.returncode, 0, result.stderr)
-            self.assertIn(f'defaultTitle: L10n.string("{title}")', result.stdout)
+            self.assertIn(f'title = "{title}"', result.stdout)
 
     def test_swift_escaping(self):
         result = self.run_script(
             "<score-partwise><work><work-title>&quot;Étude&quot; \\(literal)</work-title></work></score-partwise>"
         )
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertIn(r'L10n.string("\"Étude\" \\(literal)")', result.stdout)
+        self.assertIn(r'"\"Étude\" \\(literal)"', result.stdout)
 
     def test_invalid_input(self):
         for xml in ["<broken>", "<not-a-score/>"]:

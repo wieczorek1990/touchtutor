@@ -2,17 +2,16 @@ import Foundation
 
 struct ScoreItem: Identifiable, Hashable {
   let id: String
-  let name: String
+  let title: String
   let filename: String
-  let defaultTitle: String
-  let defaultArtist: String
-  let defaultAlbum: String
+  let artist: String
+  let album: String
   var isImported: Bool = false
   var importedFileURL: URL?
   var requiredProductID: String?
 
   static let defaultScores: [ScoreItem] = {
-    var scores = loadScoresFromTOML("free")
+    var scores = loadScoresFromTOML("scores_free")
     #if DEBUG
       let testScores = loadScoresFromTOML("scores_test")
       scores.insert(contentsOf: testScores, at: 0)
@@ -41,20 +40,16 @@ struct ScoreItem: Identifiable, Hashable {
 
   /// Create a ScoreItem from a TOML table entry.
   static func fromTOML(_ table: [String: Any]) -> ScoreItem? {
-    guard let id = table["id"] as? String,
-          let name = table["name"] as? String,
-          let filename = table["filename"] as? String,
-          let defaultTitle = table["defaultTitle"] as? String,
-          let defaultArtist = table["defaultArtist"] as? String,
-          let defaultAlbum = table["defaultAlbum"] as? String
-    else { return nil }
+    guard let id = table["id"] as? String else { return nil }
+    let title = (table["title"] as? String) ?? id
+    let artist = table["artist"] as? String ?? ""
+    let album = table["album"] as? String ?? ""
     return ScoreItem(
       id: id,
-      name: L10n.string(name),
-      filename: filename,
-      defaultTitle: L10n.string(defaultTitle),
-      defaultArtist: L10n.string(defaultArtist),
-      defaultAlbum: L10n.string(defaultAlbum)
+      title: L10n.string(title),
+      filename: id + ".xml",
+      artist: L10n.string(artist),
+      album: L10n.string(album)
     )
   }
 }
