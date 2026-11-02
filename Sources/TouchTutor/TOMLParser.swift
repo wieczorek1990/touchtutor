@@ -14,8 +14,8 @@ struct TOMLParser {
     // and optionally a nested array key (e.g. "scores" inside [[packs.scores]])
     var result: [[String: Any]] = []
     var currentTable: [String: Any] = [:]
-    var topLevelKey: String? = nil       // e.g. "scores" from [[scores]]
-    var nestedKey: String? = nil         // e.g. "scores" from [[packs.scores]]
+    var topLevelKey: String? = nil  // e.g. "scores" from [[scores]]
+    var nestedKey: String? = nil  // e.g. "scores" from [[packs.scores]]
     var nestedEntries: [[String: Any]] = []
     var nestedEntry: [String: Any] = [:]
 
@@ -124,8 +124,10 @@ struct TOMLParser {
 
 extension TOMLParser {
   static func loadResource(_ name: String, bundle: Bundle = .module) -> String? {
-    guard let url = bundle.url(forResource: name, withExtension: "toml")
-      ?? Bundle.main.url(forResource: name, withExtension: "toml")
+
+    guard
+      let url = bundle.url(forResource: name, withExtension: "toml")
+        ?? Bundle.main.url(forResource: name, withExtension: "toml")
     else { return nil }
     return try? String(contentsOf: url, encoding: .utf8)
   }

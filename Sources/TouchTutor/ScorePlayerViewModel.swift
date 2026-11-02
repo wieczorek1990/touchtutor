@@ -322,6 +322,22 @@ final class ScorePlayerViewModel: ObservableObject {
     isFinished = false
   }
 
+  func jumpToStep(_ index: Int) {
+    guard let score = score, !score.steps.isEmpty else { return }
+    let clampedIndex = min(max(index, 0), score.steps.count)
+    circleAnimation.reset(
+      scaleSetter: { self.circleScale = $0 },
+      colorSetter: { self.circleColor = $0 }
+    )
+    currentStepIndex = clampedIndex
+    if clampedIndex < score.steps.count {
+      currentStep = score.steps[clampedIndex]
+    } else {
+      currentStep = nil
+    }
+    isFinished = clampedIndex >= score.steps.count
+  }
+
   private func triggerButtonPulse() {
     isPressed = true
     Task { @MainActor in

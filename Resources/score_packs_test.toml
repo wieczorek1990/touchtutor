@@ -5,6 +5,8 @@ color = "orange"
 
 [[packs.scores]]
 id = "practice_test_scale"
+title = "C Major Scale"
 
 [[packs.scores]]
 id = "practice_test_chords"
+title = "C Major Chords"

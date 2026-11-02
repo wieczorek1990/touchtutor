@@ -49,7 +49,7 @@ struct ScorePack: Identifiable {
   /// Create a ScorePack from a TOML table entry.
   static func fromTOML(_ table: [String: Any]) -> ScorePack? {
     guard let id = table["id"] as? String,
-          let title = table["title"] as? String
+      let title = table["title"] as? String
     else { return nil }
 
     let colorName = (table["color"] as? String) ?? "teal"

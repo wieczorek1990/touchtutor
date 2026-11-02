@@ -4,6 +4,108 @@ import SwiftUI
   import AppKit
 #endif
 
+// Custom progress bar that shows measure segments and allows scrolling/dragging
+struct MeasureProgressBar: View {
+  let steps: [ScoreStep]
+  let currentStepIndex: Int
+  let onStepChanged: (Int) -> Void
+  let onReset: () -> Void
+
+  private var measureGroups: [(measure: Int, startIndex: Int, count: Int)] {
+    var groups: [(measure: Int, startIndex: Int, count: Int)] = []
+    guard !steps.isEmpty else { return groups }
+
+    var currentMeasure = steps[0].measureNumber
+    var startIdx = 0
+
+    for (idx, step) in steps.enumerated() {
+      if step.measureNumber != currentMeasure {
+        groups.append((measure: currentMeasure, startIndex: startIdx, count: idx - startIdx))
+        currentMeasure = step.measureNumber
+        startIdx = idx
+      }
+    }
+    groups.append((measure: currentMeasure, startIndex: startIdx, count: steps.count - startIdx))
+    return groups
+  }
+
+  var body: some View {
+    let groups = measureGroups
+    if groups.isEmpty {
+      Rectangle()
+        .fill(Color.gray.opacity(0.2))
+        .frame(height: 8)
+        .cornerRadius(4)
+    } else {
+      HStack(spacing: 0) {
+        Button(action: onReset) {
+          Image(systemName: "arrow.counterclockwise")
+            .font(.system(size: 10, weight: .bold))
+            .foregroundColor(.secondary)
+            .frame(width: 20, height: 20)
+            .background(PlatformColors.controlBackground.opacity(0.7))
+            .clipShape(Circle())
+        }
+        .buttonStyle(.plain)
+        .disabled(currentStepIndex == 0)
+        .help(L10n.string("Reset score to start"))
+
+        ScrollViewReader { proxy in
+          ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 2) {
+              ForEach(Array(groups.enumerated()), id: \.element.measure) { _, group in
+                let measureWidth = CGFloat(group.count) * 12.0
+                let completedInMeasure = max(
+                  0, min(currentStepIndex, group.startIndex + group.count) - group.startIndex
+                )
+                let progress = CGFloat(completedInMeasure) / CGFloat(max(1, group.count))
+
+                ZStack(alignment: .leading) {
+                  // Background (gray track)
+                  RoundedRectangle(cornerRadius: 4)
+                    .fill(Color.gray.opacity(0.2))
+                    .frame(width: measureWidth, height: 8)
+
+                  // Filled portion (blue)
+                  RoundedRectangle(cornerRadius: 4)
+                    .fill(Color.blue)
+                    .frame(width: max(0, measureWidth * progress - 1), height: 8)
+                    .clipped()
+                }
+                .frame(width: measureWidth, height: 8)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                  let targetStep = group.startIndex + group.count / 2
+                  onStepChanged(targetStep)
+                }
+                .id(group.measure)
+              }
+            }
+            .padding(.leading, 2)
+          }
+          .frame(height: 20)
+          .onChange(of: currentStepIndex) {
+            // Find which measure group contains the current step
+            for group in groups {
+              if currentStepIndex >= group.startIndex
+                && currentStepIndex < group.startIndex + group.count
+              {
+                withAnimation(.easeInOut(duration: 0.2)) {
+                  proxy.scrollTo(group.measure, anchor: .center)
+                }
+                break
+              }
+            }
+          }
+        }
+
+        Spacer(minLength: 0)
+      }
+      .frame(height: 20)
+    }
+  }
+}
+
 struct GamePlayView: View {
   @ObservedObject var viewModel: ScorePlayerViewModel
 
@@ -113,31 +215,12 @@ struct GamePlayView: View {
             Spacer()
           }
 
-          HStack(spacing: 8) {
-            ProgressView(value: Double(current), total: Double(max(1, total)))
-              .tint(.blue)
-              .frame(maxWidth: .infinity)
-
-            Button(action: {
-              viewModel.restart()
-            }) {
-              HStack(spacing: 4) {
-                Image(systemName: "arrow.counterclockwise")
-                  .font(.system(size: 10, weight: .bold))
-                Text("Reset", bundle: .module)
-                  .font(.system(size: 12, weight: .medium, design: .rounded))
-              }
-              .foregroundColor(.secondary)
-              .padding(.horizontal, 7)
-              .padding(.vertical, 3)
-              .background(PlatformColors.controlBackground.opacity(0.7))
-              .clipShape(RoundedRectangle(cornerRadius: 6))
-            }
-            .buttonStyle(.plain)
-            .disabled(current == 0)
-            .help(L10n.string("Reset score to start"))
-          }
-          .frame(maxWidth: .infinity, alignment: .center)
+          MeasureProgressBar(
+            steps: score.steps,
+            currentStepIndex: current,
+            onStepChanged: { viewModel.jumpToStep($0) },
+            onReset: { viewModel.restart() }
+          )
         }
       }
 
