@@ -39,7 +39,8 @@
 		CB6DB7FE3095C72C0084C852 /* soiree_logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F23095C72C0084C852 /* soiree_logo.svg */; };
 		CB6DB7FF3095C72C0084C852 /* eyes_on_me.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F43095C72C0084C852 /* eyes_on_me.xml */; };
 		CB6DB8013095C72C0084C852 /* practice_test_chords.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F63095C72C0084C852 /* practice_test_chords.xml */; };
-		CB6DB8023095C72C0084C852 /* Test.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F93095C72C0084C852 /* Test.xml */; };
+		CB6DB8023095C72C0084C852 /* test.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F93095C72C0084C852 /* test.xml */; };
+		CB6DB80D3095C72C0084C852 /* test_long_title.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB80A3095C72C0084C852 /* test_long_title.xml */; };
 		CB6DB8033095C72C0084C852 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB8043095C72C0084C853 /* AppIcon.icns */; };
 		CB6DB8043095C72C0084C852 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F13095C72C0084C852 /* Localizable.strings */; };
 		CB6DB8083095C80B0084C852 /* tifas_theme.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB8063095C80B0084C852 /* tifas_theme.xml */; };
@@ -115,7 +116,8 @@
 		CB6DB7F53095C72C0084C852 /* zanarkand.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = zanarkand.xml; sourceTree = "<group>"; };
 		CB6DB7F63095C72C0084C852 /* practice_test_chords.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = practice_test_chords.xml; sourceTree = "<group>"; };
 		CB6DB7F73095C72C0084C852 /* practice_test_scale.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = practice_test_scale.xml; sourceTree = "<group>"; };
-		CB6DB7F93095C72C0084C852 /* Test.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Test.xml; sourceTree = "<group>"; };
+		CB6DB7F93095C72C0084C852 /* test.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = test.xml; sourceTree = "<group>"; };
+		CB6DB80A3095C72C0084C852 /* test_long_title.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = test_long_title.xml; sourceTree = "<group>"; };
 		CB6DB8043095C72C0084C853 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
 		CB6DB8053095C80B0084C852 /* aeriths_theme.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = aeriths_theme.xml; sourceTree = "<group>"; };
 		CB6DB8063095C80B0084C852 /* tifas_theme.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = tifas_theme.xml; sourceTree = "<group>"; };
@@ -185,7 +187,8 @@
 				CB6DB7F53095C72C0084C852 /* zanarkand.xml */,
 				CB6DB7F63095C72C0084C852 /* practice_test_chords.xml */,
 				CB6DB7F73095C72C0084C852 /* practice_test_scale.xml */,
-				CB6DB7F93095C72C0084C852 /* Test.xml */,
+				CB6DB7F93095C72C0084C852 /* test.xml */,
+				CB6DB80A3095C72C0084C852 /* test_long_title.xml */,
 			);
 			path = Scores;
 			sourceTree = "<group>";
@@ -376,7 +379,8 @@
 				TTLOGOW13095C72C0084C852 /* touchtutor_logo_white.png in Resources */,
 				CB6DB7FF3095C72C0084C852 /* eyes_on_me.xml in Resources */,
 				CB6DB8013095C72C0084C852 /* practice_test_chords.xml in Resources */,
-				CB6DB8023095C72C0084C852 /* Test.xml in Resources */,
+				CB6DB8023095C72C0084C852 /* test.xml in Resources */,
+				CB6DB80D3095C72C0084C852 /* test_long_title.xml in Resources */,
 				CB6DB8043095C72C0084C852 /* Localizable.strings in Resources */,
 				STOREKIT000000000000000001 /* ScorePacks.storekit in Resources */,
 				TOMLFREE000000000000000001 /* scores_free.toml in Resources */,

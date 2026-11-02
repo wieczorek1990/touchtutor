@@ -60,6 +60,19 @@ struct ScorePack: Identifiable {
     let tables = TOMLParser.parse(toml)
     var details: [String: PaidScoreDetail] = [:]
     for table in tables {
+      // Handle flat [[scores]] structure where each table is a score entry
+      if let id = table["id"] as? String {
+        let title = (table["title"] as? String) ?? id
+        let artist = table["artist"] as? String ?? ""
+        let album = table["album"] as? String ?? ""
+        details[id] = PaidScoreDetail(
+          title: L10n.string(title),
+          artist: L10n.string(artist),
+          album: L10n.string(album)
+        )
+        continue
+      }
+      // Handle nested [[packs.scores]] structure for backwards compatibility
       if let scoresArray = table["scores"] as? [[String: Any]] {
         for entry in scoresArray {
           if let id = entry["id"] as? String {
