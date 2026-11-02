@@ -51,6 +51,9 @@ struct PianoContentView: View {
           splashPhase = .done
         }
       }
+      .sheet(isPresented: $viewModel.isShowingScoreStore) {
+        ScorePackStoreView(viewModel: viewModel)
+      }
     #endif
   }
 
@@ -107,9 +110,11 @@ struct PianoContentView: View {
     .task(id: scenePhase) {
       if scenePhase == .active { await viewModel.scoreStore.refreshEntitlements() }
     }
+    #if os(iOS)
     .sheet(isPresented: $viewModel.isShowingScoreStore) {
       ScorePackStoreView(viewModel: viewModel)
     }
+    #endif
     .alert(
       L10n.string("Score Library"),
       isPresented: Binding(

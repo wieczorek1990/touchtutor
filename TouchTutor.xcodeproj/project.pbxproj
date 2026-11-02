@@ -36,6 +36,11 @@
 		CB58C91D309881A100E476C4 /* main_theme_ff5.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB58C91C309881A100E476C4 /* main_theme_ff5.xml */; };
 		CB58C91F309883DF00E476C4 /* prelude.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB58C91E309883DF00E476C4 /* prelude.xml */; };
 		CB58C921309888D200E476C4 /* bmv_846.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB58C920309888D200E476C4 /* bmv_846.xml */; };
+		CB58C923309888D200E476C4 /* panis_angelicus.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB58C922309888D200E476C4 /* panis_angelicus.xml */; };
+		CB58C925309888D200E476C4 /* bmv_211.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB58C924309888D200E476C4 /* bmv_211.xml */; };
+		CB58C927309888D200E476C4 /* daily_vocal_exercises.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB58C926309888D200E476C4 /* daily_vocal_exercises.xml */; };
+		CB58C929309888D200E476C4 /* vocal_exercises.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB58C928309888D200E476C4 /* vocal_exercises.xml */; };
+		CB58C92B309888D200E476C4 /* bmv_1068.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB58C92A309888D200E476C4 /* bmv_1068.xml */; };
 		CB6DB7FB3095C72C0084C852 /* zanarkand.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F53095C72C0084C852 /* zanarkand.xml */; };
 		CB6DB7FD3095C72C0084C852 /* practice_test_scale.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F73095C72C0084C852 /* practice_test_scale.xml */; };
 		CB6DB7FE3095C72C0084C852 /* soiree_logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F23095C72C0084C852 /* soiree_logo.svg */; };
@@ -114,6 +119,11 @@
 		CB58C91C309881A100E476C4 /* main_theme_ff5.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = main_theme_ff5.xml; sourceTree = "<group>"; };
 		CB58C91E309883DF00E476C4 /* prelude.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = prelude.xml; sourceTree = "<group>"; };
 		CB58C920309888D200E476C4 /* bmv_846.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = bmv_846.xml; sourceTree = "<group>"; };
+		CB58C922309888D200E476C4 /* panis_angelicus.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = panis_angelicus.xml; sourceTree = "<group>"; };
+		CB58C924309888D200E476C4 /* bmv_211.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = bmv_211.xml; sourceTree = "<group>"; };
+		CB58C926309888D200E476C4 /* daily_vocal_exercises.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = daily_vocal_exercises.xml; sourceTree = "<group>"; };
+		CB58C928309888D200E476C4 /* vocal_exercises.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = vocal_exercises.xml; sourceTree = "<group>"; };
+		CB58C92A309888D200E476C4 /* bmv_1068.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = bmv_1068.xml; sourceTree = "<group>"; };
 		CB6DB7F03095C72C0084C852 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CB6DB7F23095C72C0084C852 /* soiree_logo.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = soiree_logo.svg; sourceTree = "<group>"; };
 		CB6DB7F43095C72C0084C852 /* eyes_on_me.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = eyes_on_me.xml; sourceTree = "<group>"; };
@@ -184,6 +194,11 @@
 			isa = PBXGroup;
 			children = (
 				CB58C920309888D200E476C4 /* bmv_846.xml */,
+				CB58C922309888D200E476C4 /* panis_angelicus.xml */,
+				CB58C924309888D200E476C4 /* bmv_211.xml */,
+				CB58C926309888D200E476C4 /* daily_vocal_exercises.xml */,
+				CB58C928309888D200E476C4 /* vocal_exercises.xml */,
+				CB58C92A309888D200E476C4 /* bmv_1068.xml */,
 				CB58C91E309883DF00E476C4 /* prelude.xml */,
 				CB58C91C309881A100E476C4 /* main_theme_ff5.xml */,
 				CB6DB8053095C80B0084C852 /* aeriths_theme.xml */,
@@ -388,6 +403,11 @@
 				CB6DB8013095C72C0084C852 /* practice_test_chords.xml in Resources */,
 				CB6DB8023095C72C0084C852 /* test.xml in Resources */,
 				CB58C921309888D200E476C4 /* bmv_846.xml in Resources */,
+				CB58C923309888D200E476C4 /* panis_angelicus.xml in Resources */,
+				CB58C925309888D200E476C4 /* bmv_211.xml in Resources */,
+				CB58C927309888D200E476C4 /* daily_vocal_exercises.xml in Resources */,
+				CB58C929309888D200E476C4 /* vocal_exercises.xml in Resources */,
+				CB58C92B309888D200E476C4 /* bmv_1068.xml in Resources */,
 				CB6DB80D3095C72C0084C852 /* test_long_title.xml in Resources */,
 				CB6DB8043095C72C0084C852 /* Localizable.strings in Resources */,
 				STOREKIT000000000000000001 /* ScorePacks.storekit in Resources */,

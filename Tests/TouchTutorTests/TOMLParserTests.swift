@@ -262,7 +262,7 @@ struct TOMLParserTests {
     let ids = scores.map(\.id)
     #expect(ids.contains("zanarkand"))
     #expect(ids.contains("eyes_on_me"))
-    #expect(ids.contains("dancing_mad"))
+    #expect(ids.contains("prelude"))
   }
 
   #if DEBUG
@@ -281,14 +281,14 @@ struct TOMLParserTests {
     #expect(!packs.isEmpty)
 
     let ids = packs.map(\.id)
-    #expect(ids.contains("tech.soiree.touchtutor.scorepacks.finalfantasy"))
+    #expect(ids.contains("tech.soiree.touchtutor.scorepacks.finalfantasy.1"))
   }
 
   #if DEBUG
   @Test func testScorePacksIncludedInDebug() {
     let packs = ScorePack.catalog
     let ids = packs.map(\.id)
-    #expect(ids.contains("tech.soiree.touchtutor.scorepacks.cmajor"))
+    #expect(ids.contains("tech.soiree.touchtutor.scorepacks.cmajor.test"))
   }
   #endif
 }

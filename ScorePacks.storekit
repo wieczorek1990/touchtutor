@@ -62,7 +62,7 @@
     {
       "displayPrice" : "1.00",
       "familyShareable" : false,
-      "internalID" : "018BBFD0",
+      "internalID" : "C142DEEC",
       "localizations" : [
         {
           "description" : "Final Fantasy piano pieces",
@@ -70,8 +70,23 @@
           "locale" : "en_US"
         }
       ],
-      "productID" : "tech.soiree.touchtutor.scorepacks.bmv",
-      "referenceName" : "BMV",
+      "productID" : "tech.soiree.touchtutor.scorepacks.classical.2",
+      "referenceName" : "Classical (2)",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "1.00",
+      "familyShareable" : false,
+      "internalID" : "C142DEEC",
+      "localizations" : [
+        {
+          "description" : "Final Fantasy piano pieces",
+          "displayName" : "Final Fantasy",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "tech.soiree.touchtutor.scorepacks.classical.2",
+      "referenceName" : "Classical (2)",
       "type" : "NonConsumable"
     }
   ],

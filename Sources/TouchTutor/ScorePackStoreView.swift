@@ -47,64 +47,67 @@ struct ScorePackStoreView: View {
           purchase: { Task { await viewModel.scoreStore.purchase(pack) } }
         )
       } else {
-        ScrollView {
-          VStack(alignment: .leading, spacing: 16) {
-            Text("Buy a pack once and play its scores whenever you like.", bundle: .module)
-              .foregroundStyle(.secondary)
-            if viewModel.scoreStore.packs.isEmpty {
-              Text("No score packs are available yet.", bundle: .module)
-                .padding(.vertical)
-            }
-            ForEach(viewModel.scoreStore.packs) { pack in
-              ScorePackRow(
-                pack: pack,
-                product: viewModel.storeState.products[pack.id],
-                isOwned: viewModel.storeState.ownedProductIDs.contains(pack.id),
-                isPending: viewModel.storeState.pendingProductIDs.contains(pack.id),
-                isPurchasing: viewModel.storeState.purchasingProductID == pack.id,
-                isBusy: viewModel.storeState.isBusy,
-                purchase: { Task { await viewModel.scoreStore.purchase(pack) } },
-                selectPack: {
-                  withAnimation(.easeInOut(duration: 0.2)) {
-                    selectedPack = pack
-                  }
-                }
-              )
-            }
-            if let message = viewModel.storeState.message {
-              Text(message)
-                .font(.callout)
-            }
-            #if DEBUG
-              if viewModel.storeState.products.isEmpty, viewModel.storeState.message != nil {
-                VStack(alignment: .leading, spacing: 4) {
-                  Text("Testing purchases in debug mode?", bundle: .module)
-                    .font(.callout.bold())
-                  let debugHint =
-                    "Run the app from Xcode (⌘R) with the StoreKit configuration "
-                    + "attached to the scheme so that test products load locally."
-                  Text(debugHint)
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-                }
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(.gray.opacity(0.12), in: RoundedRectangle(cornerRadius: 8))
+        VStack(spacing: 16) {
+          ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+              Text("Buy a pack once and play its scores whenever you like.", bundle: .module)
+                .foregroundStyle(.secondary)
+              if viewModel.scoreStore.packs.isEmpty {
+                Text("No score packs are available yet.", bundle: .module)
+                  .padding(.vertical)
               }
-            #endif
+              ForEach(viewModel.scoreStore.packs) { pack in
+                ScorePackRow(
+                  pack: pack,
+                  product: viewModel.storeState.products[pack.id],
+                  isOwned: viewModel.storeState.ownedProductIDs.contains(pack.id),
+                  isPending: viewModel.storeState.pendingProductIDs.contains(pack.id),
+                  isPurchasing: viewModel.storeState.purchasingProductID == pack.id,
+                  isBusy: viewModel.storeState.isBusy,
+                  purchase: { Task { await viewModel.scoreStore.purchase(pack) } },
+                  selectPack: {
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                      selectedPack = pack
+                    }
+                  }
+                )
+              }
+              if let message = viewModel.storeState.message {
+                Text(message)
+                  .font(.callout)
+              }
+              #if DEBUG
+                if viewModel.storeState.products.isEmpty, viewModel.storeState.message != nil {
+                  VStack(alignment: .leading, spacing: 4) {
+                    Text("Testing purchases in debug mode?", bundle: .module)
+                      .font(.callout.bold())
+                    let debugHint =
+                      "Run the app from Xcode (⌘R) with the StoreKit configuration "
+                      + "attached to the scheme so that test products load locally."
+                    Text(debugHint)
+                      .font(.callout)
+                      .foregroundStyle(.secondary)
+                  }
+                  .padding()
+                  .frame(maxWidth: .infinity, alignment: .leading)
+                  .background(.gray.opacity(0.12), in: RoundedRectangle(cornerRadius: 8))
+                }
+              #endif
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
           }
-          .frame(maxWidth: .infinity, alignment: .leading)
+          .frame(maxHeight: .infinity)
+          #if os(iOS)
+          ScorePackStoreActions(
+            state: viewModel.storeState,
+            reload: { Task { await viewModel.scoreStore.loadProducts() } },
+            restore: { Task { await viewModel.scoreStore.restore() } }
+          )
+          #endif
         }
-
-        ScorePackStoreActions(
-          state: viewModel.storeState,
-          reload: { Task { await viewModel.scoreStore.loadProducts() } },
-          restore: { Task { await viewModel.scoreStore.restore() } }
-        )
       }
     }
     .padding(20)
-    .frame(maxWidth: .infinity)
     .frame(maxWidth: 400)
     .task { await viewModel.scoreStore.loadProducts() }
   }

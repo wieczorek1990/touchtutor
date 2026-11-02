@@ -80,7 +80,13 @@ final class ScorePlayerViewModel: ObservableObject {
       }
       // 5. Paid (BMV scores)
       for pack in scoreStore.packs {
-        if pack.id == "tech.soiree.touchtutor.scorepacks.bmv" {
+        if pack.id == "tech.soiree.touchtutor.scorepacks.classical.1" {
+          availableScores.append(contentsOf: pack.scores)
+        }
+      }
+      // 5. Paid (Vocal scores)
+      for pack in scoreStore.packs {
+        if pack.id == "tech.soiree.touchtutor.scorepacks.classical.2" {
           availableScores.append(contentsOf: pack.scores)
         }
       }

@@ -21,9 +21,29 @@ color = "red"
 id = "main_theme_ff5"
 
 [[packs]]
-id = "tech.soiree.touchtutor.scorepacks.bmv"
+id = "tech.soiree.touchtutor.scorepacks.classical.1"
 title = "Bach BMV"
 color = "orange"
 
 [[packs.scores]]
 id = "bmv_846"
+
+[[packs.scores]]
+id = "bmv_211"
+
+[[packs.scores]]
+id = "bmv_1068"
+
+[[packs]]
+id = "tech.soiree.touchtutor.scorepacks.classical.2"
+title = "Classical (2)"
+color = "green"
+
+[[packs.scores]]
+id = "panis_angelicus"
+
+[[packs.scores]]
+id = "daily_vocal_exercises"
+
+[[packs.scores]]
+id = "vocal_exercises"
