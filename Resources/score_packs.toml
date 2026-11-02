@@ -1,6 +1,6 @@
 [[packs]]
 id = "tech.soiree.touchtutor.scorepacks.finalfantasy.1"
-title = "Final Fantasy"
+title = "Final Fantasy (1)"
 color = "teal"
 
 [[packs.scores]]
@@ -28,7 +28,7 @@ id = "underneath_the_rotting_pizza"
 
 [[packs]]
 id = "tech.soiree.touchtutor.scorepacks.classical.1"
-title = "Bach BMV"
+title = "Classical (1)"
 color = "orange"
 
 [[packs.scores]]

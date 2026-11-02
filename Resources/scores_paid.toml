@@ -41,16 +41,22 @@ artist = "Johann Sebastian Bach"
 album = "Das Wohltemperierte Klavier"
 
 [[scores]]
-id = "panis_angelicus"
-title = "Panis Angelicus"
-artist = "César Franck"
-album = "Classical"
-
-[[scores]]
 id = "bmv_211"
 title = "BWV 211"
 artist = "Johann Sebastian Bach"
 album = "Das Wohltemperierte Klavier"
+
+[[scores]]
+id = "bmv_1068"
+title = "BWV 1068"
+artist = "Johann Sebastian Bach"
+album = "Orchestral Suite No. 3"
+
+[[scores]]
+id = "panis_angelicus"
+title = "Panis Angelicus"
+artist = "César Franck"
+album = "Classical"
 
 [[scores]]
 id = "daily_vocal_exercises"
@@ -64,8 +70,3 @@ title = "Vocal Exercises"
 artist = "Brenda C. Kayne"
 album = "Classical"
 
-[[scores]]
-id = "bmv_1068"
-title = "BWV 1068"
-artist = "Johann Sebastian Bach"
-album = "Orchestral Suite No. 3"
