@@ -58,6 +58,21 @@
       "productID" : "tech.soiree.touchtutor.scorepacks.finalfantasy.1",
       "referenceName" : "Final Fantasy (1)",
       "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "1.00",
+      "familyShareable" : false,
+      "internalID" : "018BBFD0",
+      "localizations" : [
+        {
+          "description" : "Final Fantasy piano pieces",
+          "displayName" : "Final Fantasy",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "tech.soiree.touchtutor.scorepacks.bmv",
+      "referenceName" : "BMV",
+      "type" : "NonConsumable"
     }
   ],
   "settings" : {

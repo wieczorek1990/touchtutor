@@ -35,6 +35,7 @@
 		CB58C91B3098770F00E476C4 /* scores_paid.toml in Resources */ = {isa = PBXBuildFile; fileRef = CB58C91A3098770400E476C4 /* scores_paid.toml */; };
 		CB58C91D309881A100E476C4 /* main_theme_ff5.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB58C91C309881A100E476C4 /* main_theme_ff5.xml */; };
 		CB58C91F309883DF00E476C4 /* prelude.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB58C91E309883DF00E476C4 /* prelude.xml */; };
+		CB58C921309888D200E476C4 /* bmv_846.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB58C920309888D200E476C4 /* bmv_846.xml */; };
 		CB6DB7FB3095C72C0084C852 /* zanarkand.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F53095C72C0084C852 /* zanarkand.xml */; };
 		CB6DB7FD3095C72C0084C852 /* practice_test_scale.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F73095C72C0084C852 /* practice_test_scale.xml */; };
 		CB6DB7FE3095C72C0084C852 /* soiree_logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = CB6DB7F23095C72C0084C852 /* soiree_logo.svg */; };
@@ -112,6 +113,7 @@
 		CB58C91A3098770400E476C4 /* scores_paid.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = scores_paid.toml; sourceTree = "<group>"; };
 		CB58C91C309881A100E476C4 /* main_theme_ff5.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = main_theme_ff5.xml; sourceTree = "<group>"; };
 		CB58C91E309883DF00E476C4 /* prelude.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = prelude.xml; sourceTree = "<group>"; };
+		CB58C920309888D200E476C4 /* bmv_846.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = bmv_846.xml; sourceTree = "<group>"; };
 		CB6DB7F03095C72C0084C852 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CB6DB7F23095C72C0084C852 /* soiree_logo.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = soiree_logo.svg; sourceTree = "<group>"; };
 		CB6DB7F43095C72C0084C852 /* eyes_on_me.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = eyes_on_me.xml; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		6E69DD8FF1024E608BA67D6D /* Scores */ = {
 			isa = PBXGroup;
 			children = (
+				CB58C920309888D200E476C4 /* bmv_846.xml */,
 				CB58C91E309883DF00E476C4 /* prelude.xml */,
 				CB58C91C309881A100E476C4 /* main_theme_ff5.xml */,
 				CB6DB8053095C80B0084C852 /* aeriths_theme.xml */,
@@ -384,6 +387,7 @@
 				CB6DB7FF3095C72C0084C852 /* eyes_on_me.xml in Resources */,
 				CB6DB8013095C72C0084C852 /* practice_test_chords.xml in Resources */,
 				CB6DB8023095C72C0084C852 /* test.xml in Resources */,
+				CB58C921309888D200E476C4 /* bmv_846.xml in Resources */,
 				CB6DB80D3095C72C0084C852 /* test_long_title.xml in Resources */,
 				CB6DB8043095C72C0084C852 /* Localizable.strings in Resources */,
 				STOREKIT000000000000000001 /* ScorePacks.storekit in Resources */,
@@ -489,8 +493,11 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.soiree.touchtutor.tests;
 				PRODUCT_NAME = TouchTutorTests;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TouchTutor.app/Contents/MacOS/TouchTutor";
 			};
 			name = Debug;
@@ -513,7 +520,10 @@
 				MACOSX_DEPLOYMENT_TARGET = 27.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.soiree.touchtutor.tests;
 				PRODUCT_NAME = TouchTutorTests;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TouchTutor.app/Contents/MacOS/TouchTutor";
 			};
 			name = Release;
@@ -528,7 +538,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = RHX53VZ224;
@@ -657,7 +667,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = RHX53VZ224;

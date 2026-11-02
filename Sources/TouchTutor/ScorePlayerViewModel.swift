@@ -78,6 +78,12 @@ final class ScorePlayerViewModel: ObservableObject {
           availableScores.append(contentsOf: pack.scores)
         }
       }
+      // 5. Paid (BMV scores)
+      for pack in scoreStore.packs {
+        if pack.id == "tech.soiree.touchtutor.scorepacks.bmv" {
+          availableScores.append(contentsOf: pack.scores)
+        }
+      }
     #else
       // Release order: Free defaults → Paid
       for pack in scoreStore.packs {

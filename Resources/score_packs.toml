@@ -19,3 +19,11 @@ color = "red"
 
 [[packs.scores]]
 id = "main_theme_ff5"
+
+[[packs]]
+id = "tech.soiree.touchtutor.scorepacks.bmv"
+title = "Bach BMV"
+color = "orange"
+
+[[packs.scores]]
+id = "bmv_846"

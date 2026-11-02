@@ -21,3 +21,9 @@ id = "main_theme_ff5"
 title = "Main Theme"
 artist = "Nobuo Uematsu"
 album = "Final Fantasy V"
+
+ [[scores]]
+ id = "bmv_846"
+ title = "BMV 846"
+ artist = "Johann Sebastian Bach"
+ album = "Das Wohltemperierte Klavier"
