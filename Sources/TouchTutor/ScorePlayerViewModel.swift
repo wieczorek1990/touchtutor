@@ -48,7 +48,7 @@ final class ScorePlayerViewModel: ObservableObject {
     self.scoreStore = scoreStore
     self.storeState = scoreStore.state
     #if DEBUG
-      // Debug order: Test → C Major → Free → Paid
+      // Debug order: Free → Free Long → 3x Free → C Major → Paid
       let freeDefaults = availableScores
       availableScores = []
       // 1. Test scores (free)
@@ -58,14 +58,14 @@ final class ScorePlayerViewModel: ObservableObject {
           availableScores.append(testScore)
         }
       }
-      // 2. C Major Pack scores
+      // 2. Free defaults (excluding Test)
+      availableScores.append(contentsOf: freeDefaults.filter { !testIds.contains($0.id) })
+      // 3. C Major Pack scores (test purchase)
       for pack in scoreStore.packs {
-        if pack.id == "tech.soiree.touchtutor.scorepacks.cmajor" {
+        if pack.id == "tech.soiree.touchtutor.scorepacks.cmajor.test" {
           availableScores.append(contentsOf: pack.scores)
         }
       }
-      // 3. Free defaults (excluding Test)
-      availableScores.append(contentsOf: freeDefaults.filter { !testIds.contains($0.id) })
       // 4. Paid (Final Fantasy scores)
       for pack in scoreStore.packs {
         if pack.id == "tech.soiree.touchtutor.scorepacks.finalfantasy.1" {

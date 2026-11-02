@@ -56,11 +56,21 @@ struct ScorePackStoreView: View {
                 Text("No score packs are available yet.", bundle: .module)
                   .padding(.vertical)
               }
-              ForEach(viewModel.scoreStore.packs.sorted { a, b in
-                let aOwned = viewModel.storeState.ownedProductIDs.contains(a.id)
-                let bOwned = viewModel.storeState.ownedProductIDs.contains(b.id)
-                return !aOwned && bOwned
-              }) { pack in
+              ForEach(
+                viewModel.scoreStore.packs.sorted { a, b in
+                  let aOwned = viewModel.storeState.ownedProductIDs.contains(a.id)
+                  let bOwned = viewModel.storeState.ownedProductIDs.contains(b.id)
+                  let aFree = a.id.contains(".test")
+                  let bFree = b.id.contains(".test")
+                  // Order: free/test → not-owned paid → owned
+                  let aTier: Int
+                  if aFree { aTier = 0 } else if aOwned { aTier = 2 } else { aTier = 1 }
+                  let bTier: Int
+                  if bFree { bTier = 0 } else if bOwned { bTier = 2 } else { bTier = 1 }
+                  if aTier != bTier { return aTier < bTier }
+                  return a.id < b.id
+                }
+              ) { pack in
                 ScorePackRow(
                   pack: pack,
                   product: viewModel.storeState.products[pack.id],
@@ -100,19 +110,18 @@ struct ScorePackStoreView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
           }
-          .layoutPriority(-1)
           #if os(iOS)
-          ScorePackStoreActions(
-            state: viewModel.storeState,
-            reload: { Task { await viewModel.scoreStore.loadProducts() } },
-            restore: { Task { await viewModel.scoreStore.restore() } }
-          )
+            ScorePackStoreActions(
+              state: viewModel.storeState,
+              reload: { Task { await viewModel.scoreStore.loadProducts() } },
+              restore: { Task { await viewModel.scoreStore.restore() } }
+            )
           #endif
         }
       }
     }
     .padding(20)
-    .frame(maxWidth: 400)
+    .frame(maxWidth: 400, maxHeight: .infinity, alignment: .top)
     .task { await viewModel.scoreStore.loadProducts() }
   }
 }
@@ -128,12 +137,9 @@ private struct ScorePackRow: View {
   let selectPack: () -> Void
 
   @State private var isHovered = false
-  @State private var isPressed = false
 
   private var backgroundColor: Color {
-    if isPressed {
-      pack.color.opacity(0.35)
-    } else if isHovered {
+    if isHovered {
       pack.color.opacity(0.22)
     } else {
       pack.color.opacity(0.12)
@@ -141,9 +147,7 @@ private struct ScorePackRow: View {
   }
 
   private var strokeOpacity: Double {
-    if isPressed {
-      0.7
-    } else if isHovered {
+    if isHovered {
       0.55
     } else {
       0.4
@@ -167,9 +171,6 @@ private struct ScorePackRow: View {
         isHovered = hovering
       }
     }
-    .simultaneousGesture(
-      pressGesture
-    )
   }
 
   private var content: some View {
@@ -222,19 +223,6 @@ private struct ScorePackRow: View {
       )
   }
 
-  private var pressGesture: some Gesture {
-    DragGesture(minimumDistance: 0)
-      .onChanged { _ in
-        withAnimation(.easeInOut(duration: 0.1)) {
-          isPressed = true
-        }
-      }
-      .onEnded { _ in
-        withAnimation(.easeInOut(duration: 0.15)) {
-          isPressed = false
-        }
-      }
-  }
 }
 
 private struct ScorePackDetailView: View {

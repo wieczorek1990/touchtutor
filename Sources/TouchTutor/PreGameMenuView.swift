@@ -142,7 +142,8 @@ struct PreGameMenuView: View {
                     TapGesture(count: 2).onEnded {
                       viewModel.selectScore(item)
                       viewModel.startGame()
-                    })
+                    }
+                  )
                   .frame(maxWidth: .infinity, alignment: .leading)
                   .background(
                     RoundedRectangle(cornerRadius: 8)
@@ -166,9 +167,9 @@ struct PreGameMenuView: View {
               }
               .padding(.vertical, 2)
               .padding(.horizontal, 1)
-            #if os(iOS)
-              .padding(.bottom, 96)
-            #endif
+              #if os(iOS)
+                .padding(.bottom, 96)
+              #endif
             }
             .frame(minHeight: 60)
             .onChange(of: viewModel.selectedScoreItem?.id) {
