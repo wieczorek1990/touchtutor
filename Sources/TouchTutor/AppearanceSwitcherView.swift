@@ -153,15 +153,28 @@ struct AppearanceSwitcherView: View {
     return Button {
       appearance = dark ? "dark" : "light"
     } label: {
-      Text(symbol)
-        .foregroundColor(dark ? getDarkSymbolColor() : getLightSymbolColor())
-        .frame(width: 24, height: 26)
-        .background(
-          isSelected
-            ? Capsule().fill(Color.secondary.opacity(0.15))
-            : nil
-        )
-        .contentShape(Rectangle())
+      ZStack {
+        if dark {
+          // Dark mode icon: black rounded square with white border
+          RoundedRectangle(cornerRadius: 3)
+            .fill(Color.black)
+            .stroke(Color.white, lineWidth: 1.5)
+            .frame(width: 12, height: 12)
+        } else {
+          // Light mode icon: rounded square with white fill
+          RoundedRectangle(cornerRadius: 3)
+            .fill(Color.white)
+            .stroke(getLightBorderColor(), lineWidth: 1.5)
+            .frame(width: 12, height: 12)
+        }
+      }
+      .frame(width: 24, height: 26)
+      .background(
+        isSelected
+          ? Capsule().fill(Color.secondary.opacity(0.15))
+          : nil
+      )
+      .contentShape(Rectangle())
     }
     .buttonStyle(.plain)
     .help(L10n.string(dark ? "Switch to Dark appearance" : "Switch to Light appearance"))

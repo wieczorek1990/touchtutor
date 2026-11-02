@@ -15,6 +15,7 @@ final class ScorePlayerViewModel: ObservableObject {
   @Published var currentScreen: AppScreen = .menu
   @Published var availableScores: [ScoreItem] = ScoreItem.defaultScores
   @Published var selectedScoreItem: ScoreItem?
+  @AppStorage("selectedScoreId") private var savedScoreId: String = ""
   @Published var score: ParsedScore?
   @Published var currentStepIndex: Int = 0
   @Published var currentStep: ScoreStep?
@@ -48,7 +49,7 @@ final class ScorePlayerViewModel: ObservableObject {
     self.scoreStore = scoreStore
     self.storeState = scoreStore.state
     #if DEBUG
-      // Debug order: Free → Free Long → 3x Free → C Major → Paid
+      // Debug order: Test → Free → C Major → Paid packs
       let freeDefaults = availableScores
       availableScores = []
       // 1. Test scores (free)
@@ -60,33 +61,19 @@ final class ScorePlayerViewModel: ObservableObject {
       }
       // 2. Free defaults (excluding Test)
       availableScores.append(contentsOf: freeDefaults.filter { !testIds.contains($0.id) })
-      // 3. C Major Pack scores (test purchase)
-      for pack in scoreStore.packs {
-        if pack.id == "tech.soiree.touchtutor.scorepacks.cmajor.test" {
-          availableScores.append(contentsOf: pack.scores)
-        }
-      }
-      // 4. Paid (Final Fantasy scores)
-      for pack in scoreStore.packs {
-        if pack.id == "tech.soiree.touchtutor.scorepacks.finalfantasy.1" {
-          availableScores.append(contentsOf: pack.scores)
-        }
-      }
-      // 5. Paid (Final Fantasy (2) scores)
-      for pack in scoreStore.packs {
-        if pack.id == "tech.soiree.touchtutor.scorepacks.finalfantasy.2" {
-          availableScores.append(contentsOf: pack.scores)
-        }
-      }
-      // 5. Paid (BMV scores)
-      for pack in scoreStore.packs {
-        if pack.id == "tech.soiree.touchtutor.scorepacks.classical.1" {
-          availableScores.append(contentsOf: pack.scores)
-        }
-      }
-      // 5. Paid (Vocal scores)
-      for pack in scoreStore.packs {
-        if pack.id == "tech.soiree.touchtutor.scorepacks.classical.2" {
+      // 3. Paid packs in debug order
+      let debugPackOrder: [String] = [
+        "tech.soiree.touchtutor.scorepacks.cmajor.test",
+        "tech.soiree.touchtutor.scorepacks.finalfantasy.1",
+        "tech.soiree.touchtutor.scorepacks.finalfantasy.2",
+        "tech.soiree.touchtutor.scorepacks.classical.1",
+        "tech.soiree.touchtutor.scorepacks.classical.2",
+      ]
+      let packsById: [String: ScorePack] = Dictionary(
+        uniqueKeysWithValues: scoreStore.packs.map { ($0.id, $0) }
+      )
+      for packId in debugPackOrder {
+        if let pack = packsById[packId] {
           availableScores.append(contentsOf: pack.scores)
         }
       }
@@ -112,7 +99,12 @@ final class ScorePlayerViewModel: ObservableObject {
     } catch {
       libraryError = error.localizedDescription
     }
-    if let initialScore = availableScores.first(where: { storeState.canPlay($0) })
+    if !savedScoreId.isEmpty,
+      let restored = availableScores.first(where: { $0.id == savedScoreId }),
+      storeState.canPlay(restored)
+    {
+      selectScore(restored)
+    } else if let initialScore = availableScores.first(where: { storeState.canPlay($0) })
       ?? availableScores.first
     {
       selectScore(initialScore)
@@ -201,6 +193,7 @@ final class ScorePlayerViewModel: ObservableObject {
   private func selectScore(_ item: ScoreItem, parsed: ParsedScore) {
     selectedScoreItem = item
     score = parsed
+    savedScoreId = item.id
     restart()
   }
 

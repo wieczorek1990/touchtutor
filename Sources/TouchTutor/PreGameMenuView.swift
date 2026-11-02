@@ -179,6 +179,13 @@ struct PreGameMenuView: View {
                 }
               }
             }
+            .onChange(of: viewModel.currentScreen) {
+              if viewModel.currentScreen == .menu, let id = viewModel.selectedScoreItem?.id {
+                withAnimation(.easeInOut(duration: 0.15)) {
+                  proxy.scrollTo(id, anchor: nil)
+                }
+              }
+            }
           }
         }
         .padding(12)
