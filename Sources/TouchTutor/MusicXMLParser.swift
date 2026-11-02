@@ -38,6 +38,13 @@ final class MusicXMLParser: NSObject, XMLParserDelegate {
     currentText = ""
 
     switch elementName {
+    case "part":
+      // Reset measure tracking when a new part/voice starts
+      measureAbsoluteStart = 0
+      measureNumber = 1
+      currentOffsetInMeasure = 0
+      lastNoteOffsetInMeasure = 0
+      maxMeasureDuration = 0
     case "measure":
       if let numStr = attributeDict["number"], let num = Int(numStr) {
         measureNumber = num

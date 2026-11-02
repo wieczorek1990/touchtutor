@@ -122,11 +122,6 @@ struct PreGameMenuView: View {
                       .contentShape(Rectangle())
                     }
                     .buttonStyle(.plain)
-                    .simultaneousGesture(
-                      TapGesture(count: 2).onEnded {
-                        viewModel.selectScore(item)
-                        viewModel.startGame()
-                      })
 
                     if item.isImported {
                       Button(action: {
@@ -143,6 +138,11 @@ struct PreGameMenuView: View {
                       .help(L10n.string("Delete imported score"))
                     }
                   }
+                  .simultaneousGesture(
+                    TapGesture(count: 2).onEnded {
+                      viewModel.selectScore(item)
+                      viewModel.startGame()
+                    })
                   .frame(maxWidth: .infinity, alignment: .leading)
                   .background(
                     RoundedRectangle(cornerRadius: 8)

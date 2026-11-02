@@ -66,13 +66,19 @@ struct MeasureProgressBar: View {
                     .fill(Color.gray.opacity(0.2))
                     .frame(width: measureWidth, height: 8)
 
-                  // Filled portion (blue)
-                  RoundedRectangle(cornerRadius: 4)
-                    .fill(Color.blue)
-                    .frame(width: max(0, measureWidth * progress - 1), height: 8)
-                    .clipped()
+                  // Filled portion (blue) - flat right edge when incomplete, rounded when complete
+                  if progress >= 1 {
+                    RoundedRectangle(cornerRadius: 4)
+                      .fill(Color.blue)
+                      .frame(width: measureWidth, height: 8)
+                  } else {
+                    Rectangle()
+                      .fill(Color.blue)
+                      .frame(width: max(0, measureWidth * progress), height: 8)
+                  }
                 }
                 .frame(width: measureWidth, height: 8)
+                .clipShape(RoundedRectangle(cornerRadius: 4))
                 .contentShape(Rectangle())
                 .onTapGesture {
                   let targetStep = group.startIndex + group.count / 2

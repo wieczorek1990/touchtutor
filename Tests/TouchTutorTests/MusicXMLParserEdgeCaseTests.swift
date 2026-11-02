@@ -332,4 +332,63 @@ struct MusicXMLParserEdgeCaseTests {
     #expect(score.steps[0].notes.first?.midiNote == 66)  // F#4
     #expect(score.steps[1].notes.first?.midiNote == 64)  // Fb4 = E4 = MIDI 64
   }
+
+  // MARK: - Multi-part scores
+
+  @Test func multiPartScoreMergesNotesCorrectly() throws {
+    // Two parts with notes at the same onset should be merged into one step
+    let xml = """
+    <score-partwise>
+      <part id="P1">
+        <measure number="1">
+          <attributes><divisions>4</divisions></attributes>
+          <note><pitch><step>C</step><octave>4</octave></pitch><duration>4</duration></note>
+        </measure>
+        <measure number="2">
+          <note><pitch><step>D</step><octave>4</octave></pitch><duration>4</duration></note>
+        </measure>
+      </part>
+      <part id="P2">
+        <measure number="1">
+          <attributes><divisions>4</divisions></attributes>
+          <note><pitch><step>G</step><octave>3</octave></pitch><duration>4</duration></note>
+        </measure>
+        <measure number="2">
+          <note><pitch><step>A</step><octave>3</octave></pitch><duration>4</duration></note>
+        </measure>
+      </part>
+    </score-partwise>
+    """
+    let score = try #require(MusicXMLParser.parse(data: Data(xml.utf8)))
+    #expect(score.steps.count == 2)
+    // Part 1 C4 (60) + Part 2 G3 (55) at onset 0
+    #expect(score.steps[0].notes.map(\.midiNote) == [55, 60])
+    // Part 1 D4 (62) + Part 2 A3 (57) at onset 4
+    #expect(score.steps[1].notes.map(\.midiNote) == [57, 62])
+  }
+
+  @Test func multiPartScoreResetsMeasureTracking() throws {
+    // Ensure Part 2 doesn't have measureAbsoluteStart offset from Part 1
+    let xml = """
+    <score-partwise>
+      <part id="P1">
+        <measure number="1">
+          <attributes><divisions>4</divisions></attributes>
+          <note><pitch><step>C</step><octave>4</octave></pitch><duration>4</duration></note>
+        </measure>
+      </part>
+      <part id="P2">
+        <measure number="1">
+          <attributes><divisions>4</divisions></attributes>
+          <note><pitch><step>G</step><octave>3</octave></pitch><duration>4</duration></note>
+        </measure>
+      </part>
+    </score-partwise>
+    """
+    let score = try #require(MusicXMLParser.parse(data: Data(xml.utf8)))
+    // Both notes should be merged at onset 0, not separated by Part 1's duration
+    #expect(score.steps.count == 1)
+    #expect(score.steps[0].onset == 0)
+    #expect(score.steps[0].notes.map(\.midiNote) == [55, 60])
+  }
 }
