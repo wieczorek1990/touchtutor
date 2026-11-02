@@ -110,13 +110,11 @@ struct ScorePackStoreView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
           }
-          #if os(iOS)
-            ScorePackStoreActions(
-              state: viewModel.storeState,
-              reload: { Task { await viewModel.scoreStore.loadProducts() } },
-              restore: { Task { await viewModel.scoreStore.restore() } }
-            )
-          #endif
+          ScorePackStoreActions(
+            state: viewModel.storeState,
+            reload: { Task { await viewModel.scoreStore.loadProducts() } },
+            restore: { Task { await viewModel.scoreStore.restore() } }
+          )
         }
       }
     }

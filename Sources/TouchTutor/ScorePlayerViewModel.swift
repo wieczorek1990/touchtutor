@@ -1,10 +1,6 @@
 import Combine
 import SwiftUI
 
-#if os(macOS)
-  import AppKit
-#endif
-
 enum AppScreen {
   case menu
   case game
@@ -35,9 +31,6 @@ final class ScorePlayerViewModel: ObservableObject {
   private var soundFontSynth: SoundFontSynth
   private let circleAnimation = CircleAnimationHelper()
   private var cancellables = Set<AnyCancellable>()
-  #if os(macOS)
-    private var keyboardMonitor: KeyboardMonitor?
-  #endif
 
   init(
     importedLibrary: ImportedScoreLibrary = ImportedScoreLibrary(),
@@ -115,33 +108,6 @@ final class ScorePlayerViewModel: ObservableObject {
         soundFontSynth.setProgram(soundFont.program)
       }
       .store(in: &cancellables)
-    #if os(macOS)
-      keyboardMonitor = KeyboardMonitor(
-        currentScreen: { [weak self] in self?.currentScreen ?? .menu },
-        isShowingStore: { [weak self] in self?.isShowingScoreStore ?? false },
-        isImportedSelected: { [weak self] in self?.selectedScoreItem?.isImported ?? false },
-        onAction: { [weak self] action in
-          switch action {
-          case .startGame:
-            self?.startGame()
-          case .returnToMenu:
-            self?.returnToMenu()
-          case .advanceStep:
-            self?.advanceStep()
-          case .selectNextScore:
-            self?.selectNextScore()
-          case .selectPreviousScore:
-            self?.selectPreviousScore()
-          case .deleteSelectedScore:
-            if let selected = self?.selectedScoreItem {
-              self?.deleteScore(selected)
-            }
-          case .exitApp:
-            self?.exitApp()
-          }
-        }
-      )
-    #endif
   }
 
   func startGame() {
@@ -169,13 +135,6 @@ final class ScorePlayerViewModel: ObservableObject {
       currentScreen = .menu
     }
   }
-
-  #if os(macOS)
-    func exitApp() {
-      NSApplication.shared.terminate(nil)
-    }
-
-  #endif
 
   func selectScore(_ item: ScoreItem) {
     guard storeState.canPlay(item) else {
@@ -244,27 +203,6 @@ final class ScorePlayerViewModel: ObservableObject {
       }
     }
   }
-
-  #if os(macOS)
-    func openCustomScoreFile() {
-      let panel = NSOpenPanel()
-      panel.title = L10n.string("Select MusicXML Score")
-      panel.allowedContentTypes = [.xml]
-      panel.allowsOtherFileTypes = true
-      panel.canChooseFiles = true
-      panel.canChooseDirectories = false
-      panel.allowsMultipleSelection = false
-
-      if panel.runModal() == .OK, let url = panel.url {
-        do {
-          try importScore(from: url)
-        } catch {
-          libraryError = error.localizedDescription
-        }
-      }
-    }
-
-  #endif
 
   func importScore(from url: URL) throws {
     let imported = try importedLibrary.importScore(from: url)

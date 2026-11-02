@@ -1,9 +1,5 @@
 import SwiftUI
 
-#if os(macOS)
-  import AppKit
-#endif
-
 // Custom progress bar that shows measure segments and allows scrolling/dragging
 struct MeasureProgressBar: View {
   let steps: [ScoreStep]

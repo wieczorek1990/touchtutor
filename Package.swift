@@ -6,7 +6,6 @@ let package = Package(
   name: "TouchTutor",
   defaultLocalization: "en",
   platforms: [
-    .macOS(.v14),
     .iOS(.v26),
   ],
   targets: [
@@ -14,7 +13,7 @@ let package = Package(
       name: "TouchTutor",
       path: ".",
       exclude: [
-        "Tests", "Docs", "bin", "macOS", "TouchTutor.xcodeproj",
+        "Tests", "Docs", "bin", "TouchTutor.xcodeproj",
         "Resources/LaunchScreen.storyboard",
       ],
       sources: ["Sources/TouchTutor"],

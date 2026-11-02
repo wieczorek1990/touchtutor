@@ -20,15 +20,11 @@
 		AA1111111111111111111111AA /* Sources/TouchTutor/AppearanceSwitcherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1111111111111111111111AB /* Sources/TouchTutor/AppearanceSwitcherView.swift */; };
 		AA2222222222222222222222AA /* Sources/TouchTutor/CircleAnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2222222222222222222222AB /* Sources/TouchTutor/CircleAnimationHelper.swift */; };
 		AA3333333333333333333333AA /* Sources/TouchTutor/ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3333333333333333333333AB /* Sources/TouchTutor/ContentView.swift */; };
-		AA5555555555555555555555AA /* Sources/TouchTutor/KeyboardMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5555555555555555555555AB /* Sources/TouchTutor/KeyboardMonitor.swift */; };
-		AA6666666666666666666666AA /* Sources/TouchTutor/MacMenuCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6666666666666666666666AB /* Sources/TouchTutor/MacMenuCommands.swift */; };
 		AA7777777777777777777777AA /* Sources/TouchTutor/MusicNoteLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7777777777777777777777AB /* Sources/TouchTutor/MusicNoteLogoView.swift */; };
 		AA8888888888888888888888AA /* Sources/TouchTutor/NoteCapsuleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8888888888888888888888AB /* Sources/TouchTutor/NoteCapsuleButton.swift */; };
 		AA9999999999999999999999AA /* Sources/TouchTutor/PianoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9999999999999999999999AB /* Sources/TouchTutor/PianoContentView.swift */; };
 		AAAABB111111111111111111AA /* Sources/TouchTutor/SoireeTechLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAABB111111111111111111AB /* Sources/TouchTutor/SoireeTechLinkView.swift */; };
-		AAAABB222222222222222222AA /* Sources/TouchTutor/SystemAppearanceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAABB222222222222222222AB /* Sources/TouchTutor/SystemAppearanceObserver.swift */; };
 		AAAABB333333333333333333AA /* Sources/TouchTutor/TempoSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAABB333333333333333333AB /* Sources/TouchTutor/TempoSelectorView.swift */; };
-		ABCD0001E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/SVGRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCD0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/SVGRenderer.swift */; };
 		BADD200FE97D203DF515488B /* Sources/TouchTutor/ImportedScoreLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CFFD86CCD5AD61ABA8F23 /* Sources/TouchTutor/ImportedScoreLibrary.swift */; };
 		C0F208B12ACF8CEDA2C5D448 /* Sources/TouchTutor/PreGameMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB17DCAFB293C1C36001AF /* Sources/TouchTutor/PreGameMenuView.swift */; };
 		C56EDE9094A531666789557E /* Tests/TouchTutorTests/ScoreLoadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9507F84DAE68E626200D7669 /* Tests/TouchTutorTests/ScoreLoadingTests.swift */; };
@@ -101,19 +97,14 @@
 		891D3161188B27463DB3D4AE /* Sources/TouchTutor/MusicalNoteSymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/MusicalNoteSymbolView.swift; sourceTree = "<group>"; };
 		9507F84DAE68E626200D7669 /* Tests/TouchTutorTests/ScoreLoadingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests/TouchTutorTests/ScoreLoadingTests.swift; sourceTree = "<group>"; };
 		A4BAA65EED37B6F568EFE655 /* Sources/TouchTutor/ScorePackStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/ScorePackStore.swift; sourceTree = "<group>"; };
-		A8F3B45CD633C3EF7F7F14BF /* macOS/TouchTutor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS/TouchTutor.entitlements; sourceTree = "<group>"; };
 		AA1111111111111111111111AB /* Sources/TouchTutor/AppearanceSwitcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/AppearanceSwitcherView.swift; sourceTree = "<group>"; };
 		AA2222222222222222222222AB /* Sources/TouchTutor/CircleAnimationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/CircleAnimationHelper.swift; sourceTree = "<group>"; };
 		AA3333333333333333333333AB /* Sources/TouchTutor/ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/ContentView.swift; sourceTree = "<group>"; };
-		AA5555555555555555555555AB /* Sources/TouchTutor/KeyboardMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/KeyboardMonitor.swift; sourceTree = "<group>"; };
-		AA6666666666666666666666AB /* Sources/TouchTutor/MacMenuCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/MacMenuCommands.swift; sourceTree = "<group>"; };
 		AA7777777777777777777777AB /* Sources/TouchTutor/MusicNoteLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/MusicNoteLogoView.swift; sourceTree = "<group>"; };
 		AA8888888888888888888888AB /* Sources/TouchTutor/NoteCapsuleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/NoteCapsuleButton.swift; sourceTree = "<group>"; };
 		AA9999999999999999999999AB /* Sources/TouchTutor/PianoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/PianoContentView.swift; sourceTree = "<group>"; };
 		AAAABB111111111111111111AB /* Sources/TouchTutor/SoireeTechLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/SoireeTechLinkView.swift; sourceTree = "<group>"; };
-		AAAABB222222222222222222AB /* Sources/TouchTutor/SystemAppearanceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/SystemAppearanceObserver.swift; sourceTree = "<group>"; };
 		AAAABB333333333333333333AB /* Sources/TouchTutor/TempoSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/TempoSelectorView.swift; sourceTree = "<group>"; };
-		ABCD0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/SVGRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/SVGRenderer.swift; sourceTree = "<group>"; };
 		AD4D2A41CEE91C8CD15BE50C /* Sources/TouchTutor/App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/App.swift; sourceTree = "<group>"; };
 		CB58C91A3098770400E476C4 /* scores_paid.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = scores_paid.toml; sourceTree = "<group>"; };
 		CB58C91C309881A100E476C4 /* main_theme_ff5.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = main_theme_ff5.xml; sourceTree = "<group>"; };
@@ -235,19 +226,15 @@
 				AA1111111111111111111111AB /* Sources/TouchTutor/AppearanceSwitcherView.swift */,
 				AA2222222222222222222222AB /* Sources/TouchTutor/CircleAnimationHelper.swift */,
 				AA3333333333333333333333AB /* Sources/TouchTutor/ContentView.swift */,
-				AA5555555555555555555555AB /* Sources/TouchTutor/KeyboardMonitor.swift */,
-				AA6666666666666666666666AB /* Sources/TouchTutor/MacMenuCommands.swift */,
-				AA7777777777777777777777AB /* Sources/TouchTutor/MusicNoteLogoView.swift */,
+ 			AA7777777777777777777777AB /* Sources/TouchTutor/MusicNoteLogoView.swift */,
 				AA8888888888888888888888AB /* Sources/TouchTutor/NoteCapsuleButton.swift */,
 				AA9999999999999999999999AB /* Sources/TouchTutor/PianoContentView.swift */,
 				AAAABB111111111111111111AB /* Sources/TouchTutor/SoireeTechLinkView.swift */,
-				AAAABB222222222222222222AB /* Sources/TouchTutor/SystemAppearanceObserver.swift */,
 				AAAABB333333333333333333AB /* Sources/TouchTutor/TempoSelectorView.swift */,
 				DEAD0002BEEF4242CAFE0002 /* Sources/TouchTutor/SoundFontSelectorView.swift */,
 				DEAD0004BEEF4242CAFE0004 /* Sources/TouchTutor/SplashView.swift */,
 				DEAD0006BEEF4242CAFE0006 /* Sources/TouchTutor/SoireeSplashView.swift */,
 				DEAD0008BEEF4242CAFE0008 /* Sources/TouchTutor/TouchTutorSplashView.swift */,
-				ABCD0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/SVGRenderer.swift */,
 				TOML0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/TOMLParser.swift */,
 			);
 			name = Sources;
@@ -260,7 +247,6 @@
 				CB6DB7FA3095C72C0084C852 /* Resources */,
 				156052F04525D0F710673CF0 /* Tests */,
 				CB8713BB0FA0509CD417AA7E /* ScorePacks.storekit */,
-				A8F3B45CD633C3EF7F7F14BF /* macOS/TouchTutor.entitlements */,
 				FBDC4F23F93125BBEEAE800C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -443,19 +429,15 @@
 				AA1111111111111111111111AA /* Sources/TouchTutor/AppearanceSwitcherView.swift in Sources */,
 				AA2222222222222222222222AA /* Sources/TouchTutor/CircleAnimationHelper.swift in Sources */,
 				AA3333333333333333333333AA /* Sources/TouchTutor/ContentView.swift in Sources */,
-				AA5555555555555555555555AA /* Sources/TouchTutor/KeyboardMonitor.swift in Sources */,
-				AA6666666666666666666666AA /* Sources/TouchTutor/MacMenuCommands.swift in Sources */,
-				AA7777777777777777777777AA /* Sources/TouchTutor/MusicNoteLogoView.swift in Sources */,
+ 			AA7777777777777777777777AA /* Sources/TouchTutor/MusicNoteLogoView.swift in Sources */,
 				AA8888888888888888888888AA /* Sources/TouchTutor/NoteCapsuleButton.swift in Sources */,
 				AA9999999999999999999999AA /* Sources/TouchTutor/PianoContentView.swift in Sources */,
 				AAAABB111111111111111111AA /* Sources/TouchTutor/SoireeTechLinkView.swift in Sources */,
-				AAAABB222222222222222222AA /* Sources/TouchTutor/SystemAppearanceObserver.swift in Sources */,
 				AAAABB333333333333333333AA /* Sources/TouchTutor/TempoSelectorView.swift in Sources */,
 				DEAD0001BEEF4242CAFE0001 /* Sources/TouchTutor/SoundFontSelectorView.swift in Sources */,
 				DEAD0003BEEF4242CAFE0003 /* Sources/TouchTutor/SplashView.swift in Sources */,
 				DEAD0005BEEF4242CAFE0005 /* Sources/TouchTutor/SoireeSplashView.swift in Sources */,
 				DEAD0007BEEF4242CAFE0007 /* Sources/TouchTutor/TouchTutorSplashView.swift in Sources */,
-				ABCD0001E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/SVGRenderer.swift in Sources */,
 				TOML0001E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/TOMLParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,7 +478,6 @@
 		0F3D67935A4F199E058A017A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
@@ -506,26 +487,23 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@loader_path/../Frameworks",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.soiree.touchtutor.tests;
 				PRODUCT_NAME = TouchTutorTests;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TouchTutor.app/Contents/MacOS/TouchTutor";
 			};
 			name = Debug;
 		};
 		20B70E15FDC36C625E57F658 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
@@ -534,17 +512,15 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@loader_path/../Frameworks",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.soiree.touchtutor.tests;
 				PRODUCT_NAME = TouchTutorTests;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TouchTutor.app/Contents/MacOS/TouchTutor";
 			};
 			name = Release;
 		};
@@ -554,16 +530,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = macOS/TouchTutor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = RHX53VZ224;
-				ENABLE_APP_SANDBOX = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = TouchTutor;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
@@ -575,12 +547,11 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 27.0;
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.soiree.touchtutor;
 				PRODUCT_NAME = TouchTutor;
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -621,11 +592,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				IPHONEOS_DEPLOYMENT_TARGET = "$(RECOMMENDED_IPHONEOS_DEPLOYMENT_TARGET)";
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_UPCOMING_FEATURE_APPROACHABLE_CONCURRENCY = YES;
@@ -666,10 +637,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				SDKROOT = macosx;
+				IPHONEOS_DEPLOYMENT_TARGET = "$(RECOMMENDED_IPHONEOS_DEPLOYMENT_TARGET)";
+				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_UPCOMING_FEATURE_APPROACHABLE_CONCURRENCY = YES;
@@ -683,17 +654,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = macOS/TouchTutor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = RHX53VZ224;
-				ENABLE_APP_SANDBOX = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = TouchTutor;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
@@ -705,13 +672,12 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 27.0;
 				MARKETING_VERSION = 1.0.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.soiree.touchtutor;
 				PRODUCT_NAME = TouchTutor;
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";

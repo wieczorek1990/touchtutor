@@ -19,34 +19,30 @@ The parser in `Sources/TouchTutor/TOMLParser.swift` reads these files at startup
 1. Add its MusicXML files to `Resources/Scores`.
 2. Add a `[[packs]]` entry to `Resources/score_packs.toml` with `id` (the App Store Connect product ID), `title`, `color`, and one or more `[[packs.scores]]` child entries. Each score child only needs `id`. The MusicXML file for each score must be named `{id}.xml`. Use unique score IDs and do not also list paid scores in `scores_free.toml`.
 3. Create that product as a **non-consumable** in App Store Connect.
-4. Add both iOS and macOS to the same App Store Connect app record, with the same bundle ID, for universal purchase.
 
 ## Add a test score or pack
 
 Add entries to `scores_test.toml` or `score_packs_test.toml` respectively. These are loaded only in DEBUG builds.
 
-## Test purchases in the native macOS app
+## Test purchases
 
 1. Open `TouchTutor.xcodeproj` (rather than `Package.swift`).
-2. Select the shared **TouchTutor macOS** scheme and **My Mac**, then run with **⌘R**.
+2. Select the **TouchTutor** scheme and an iOS simulator, then run with **⌘R**.
 3. Open the score-pack store and buy **Practice Pack (Test)**. The scheme already selects `ScorePacks.storekit`, which simulates purchases locally without charging you.
 4. Confirm that both practice scores become playable and display open-lock icons. Cancel a purchase to check that they stay locked.
 5. Use **Debug → StoreKit → Manage Transactions** to simulate a refund, or delete the transaction and relaunch to repeat a purchase. Also check relaunch and Restore Purchases.
 
 Edit test products by selecting `ScorePacks.storekit` in the project navigator. To change or disable the configuration, use **Product → Scheme → Edit Scheme → Run → Options → StoreKit Configuration**. The local configuration applies to Run, including when Run uses Release; it is not bundled into archived apps.
 
-The native target compiles the same sources and resources as the Swift package. Existing package commands and DMG scripts still work. Run the native unit tests with **⌘U**; the shared scheme includes `TouchTutorTests`.
-
-Local builds use ad-hoc signing, with App Sandbox, outgoing network access, and read-only access to files chosen in the import dialog. Sandboxed imports are stored in the app container, separately from imports made by the package executable. For App Store distribution, configure your developer team and signing in the native target and register the bundle ID `tech.soiree.TouchTutor`. App Store Connect products are configured separately from this local test file.
+Run the unit tests with **⌘U**; the shared scheme includes `TouchTutorTests`.
 
 ## Configure additional packs
 
 See the **Add a paid score pack** section above for the TOML-based workflow. The steps below supplement it with App Store Connect and distribution details.
 
 1. Create the product as a **non-consumable** in App Store Connect. Set its price, localized metadata, availability, and review information there. The app displays StoreKit's localized price; it does not hardcode prices.
-2. Add both iOS and macOS to the same App Store Connect app record, with the same bundle ID, for universal purchase. The product ID must match on both platforms.
-3. The native macOS target already includes the In-App Purchase capability and sandbox settings. Configure distribution signing for it; add a native iOS app target if distributing on iOS.
-4. Test through a StoreKit configuration in Xcode, then Sandbox/TestFlight on both platforms, before submitting the product and apps.
+2. The app target includes the In-App Purchase capability. Configure distribution signing for it.
+3. Test through a StoreKit configuration in Xcode, then Sandbox/TestFlight, before submitting the product and app.
 
 Apple references: [StoreKit](https://developer.apple.com/documentation/storekit), [universal purchase](https://developer.apple.com/support/universal-purchase/).
 
