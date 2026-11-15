@@ -4,6 +4,7 @@ struct ContentView: View {
   @ObservedObject var viewModel: ScorePlayerViewModel
   @AppStorage("appearance") private var appearance = "system"
   @State private var splashPhase: SplashPhase = .soiree
+  @ObservedObject private var parentalGate = ParentalGateManager.shared
 
   enum SplashPhase {
     case soiree, touchTutor, done
@@ -22,7 +23,14 @@ struct ContentView: View {
         VStack {
           Spacer()
           Button(action: {
-            viewModel.startGame()
+            if viewModel.gameLocked {
+              ParentalGateManager.shared.present {
+                viewModel.gameLocked = false
+                viewModel.startGame()
+              }
+            } else {
+              viewModel.startGame()
+            }
           }) {
             HStack(spacing: 8) {
               Image(systemName: "play.fill")
@@ -64,6 +72,12 @@ struct ContentView: View {
         }
         .edgesIgnoringSafeArea(.all)
       }
+
+      // Parental gate overlay — blocks all interaction until dismissed
+      if parentalGate.isPresented {
+        ParentalGateView()
+          .transition(.opacity)
+      }
     }
     .edgesIgnoringSafeArea(.all)
     .task {
@@ -75,6 +89,13 @@ struct ContentView: View {
       try? await Task.sleep(nanoseconds: 500_000_000)
       withAnimation(.easeInOut(duration: 0.2)) {
         splashPhase = .done
+      }
+      ParentalGateManager.shared.markSplashComplete()
+      // On first launch, present the parental gate so the parent must pass it before the child uses the app.
+      if ParentalGateManager.shared.isFirstLaunch {
+        ParentalGateManager.shared.present {
+          ParentalGateManager.shared.markFirstLaunchComplete()
+        }
       }
     }
     .preferredColorScheme(

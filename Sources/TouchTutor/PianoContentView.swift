@@ -16,9 +16,13 @@ struct PianoContentView: View {
       Spacer(minLength: 44)
 
       HStack(spacing: 8) {
+        Spacer(minLength: 6)
+
         if viewModel.currentScreen != .menu {
           Button(action: {
-            viewModel.returnToMenu()
+            ParentalGateManager.shared.present {
+              viewModel.returnToMenu()
+            }
           }) {
             HStack(spacing: 5) {
               Image(systemName: "chevron.backward")
@@ -35,16 +39,27 @@ struct PianoContentView: View {
             .clipShape(Capsule())
           }
           .buttonStyle(.plain)
-
-          Text("|")
-            .foregroundColor(.secondary)
-            .accessibilityHidden(true)
-
         }
+
+        Button(action: {
+          viewModel.returnToMenu()
+          viewModel.gameLocked = true
+          ParentalGateManager.shared.present {
+            // Gate passed — no additional action needed
+          }
+        }) {
+          Image(systemName: "lock.open.fill")
+            .font(.system(size: 14, weight: .semibold))
+            .foregroundColor(.secondary)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(Text("Lock game"))
 
         Spacer()
 
         AppearanceSwitcherView()
+
+        Spacer(minLength: 6)
       }
       .frame(height: 26)
       .padding(.top, 8)

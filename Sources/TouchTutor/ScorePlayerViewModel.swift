@@ -22,6 +22,8 @@ final class ScorePlayerViewModel: ObservableObject {
   @Published var tempoAdjustment: TempoAdjustment = .normal
   @Published var selectedSoundFont: SoundFont = .piano
 
+  @AppStorage("gameLocked") var gameLocked = false
+
   @Published var libraryError: String?
   @Published var isShowingScoreStore = false
   @Published private(set) var storeState = ScorePackStoreState()
@@ -112,6 +114,7 @@ final class ScorePlayerViewModel: ObservableObject {
 
   func startGame() {
     guard let selected = selectedScoreItem else { return }
+    guard !gameLocked else { return }
     guard storeState.canPlay(selected) else {
       isShowingScoreStore = true
       return

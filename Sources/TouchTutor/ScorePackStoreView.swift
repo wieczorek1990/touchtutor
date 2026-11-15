@@ -29,7 +29,9 @@ struct ScorePackStoreView: View {
         }
         Spacer()
         Button {
-          dismiss()
+          ParentalGateManager.shared.present {
+            dismiss()
+          }
         } label: {
           Text("Done", bundle: .module)
         }
@@ -44,7 +46,11 @@ struct ScorePackStoreView: View {
           isPending: viewModel.storeState.pendingProductIDs.contains(pack.id),
           isPurchasing: viewModel.storeState.purchasingProductID == pack.id,
           isBusy: viewModel.storeState.isBusy,
-          purchase: { Task { await viewModel.scoreStore.purchase(pack) } }
+          purchase: {
+            ParentalGateManager.shared.present {
+              Task { await viewModel.scoreStore.purchase(pack) }
+            }
+          }
         )
       } else {
         VStack(spacing: 16) {
@@ -78,7 +84,11 @@ struct ScorePackStoreView: View {
                   isPending: viewModel.storeState.pendingProductIDs.contains(pack.id),
                   isPurchasing: viewModel.storeState.purchasingProductID == pack.id,
                   isBusy: viewModel.storeState.isBusy,
-                  purchase: { Task { await viewModel.scoreStore.purchase(pack) } },
+                  purchase: {
+                    ParentalGateManager.shared.present {
+                      Task { await viewModel.scoreStore.purchase(pack) }
+                    }
+                  },
                   selectPack: {
                     withAnimation(.easeInOut(duration: 0.2)) {
                       selectedPack = pack

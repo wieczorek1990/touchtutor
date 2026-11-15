@@ -115,7 +115,9 @@ struct PreGameMenuView: View {
                                         
                                         if item.isImported {
                                             Button(action: {
-                                                viewModel.deleteScore(item)
+                                                ParentalGateManager.shared.present {
+                                                    viewModel.deleteScore(item)
+                                                }
                                             }) {
                                                 Image(systemName: "trash")
                                                     .font(.system(size: 12, weight: .semibold))
@@ -147,7 +149,9 @@ struct PreGameMenuView: View {
                                     .contextMenu {
                                         if item.isImported {
                                             Button(role: .destructive) {
-                                                viewModel.deleteScore(item)
+                                                ParentalGateManager.shared.present {
+                                                    viewModel.deleteScore(item)
+                                                }
                                             } label: {
                                                 Label(L10n.string("Delete Score"), systemImage: "trash")
                                             }
