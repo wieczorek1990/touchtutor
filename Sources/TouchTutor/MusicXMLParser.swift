@@ -31,6 +31,8 @@ final class MusicXMLParser: NSObject, XMLParserDelegate {
   private var rawNotes:
     [(onset: Int, measure: Int, pitch: ScorePitch, duration: Int, type: String, dots: Int)] = []
 
+  private var voices: [String] = []
+
   func parser(
     _ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?,
     qualifiedName qName: String?, attributes attributeDict: [String: String] = [:]
@@ -106,6 +108,10 @@ final class MusicXMLParser: NSObject, XMLParserDelegate {
     case "creator":
       if !text.isEmpty && workArtist.isEmpty {
         workArtist = text
+      }
+    case "part-name":
+      if !text.isEmpty {
+        voices.append(text)
       }
     case "divisions":
       if let val = Int(text), val > 0 {
@@ -237,7 +243,7 @@ final class MusicXMLParser: NSObject, XMLParserDelegate {
 
     let title = workTitle.isEmpty ? defaultTitle : workTitle
     let artist = workArtist.isEmpty ? L10n.string("Unknown Artist") : workArtist
-    return ParsedScore(title: title, artist: artist, album: defaultAlbum, steps: steps)
+    return ParsedScore(title: title, artist: artist, album: defaultAlbum, steps: steps, voices: voices)
   }
 
   static func parse(

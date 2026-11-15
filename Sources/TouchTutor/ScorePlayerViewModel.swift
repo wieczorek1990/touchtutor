@@ -21,6 +21,7 @@ final class ScorePlayerViewModel: ObservableObject {
   @Published var circleColor: Color = CircleAnimationHelper.defaultColor
   @Published var tempoAdjustment: TempoAdjustment = .normal
   @Published var selectedSoundFont: SoundFont = .piano
+  @Published var selectedVoiceIndex: Int = 0
 
   @AppStorage("gameLocked") var gameLocked = false
 
@@ -156,6 +157,7 @@ final class ScorePlayerViewModel: ObservableObject {
     selectedScoreItem = item
     score = parsed
     savedScoreId = item.id
+    selectedVoiceIndex = 0
     restart()
   }
 

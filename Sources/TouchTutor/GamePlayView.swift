@@ -167,6 +167,16 @@ struct GamePlayView: View {
           (viewModel.selectedScoreItem?.album ?? viewModel.score?.album ?? "").isEmpty
             ? 0 : 1
         )
+
+        if let voices = viewModel.score?.voices, voices.count > 1 {
+          Picker("Voice", selection: $viewModel.selectedVoiceIndex) {
+            ForEach(Array(voices.enumerated()), id: \ .offset) { index, voice in
+              Text(voice).tag(index)
+            }
+          }
+          .pickerStyle(.segmented)
+          .frame(maxWidth: .infinity)
+        }
       }
       .padding(.horizontal, 12)
       .padding(.vertical, 6)

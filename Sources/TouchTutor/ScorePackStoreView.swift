@@ -4,132 +4,137 @@ struct ScorePackStoreView: View {
   @ObservedObject var viewModel: ScorePlayerViewModel
   @Environment(\.dismiss) private var dismiss
   @State private var selectedPack: ScorePack?
+  @ObservedObject private var parentalGate = ParentalGateManager.shared
 
   var body: some View {
-    VStack(spacing: 16) {
-      HStack {
-        if selectedPack != nil {
+    ZStack {
+      VStack(spacing: 16) {
+        HStack {
+          if selectedPack != nil {
+            Button {
+              withAnimation(.easeInOut(duration: 0.2)) {
+                selectedPack = nil
+              }
+            } label: {
+              HStack(spacing: 4) {
+                Image(systemName: "chevron.backward")
+                  .font(.system(size: 12, weight: .bold))
+                Text("Packs", bundle: .module)
+                  .font(.system(size: 13, weight: .medium))
+              }
+              .foregroundColor(.secondary)
+            }
+            .buttonStyle(.plain)
+          } else {
+            Text("Score Packs", bundle: .module)
+              .font(.title2.bold())
+          }
+          Spacer()
           Button {
-            withAnimation(.easeInOut(duration: 0.2)) {
-              selectedPack = nil
+            ParentalGateManager.shared.present {
+              dismiss()
             }
           } label: {
-            HStack(spacing: 4) {
-              Image(systemName: "chevron.backward")
-                .font(.system(size: 12, weight: .bold))
-              Text("Packs", bundle: .module)
-                .font(.system(size: 13, weight: .medium))
-            }
-            .foregroundColor(.secondary)
+            Text("Done", bundle: .module)
           }
-          .buttonStyle(.plain)
-        } else {
-          Text("Score Packs", bundle: .module)
-            .font(.title2.bold())
+          .keyboardShortcut(.cancelAction)
         }
-        Spacer()
-        Button {
-          ParentalGateManager.shared.present {
-            dismiss()
-          }
-        } label: {
-          Text("Done", bundle: .module)
-        }
-        .keyboardShortcut(.cancelAction)
-      }
 
-      if let pack = selectedPack {
-        ScorePackDetailView(
-          pack: pack,
-          product: viewModel.storeState.products[pack.id],
-          isOwned: viewModel.storeState.ownedProductIDs.contains(pack.id),
-          isPending: viewModel.storeState.pendingProductIDs.contains(pack.id),
-          isPurchasing: viewModel.storeState.purchasingProductID == pack.id,
-          isBusy: viewModel.storeState.isBusy,
-          purchase: {
-            ParentalGateManager.shared.present {
+        if let pack = selectedPack {
+          ScorePackDetailView(
+            pack: pack,
+            product: viewModel.storeState.products[pack.id],
+            isOwned: viewModel.storeState.ownedProductIDs.contains(pack.id),
+            isPending: viewModel.storeState.pendingProductIDs.contains(pack.id),
+            isPurchasing: viewModel.storeState.purchasingProductID == pack.id,
+            isBusy: viewModel.storeState.isBusy,
+            purchase: {
               Task { await viewModel.scoreStore.purchase(pack) }
             }
-          }
-        )
-      } else {
-        VStack(spacing: 16) {
-          ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-              Text("Buy a pack once and play its scores whenever you like.", bundle: .module)
-                .foregroundStyle(.secondary)
-              if viewModel.scoreStore.packs.isEmpty {
-                Text("No score packs are available yet.", bundle: .module)
-                  .padding(.vertical)
-              }
-              ForEach(
-                viewModel.scoreStore.packs.sorted { a, b in
-                  let aOwned = viewModel.storeState.ownedProductIDs.contains(a.id)
-                  let bOwned = viewModel.storeState.ownedProductIDs.contains(b.id)
-                  let aFree = a.id.contains(".test")
-                  let bFree = b.id.contains(".test")
-                  // Order: free/test → not-owned paid → owned
-                  let aTier: Int
-                  if aFree { aTier = 0 } else if aOwned { aTier = 2 } else { aTier = 1 }
-                  let bTier: Int
-                  if bFree { bTier = 0 } else if bOwned { bTier = 2 } else { bTier = 1 }
-                  if aTier != bTier { return aTier < bTier }
-                  return a.id < b.id
-                }
-              ) { pack in
-                ScorePackRow(
-                  pack: pack,
-                  product: viewModel.storeState.products[pack.id],
-                  isOwned: viewModel.storeState.ownedProductIDs.contains(pack.id),
-                  isPending: viewModel.storeState.pendingProductIDs.contains(pack.id),
-                  isPurchasing: viewModel.storeState.purchasingProductID == pack.id,
-                  isBusy: viewModel.storeState.isBusy,
-                  purchase: {
-                    ParentalGateManager.shared.present {
-                      Task { await viewModel.scoreStore.purchase(pack) }
-                    }
-                  },
-                  selectPack: {
-                    withAnimation(.easeInOut(duration: 0.2)) {
-                      selectedPack = pack
-                    }
-                  }
-                )
-              }
-              if let message = viewModel.storeState.message {
-                Text(message)
-                  .font(.callout)
-              }
-              #if DEBUG
-                if viewModel.storeState.products.isEmpty, viewModel.storeState.message != nil {
-                  VStack(alignment: .leading, spacing: 4) {
-                    Text("Testing purchases in debug mode?", bundle: .module)
-                      .font(.callout.bold())
-                    let debugHint =
-                      "Run the app from Xcode (⌘R) with the StoreKit configuration "
-                      + "attached to the scheme so that test products load locally."
-                    Text(debugHint)
-                      .font(.callout)
-                      .foregroundStyle(.secondary)
-                  }
-                  .padding()
-                  .frame(maxWidth: .infinity, alignment: .leading)
-                  .background(.gray.opacity(0.12), in: RoundedRectangle(cornerRadius: 8))
-                }
-              #endif
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-          }
-          ScorePackStoreActions(
-            state: viewModel.storeState,
-            reload: { Task { await viewModel.scoreStore.loadProducts() } },
-            restore: { Task { await viewModel.scoreStore.restore() } }
           )
+        } else {
+          VStack(spacing: 16) {
+            ScrollView {
+              VStack(alignment: .leading, spacing: 16) {
+                Text("Buy a pack once and play its scores whenever you like.", bundle: .module)
+                  .foregroundStyle(.secondary)
+                if viewModel.scoreStore.packs.isEmpty {
+                  Text("No score packs are available yet.", bundle: .module)
+                    .padding(.vertical)
+                }
+                ForEach(
+                  viewModel.scoreStore.packs.sorted { a, b in
+                    let aOwned = viewModel.storeState.ownedProductIDs.contains(a.id)
+                    let bOwned = viewModel.storeState.ownedProductIDs.contains(b.id)
+                    let aFree = a.id.contains(".test")
+                    let bFree = b.id.contains(".test")
+                    // Order: free/test → not-owned paid → owned
+                    let aTier: Int
+                    if aFree { aTier = 0 } else if aOwned { aTier = 2 } else { aTier = 1 }
+                    let bTier: Int
+                    if bFree { bTier = 0 } else if bOwned { bTier = 2 } else { bTier = 1 }
+                    if aTier != bTier { return aTier < bTier }
+                    return a.id < b.id
+                  }
+                ) { pack in
+                  ScorePackRow(
+                    pack: pack,
+                    product: viewModel.storeState.products[pack.id],
+                    isOwned: viewModel.storeState.ownedProductIDs.contains(pack.id),
+                    isPending: viewModel.storeState.pendingProductIDs.contains(pack.id),
+                    isPurchasing: viewModel.storeState.purchasingProductID == pack.id,
+                    isBusy: viewModel.storeState.isBusy,
+                    purchase: {
+                      Task { await viewModel.scoreStore.purchase(pack) }
+                    },
+                    selectPack: {
+                      withAnimation(.easeInOut(duration: 0.2)) {
+                        selectedPack = pack
+                      }
+                    }
+                  )
+                }
+                if let message = viewModel.storeState.message {
+                  Text(message)
+                    .font(.callout)
+                }
+                #if DEBUG
+                  if viewModel.storeState.products.isEmpty, viewModel.storeState.message != nil {
+                    VStack(alignment: .leading, spacing: 4) {
+                      Text("Testing purchases in debug mode?", bundle: .module)
+                        .font(.callout.bold())
+                      let debugHint =
+                        "Run the app from Xcode (⌘R) with the StoreKit configuration "
+                        + "attached to the scheme so that test products load locally."
+                      Text(debugHint)
+                        .font(.callout)
+                        .foregroundStyle(.secondary)
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(.gray.opacity(0.12), in: RoundedRectangle(cornerRadius: 8))
+                  }
+                #endif
+              }
+              .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            ScorePackStoreActions(
+              state: viewModel.storeState,
+              reload: { Task { await viewModel.scoreStore.loadProducts() } },
+              restore: { Task { await viewModel.scoreStore.restore() } }
+            )
+          }
         }
       }
+      .padding(20)
+      .frame(maxWidth: 400, maxHeight: .infinity, alignment: .top)
+
+      // Parental gate overlay — must be inside the sheet to appear above it
+      if parentalGate.isPresented {
+        ParentalGateView()
+          .transition(.opacity)
+      }
     }
-    .padding(20)
-    .frame(maxWidth: 400, maxHeight: .infinity, alignment: .top)
     .task { await viewModel.scoreStore.loadProducts() }
   }
 }

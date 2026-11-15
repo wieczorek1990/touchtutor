@@ -201,4 +201,5 @@ struct ParsedScore: Equatable {
   let artist: String
   let album: String
   let steps: [ScoreStep]
+  let voices: [String]
 }

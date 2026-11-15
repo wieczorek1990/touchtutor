@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 @MainActor
 final class ScorePackStore {
@@ -72,6 +73,14 @@ final class ScorePackStore {
       !state.pendingProductIDs.contains(pack.id),
       state.products[pack.id] != nil
     else { return }
+
+    // Present the parental gate before proceeding with the purchase.
+    await withCheckedContinuation { continuation in
+      ParentalGateManager.shared.present {
+        continuation.resume()
+      }
+    }
+
     state.purchasingProductID = pack.id
     state.message = nil
     defer { state.purchasingProductID = nil }
