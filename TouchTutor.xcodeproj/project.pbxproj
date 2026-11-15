@@ -54,13 +54,14 @@
 		DEAD0001BEEF4242CAFE0001 /* Sources/TouchTutor/SoundFontSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD0002BEEF4242CAFE0002 /* Sources/TouchTutor/SoundFontSelectorView.swift */; };
 		DEAD0003BEEF4242CAFE0003 /* Sources/TouchTutor/SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD0004BEEF4242CAFE0004 /* Sources/TouchTutor/SplashView.swift */; };
 		DEAD0005BEEF4242CAFE0005 /* TouchTutor.app in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D1043473D55BFA90E8530D3 /* TouchTutor.app */; };
-		DEAD0009BEEF4242CAFE0009 /* Sources/TouchTutor/SoireeSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD0006BEEF4242CAFE0006 /* Sources/TouchTutor/SoireeSplashView.swift */; };
 		DEAD0007BEEF4242CAFE0007 /* Sources/TouchTutor/TouchTutorSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD0008BEEF4242CAFE0008 /* Sources/TouchTutor/TouchTutorSplashView.swift */; };
+		DEAD0009BEEF4242CAFE0009 /* Sources/TouchTutor/SoireeSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD0006BEEF4242CAFE0006 /* Sources/TouchTutor/SoireeSplashView.swift */; };
 		E186FF72E889E66FB6748E4A /* Sources/TouchTutor/ScoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12935B72E0B88D88414FA173 /* Sources/TouchTutor/ScoreModels.swift */; };
 		E89A839B7BA28C98C80A0E7D /* Sources/TouchTutor/StoreKitScorePackCommerce.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE268657E31E27CC54AD4504 /* Sources/TouchTutor/StoreKitScorePackCommerce.swift */; };
 		F47768F5CAAA0B6FDF943D1C /* Sources/TouchTutor/ScorePack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474C74CBD295CDD1F5D31A9 /* Sources/TouchTutor/ScorePack.swift */; };
 		F47AF83A641D803D03C9B46E /* Sources/TouchTutor/SoundFontSynth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA733087A571D9DD4561858 /* Sources/TouchTutor/SoundFontSynth.swift */; };
 		FC6E4D1A21082BB01EF63D15 /* Sources/TouchTutor/ScorePlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2FCA2B261527262F3DF4D7 /* Sources/TouchTutor/ScorePlayerViewModel.swift */; };
+		PG0000000000000000000000AA /* Sources/TouchTutor/ParentalGateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = PG000000000000000000000001 /* Sources/TouchTutor/ParentalGateView.swift */; };
 		STOREKIT000000000000000001 /* ScorePacks.storekit in Resources */ = {isa = PBXBuildFile; fileRef = CB8713BB0FA0509CD417AA7E /* ScorePacks.storekit */; };
 		TOML0001E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/TOMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = TOML0002E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/TOMLParser.swift */; };
 		TOMLFREE000000000000000001 /* scores_free.toml in Resources */ = {isa = PBXBuildFile; fileRef = TOMLFREE000000000000000002 /* scores_free.toml */; };
@@ -69,7 +70,6 @@
 		TOMLTEST000000000000000001 /* scores_test.toml in Resources */ = {isa = PBXBuildFile; fileRef = TOMLTEST000000000000000002 /* scores_test.toml */; };
 		TTLOGO013095C72C0084C852 /* touchtutor_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = TTLOGO023095C72C0084C852 /* touchtutor_logo.png */; };
 		TTLOGOW13095C72C0084C852 /* touchtutor_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = TTLOGOW23095C72C0084C852 /* touchtutor_logo_white.png */; };
-		PG0000000000000000000000AA /* Sources/TouchTutor/ParentalGateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = PG000000000000000000000001 /* Sources/TouchTutor/ParentalGateView.swift */; };
 		WHITE0013095C72C0084C852 /* soiree_logo_white.svg in Resources */ = {isa = PBXBuildFile; fileRef = WHITE0023095C72C0084C852 /* soiree_logo_white.svg */; };
 		WHITEPNG013095C72C0084C852 /* soiree_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = WHITEPNG023095C72C0084C852 /* soiree_logo_white.png */; };
 /* End PBXBuildFile section */
@@ -438,7 +438,7 @@
 				AAAABB333333333333333333AA /* Sources/TouchTutor/TempoSelectorView.swift in Sources */,
 				DEAD0001BEEF4242CAFE0001 /* Sources/TouchTutor/SoundFontSelectorView.swift in Sources */,
 				DEAD0003BEEF4242CAFE0003 /* Sources/TouchTutor/SplashView.swift in Sources */,
- 			DEAD0009BEEF4242CAFE0009 /* Sources/TouchTutor/SoireeSplashView.swift in Sources */,
+				DEAD0009BEEF4242CAFE0009 /* Sources/TouchTutor/SoireeSplashView.swift in Sources */,
 				DEAD0007BEEF4242CAFE0007 /* Sources/TouchTutor/TouchTutorSplashView.swift in Sources */,
 				TOML0001E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/TOMLParser.swift in Sources */,
 			);
@@ -534,7 +534,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = RHX53VZ224;
@@ -658,7 +658,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = RHX53VZ224;
