@@ -243,7 +243,8 @@ final class MusicXMLParser: NSObject, XMLParserDelegate {
 
     let title = workTitle.isEmpty ? defaultTitle : workTitle
     let artist = workArtist.isEmpty ? L10n.string("Unknown Artist") : workArtist
-    return ParsedScore(title: title, artist: artist, album: defaultAlbum, steps: steps, voices: voices)
+    return ParsedScore(
+      title: title, artist: artist, album: defaultAlbum, steps: steps, voices: voices)
   }
 
   static func parse(

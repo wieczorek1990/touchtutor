@@ -35,7 +35,7 @@ final class ScorePlayerViewModel: ObservableObject {
       gameStateString = gameState == .locked ? "locked" : "game"
     }
   }
-  
+
   private func applySavedGameState() {
     if gameStateString == "locked" {
       gameState = .locked

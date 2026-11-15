@@ -170,7 +170,7 @@ struct GamePlayView: View {
 
         if let voices = viewModel.score?.voices, voices.count > 1 {
           Picker("Voice", selection: $viewModel.selectedVoiceIndex) {
-            ForEach(Array(voices.enumerated()), id: \ .offset) { index, voice in
+            ForEach(Array(voices.enumerated()), id: \.offset) { index, voice in
               Text(voice).tag(index)
             }
           }

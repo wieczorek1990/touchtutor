@@ -53,7 +53,8 @@
 		CCC27994459E14D69EF2A4D5 /* Tests/TouchTutorTests/ScorePackStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C11413BD14308ACD28ED7B /* Tests/TouchTutorTests/ScorePackStoreTests.swift */; };
 		DEAD0001BEEF4242CAFE0001 /* Sources/TouchTutor/SoundFontSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD0002BEEF4242CAFE0002 /* Sources/TouchTutor/SoundFontSelectorView.swift */; };
 		DEAD0003BEEF4242CAFE0003 /* Sources/TouchTutor/SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD0004BEEF4242CAFE0004 /* Sources/TouchTutor/SplashView.swift */; };
-		DEAD0005BEEF4242CAFE0005 /* Sources/TouchTutor/SoireeSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD0006BEEF4242CAFE0006 /* Sources/TouchTutor/SoireeSplashView.swift */; };
+		DEAD0005BEEF4242CAFE0005 /* TouchTutor.app in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D1043473D55BFA90E8530D3 /* TouchTutor.app */; };
+		DEAD0009BEEF4242CAFE0009 /* Sources/TouchTutor/SoireeSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD0006BEEF4242CAFE0006 /* Sources/TouchTutor/SoireeSplashView.swift */; };
 		DEAD0007BEEF4242CAFE0007 /* Sources/TouchTutor/TouchTutorSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD0008BEEF4242CAFE0008 /* Sources/TouchTutor/TouchTutorSplashView.swift */; };
 		E186FF72E889E66FB6748E4A /* Sources/TouchTutor/ScoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12935B72E0B88D88414FA173 /* Sources/TouchTutor/ScoreModels.swift */; };
 		E89A839B7BA28C98C80A0E7D /* Sources/TouchTutor/StoreKitScorePackCommerce.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE268657E31E27CC54AD4504 /* Sources/TouchTutor/StoreKitScorePackCommerce.swift */; };
@@ -164,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEAD0005BEEF4242CAFE0005 /* TouchTutor.app in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,7 +438,7 @@
 				AAAABB333333333333333333AA /* Sources/TouchTutor/TempoSelectorView.swift in Sources */,
 				DEAD0001BEEF4242CAFE0001 /* Sources/TouchTutor/SoundFontSelectorView.swift in Sources */,
 				DEAD0003BEEF4242CAFE0003 /* Sources/TouchTutor/SplashView.swift in Sources */,
-				DEAD0005BEEF4242CAFE0005 /* Sources/TouchTutor/SoireeSplashView.swift in Sources */,
+ 			DEAD0009BEEF4242CAFE0009 /* Sources/TouchTutor/SoireeSplashView.swift in Sources */,
 				DEAD0007BEEF4242CAFE0007 /* Sources/TouchTutor/TouchTutorSplashView.swift in Sources */,
 				TOML0001E2F3A4B5C6D7E8F9 /* Sources/TouchTutor/TOMLParser.swift in Sources */,
 			);

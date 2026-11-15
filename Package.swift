@@ -6,7 +6,7 @@ let package = Package(
   name: "TouchTutor",
   defaultLocalization: "en",
   platforms: [
-    .iOS(.v26),
+    .iOS(.v26)
   ],
   targets: [
     .executableTarget(

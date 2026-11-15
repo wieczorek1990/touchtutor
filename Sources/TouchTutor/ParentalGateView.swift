@@ -1,5 +1,5 @@
-import SwiftUI
 import Foundation
+import SwiftUI
 
 /// A parental gate that requires the user to draw a pattern on a 3×3 grid
 /// before performing a protected action (leaving the app or making a purchase).
@@ -196,4 +196,3 @@ struct ParentalGateView: View {
     .ignoresSafeArea()
   }
 }
-
