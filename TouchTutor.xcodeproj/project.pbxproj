@@ -23,7 +23,6 @@
 		AA7777777777777777777777AA /* Sources/TouchTutor/MusicNoteLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7777777777777777777777AB /* Sources/TouchTutor/MusicNoteLogoView.swift */; };
 		AA8888888888888888888888AA /* Sources/TouchTutor/NoteCapsuleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8888888888888888888888AB /* Sources/TouchTutor/NoteCapsuleButton.swift */; };
 		AA9999999999999999999999AA /* Sources/TouchTutor/PianoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9999999999999999999999AB /* Sources/TouchTutor/PianoContentView.swift */; };
-		AAAABB111111111111111111AA /* Sources/TouchTutor/SoireeTechLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAABB111111111111111111AB /* Sources/TouchTutor/SoireeTechLinkView.swift */; };
 		AAAABB333333333333333333AA /* Sources/TouchTutor/TempoSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAABB333333333333333333AB /* Sources/TouchTutor/TempoSelectorView.swift */; };
 		BADD200FE97D203DF515488B /* Sources/TouchTutor/ImportedScoreLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CFFD86CCD5AD61ABA8F23 /* Sources/TouchTutor/ImportedScoreLibrary.swift */; };
 		C0F208B12ACF8CEDA2C5D448 /* Sources/TouchTutor/PreGameMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB17DCAFB293C1C36001AF /* Sources/TouchTutor/PreGameMenuView.swift */; };
@@ -103,7 +102,6 @@
 		AA7777777777777777777777AB /* Sources/TouchTutor/MusicNoteLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/MusicNoteLogoView.swift; sourceTree = "<group>"; };
 		AA8888888888888888888888AB /* Sources/TouchTutor/NoteCapsuleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/NoteCapsuleButton.swift; sourceTree = "<group>"; };
 		AA9999999999999999999999AB /* Sources/TouchTutor/PianoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/PianoContentView.swift; sourceTree = "<group>"; };
-		AAAABB111111111111111111AB /* Sources/TouchTutor/SoireeTechLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/SoireeTechLinkView.swift; sourceTree = "<group>"; };
 		AAAABB333333333333333333AB /* Sources/TouchTutor/TempoSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/TempoSelectorView.swift; sourceTree = "<group>"; };
 		AD4D2A41CEE91C8CD15BE50C /* Sources/TouchTutor/App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TouchTutor/App.swift; sourceTree = "<group>"; };
 		CB58C91A3098770400E476C4 /* scores_paid.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = scores_paid.toml; sourceTree = "<group>"; };
@@ -229,7 +227,6 @@
 				AA7777777777777777777777AB /* Sources/TouchTutor/MusicNoteLogoView.swift */,
 				AA8888888888888888888888AB /* Sources/TouchTutor/NoteCapsuleButton.swift */,
 				AA9999999999999999999999AB /* Sources/TouchTutor/PianoContentView.swift */,
-				AAAABB111111111111111111AB /* Sources/TouchTutor/SoireeTechLinkView.swift */,
 				AAAABB333333333333333333AB /* Sources/TouchTutor/TempoSelectorView.swift */,
 				DEAD0002BEEF4242CAFE0002 /* Sources/TouchTutor/SoundFontSelectorView.swift */,
 				DEAD0004BEEF4242CAFE0004 /* Sources/TouchTutor/SplashView.swift */,
@@ -432,7 +429,6 @@
 				AA7777777777777777777777AA /* Sources/TouchTutor/MusicNoteLogoView.swift in Sources */,
 				AA8888888888888888888888AA /* Sources/TouchTutor/NoteCapsuleButton.swift in Sources */,
 				AA9999999999999999999999AA /* Sources/TouchTutor/PianoContentView.swift in Sources */,
-				AAAABB111111111111111111AA /* Sources/TouchTutor/SoireeTechLinkView.swift in Sources */,
 				AAAABB333333333333333333AA /* Sources/TouchTutor/TempoSelectorView.swift in Sources */,
 				DEAD0001BEEF4242CAFE0001 /* Sources/TouchTutor/SoundFontSelectorView.swift in Sources */,
 				DEAD0003BEEF4242CAFE0003 /* Sources/TouchTutor/SplashView.swift in Sources */,

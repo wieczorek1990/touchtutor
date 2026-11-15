@@ -42,8 +42,6 @@ struct PianoContentView: View {
 
         }
 
-        SoireeTechLinkView()
-
         Spacer()
 
         AppearanceSwitcherView()
