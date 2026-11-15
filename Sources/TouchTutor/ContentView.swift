@@ -23,9 +23,9 @@ struct ContentView: View {
         VStack {
           Spacer()
           Button(action: {
-            if viewModel.gameLocked {
+            if viewModel.gameState == .locked {
               ParentalGateManager.shared.present {
-                viewModel.gameLocked = false
+                viewModel.gameState = .game
                 viewModel.startGame()
               }
             } else {

@@ -6,6 +6,11 @@ enum AppScreen {
   case game
 }
 
+enum GameState {
+  case game
+  case locked
+}
+
 @MainActor
 final class ScorePlayerViewModel: ObservableObject {
   @Published var currentScreen: AppScreen = .menu
@@ -23,7 +28,20 @@ final class ScorePlayerViewModel: ObservableObject {
   @Published var selectedSoundFont: SoundFont = .piano
   @Published var selectedVoiceIndex: Int = 0
 
-  @AppStorage("gameLocked") var gameLocked = false
+  @AppStorage("gameState") private var gameStateString: String = "game"
+
+  @Published var gameState: GameState = .game {
+    didSet {
+      gameStateString = gameState == .locked ? "locked" : "game"
+    }
+  }
+  
+  private func applySavedGameState() {
+    if gameStateString == "locked" {
+      gameState = .locked
+      currentScreen = .game
+    }
+  }
 
   @Published var libraryError: String?
   @Published var isShowingScoreStore = false
@@ -85,6 +103,7 @@ final class ScorePlayerViewModel: ObservableObject {
       if let selected = self.selectedScoreItem, !state.canPlay(selected) {
         self.score = nil
         self.restart()
+        guard self.gameState != .locked else { return }
         self.returnToMenu()
       } else if let selected = self.selectedScoreItem, self.score == nil {
         self.selectScore(selected)
@@ -111,11 +130,12 @@ final class ScorePlayerViewModel: ObservableObject {
         soundFontSynth.setProgram(soundFont.program)
       }
       .store(in: &cancellables)
+    applySavedGameState()
   }
 
   func startGame() {
     guard let selected = selectedScoreItem else { return }
-    guard !gameLocked else { return }
+    guard gameState != .locked else { return }
     guard storeState.canPlay(selected) else {
       isShowingScoreStore = true
       return
@@ -158,7 +178,7 @@ final class ScorePlayerViewModel: ObservableObject {
     score = parsed
     savedScoreId = item.id
     selectedVoiceIndex = 0
-    restart()
+    restoreProgress()
   }
 
   func selectNextScore() {
@@ -219,6 +239,7 @@ final class ScorePlayerViewModel: ObservableObject {
 
   func advanceStep() {
     guard let selected = selectedScoreItem, storeState.canPlay(selected) else {
+      guard gameState != .locked else { return }
       returnToMenu()
       return
     }
@@ -234,7 +255,6 @@ final class ScorePlayerViewModel: ObservableObject {
     }
 
     if isFinished {
-      restart()
       return
     }
 
@@ -243,9 +263,17 @@ final class ScorePlayerViewModel: ObservableObject {
       currentStep = step
       soundFontSynth.play(midiNotes: step.notes.map(\.midiNote))
       currentStepIndex += 1
+      saveProgress()
 
       if currentStepIndex >= score.steps.count {
         isFinished = true
+        // Game is finished — lock it and require the parental gate to continue
+        gameState = .locked
+        ParentalGateManager.shared.present {
+          self.gameState = .game
+          self.currentScreen = .game
+          self.restart()
+        }
       }
 
       let stepDuration = step.durationSeconds * tempoAdjustment.durationMultiplier
@@ -274,6 +302,41 @@ final class ScorePlayerViewModel: ObservableObject {
     currentStepIndex = 0
     currentStep = nil
     isFinished = false
+    saveProgress()
+  }
+
+  private func restoreProgress() {
+    guard let score = score else {
+      currentStepIndex = 0
+      currentStep = nil
+      isFinished = false
+      return
+    }
+    let saved = Self.getSavedStepIndex(for: selectedScoreItem?.id)
+    let clamped = min(max(saved, 0), score.steps.count)
+    currentStepIndex = clamped
+    isFinished = false
+    if clamped < score.steps.count {
+      currentStep = score.steps[clamped]
+    } else {
+      currentStep = nil
+    }
+  }
+
+  private func saveProgress() {
+    guard let scoreId = selectedScoreItem?.id else { return }
+    Self.saveStepIndex(currentStepIndex, for: scoreId)
+  }
+
+  private static func saveStepIndex(_ index: Int, for scoreId: String) {
+    let key = "progress_" + scoreId
+    UserDefaults.standard.set(index, forKey: key)
+  }
+
+  private static func getSavedStepIndex(for scoreId: String?) -> Int {
+    guard let scoreId = scoreId else { return 0 }
+    let key = "progress_" + scoreId
+    return UserDefaults.standard.integer(forKey: key)
   }
 
   func jumpToStep(_ index: Int) {
@@ -284,6 +347,7 @@ final class ScorePlayerViewModel: ObservableObject {
       colorSetter: { self.circleColor = $0 }
     )
     currentStepIndex = clampedIndex
+    saveProgress()
     if clampedIndex < score.steps.count {
       currentStep = score.steps[clampedIndex]
       isFinished = false

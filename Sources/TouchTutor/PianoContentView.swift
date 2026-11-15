@@ -42,8 +42,7 @@ struct PianoContentView: View {
         }
 
         Button(action: {
-          viewModel.returnToMenu()
-          viewModel.gameLocked = true
+          viewModel.gameState = .locked
           ParentalGateManager.shared.present {
             // Gate passed — no additional action needed
           }
